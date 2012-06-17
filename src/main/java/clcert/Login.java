@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PropertiesConfiguration config = null;
+	private Configuration config = null;
        
     public Login() {
         super();
