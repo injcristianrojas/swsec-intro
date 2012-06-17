@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <!-- this template was designed by http://www.tristarwebdesign.co.uk - please visit for more templates & information - thank you. -->
 <head>
-<title>enter page title here</title> <!-- change to whatever you want as the title for your website -->
+<title>Fans de los bellos paisajes (CLCERT SWSEC Intro)</title> <!-- change to whatever you want as the title for your website -->
 <meta name="description" content=" " /> <!-- enter a description for your website inside the " " -->
 <meta name="keywords" content=" " /> <!-- enter a a string of keywords that relate to your website inside the " " -->
 <meta http-equiv="Content-Language" content="en-gb" />
