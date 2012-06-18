@@ -24,6 +24,13 @@
 		<servlet-name>Wall</servlet-name>
 		<servlet-class>clcert.Wall</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Exit</display-name>
+		<servlet-name>Exit</servlet-name>
+		<servlet-class>clcert.Exit</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>WeakServlet</servlet-name>
 		<url-pattern>/WeakServlet</url-pattern>
@@ -35,6 +42,10 @@
 	<servlet-mapping>
 		<servlet-name>Wall</servlet-name>
 		<url-pattern>/Wall</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Exit</servlet-name>
+		<url-pattern>/Exit</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

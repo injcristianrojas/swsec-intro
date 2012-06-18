@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
@@ -76,11 +77,15 @@ public class Wall extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		RequestDispatcher dispatcher = sc.getRequestDispatcher("/header.inc");
 		dispatcher.include(request, response);
+		HttpSession session = request.getSession(true);
+		if (session.getAttribute("username") != null) {
+			out.println("<p>Usuario: " + (String) session.getAttribute("username") + "</p>");
+		}
 		out.println("<form action='Wall' method='post'>");
 		out.println("<input type='text' name='mensaje' id='mensaje'>");
 		out.println("<input type='submit' value='Postear'>");
 		out.println("</form>");
-		out.println("<p><a href='index.html'>Volver</a></p>");
+		out.println("<p><a href='index.jsp'>Volver</a></p>");
 	}
 	
 	private void renderFooter(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

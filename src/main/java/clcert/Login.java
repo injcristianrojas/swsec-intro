@@ -7,10 +7,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
@@ -30,6 +30,7 @@ public class Login extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		try {
@@ -44,8 +45,11 @@ public class Login extends HttpServlet {
 			statement.close();
 			conexion.close();
 			if (numFilas > 0) {
-				response.addCookie(new Cookie("userIP", request.getRemoteAddr()));
-				response.addCookie(new Cookie("userHost", request.getRemoteHost()));
+				session.setAttribute("userIP", request.getRemoteAddr());
+				session.setAttribute("userHost", request.getRemoteHost());
+				session.setAttribute("username", username);
+				//response.addCookie(new Cookie("userIP", request.getRemoteAddr()));
+				//response.addCookie(new Cookie("userHost", request.getRemoteHost()));
 				response.sendRedirect("saludos.jsp");
 			} else {
 				response.sendRedirect("login.jsp?notFoundError=1");

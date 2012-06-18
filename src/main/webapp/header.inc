@@ -19,7 +19,8 @@
 				<li><a title="Home" href="index.jsp">Home</a></li><li>|</li>
 				<li><a title="Ingresar" href="login.jsp">Ingresar</a></li><li>|</li>
 				<li><a title="Muro" href="Wall">Muro</a></li><li>|</li>
-				<li><a title="Saludos" href="saludos.jsp">Saludos</a></li>
+				<li><a title="Saludos" href="saludos.jsp">Saludos</a></li><li>|</li>
+				<li><a title="Salir" href="Exit">Salir</a></li>
 			</ul>
 		</div>
 	
