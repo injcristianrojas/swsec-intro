@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
+import org.owasp.esapi.ESAPI;
 
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -47,7 +48,7 @@ public class Login extends HttpServlet {
 			if (numFilas > 0) {
 				session.setAttribute("userIP", request.getRemoteAddr());
 				session.setAttribute("userHost", request.getRemoteHost());
-				session.setAttribute("username", username);
+				session.setAttribute("username", ESAPI.encoder().encodeForURL(username));
 				//response.addCookie(new Cookie("userIP", request.getRemoteAddr()));
 				//response.addCookie(new Cookie("userHost", request.getRemoteHost()));
 				response.sendRedirect("saludos.jsp");
