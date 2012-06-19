@@ -49,8 +49,6 @@ public class Login extends HttpServlet {
 				session.setAttribute("userIP", request.getRemoteAddr());
 				session.setAttribute("userHost", request.getRemoteHost());
 				session.setAttribute("username", ESAPI.encoder().encodeForURL(username));
-				//response.addCookie(new Cookie("userIP", request.getRemoteAddr()));
-				//response.addCookie(new Cookie("userHost", request.getRemoteHost()));
 				response.sendRedirect("saludos.jsp");
 			} else {
 				response.sendRedirect("login.jsp?notFoundError=1");
