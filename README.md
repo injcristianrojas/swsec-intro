@@ -19,10 +19,6 @@ el siguiente software:
 
 ## Modo de uso ##
 
-Antes del uso, edite el archivo `app.properties` de manera tal que la
-propiedad `JDBC.connectionURL` apunte a la ubicación correcta de la base
-de datos `db/clcert.sqlite`.
-
 Todos los comandos descritos a continuación, requieren que Usted se sitúe
 en el directorio donde se encuentra el archivo `pom.xml`.
 
