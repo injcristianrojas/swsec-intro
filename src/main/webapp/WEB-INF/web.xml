@@ -27,6 +27,13 @@
 	<servlet>
 		<description>
 		</description>
+		<display-name>ListaUsuarios</display-name>
+		<servlet-name>ListaUsuarios</servlet-name>
+		<servlet-class>clcert.ListaUsuarios</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
 		<display-name>Exit</display-name>
 		<servlet-name>Exit</servlet-name>
 		<servlet-class>clcert.Exit</servlet-class>
@@ -42,6 +49,10 @@
 	<servlet-mapping>
 		<servlet-name>Wall</servlet-name>
 		<url-pattern>/Wall</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListaUsuarios</servlet-name>
+		<url-pattern>/ListaUsuarios</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Exit</servlet-name>
