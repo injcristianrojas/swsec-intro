@@ -44,13 +44,13 @@ public class ListaUsuarios extends HttpServlet {
 			Class.forName("org.sqlite.JDBC");
 			Connection conexion = DriverManager.getConnection(config.getString("JDBC.connectionURL"));
 			Statement statement = conexion.createStatement();
-			String query = "SELECT username FROM usuarios WHERE type=" + request.getParameter("type");
+			String query = "SELECT * FROM usuarios WHERE type=" + request.getParameter("type");
 			ResultSet resultado = statement.executeQuery(query);
 			PrintWriter writer = response.getWriter();
 			writer.println("<table border='1'>");
 			writer.println("<tr><td>Usuarios del sistema</td></tr>");
 			while (resultado.next())
-				writer.println("<tr><td>" + resultado.getString(1) + "</td></tr>");
+				writer.println("<tr><td>" + resultado.getString("username") + "</td></tr>");
 			writer.println("</table>");
 			statement.close();
 			conexion.close();
