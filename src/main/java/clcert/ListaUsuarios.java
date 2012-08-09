@@ -64,6 +64,10 @@ public class ListaUsuarios extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		RequestDispatcher dispatcher = sc.getRequestDispatcher("/header.inc");
 		dispatcher.include(request, response);
+		HttpSession session = request.getSession(true);
+		if (session.getAttribute("username") != null) {
+			out.println("<p>Usuario: " + (String) session.getAttribute("username") + "</p>");
+		}
 	}
 	
 	private void renderFooter(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
