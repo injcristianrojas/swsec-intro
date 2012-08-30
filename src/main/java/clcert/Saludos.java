@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class WeakServlet extends HttpServlet {
+public class Saludos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletContext sc;
 	
-	public WeakServlet() {
+	public Saludos() {
 		super();
 	}
 

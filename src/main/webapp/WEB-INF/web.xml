@@ -6,9 +6,9 @@
 	<servlet>
 		<description>
 		</description>
-		<display-name>WeakServlet</display-name>
-		<servlet-name>WeakServlet</servlet-name>
-		<servlet-class>clcert.WeakServlet</servlet-class>
+		<display-name>Saludos</display-name>
+		<servlet-name>Saludos</servlet-name>
+		<servlet-class>clcert.Saludos</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
@@ -39,8 +39,8 @@
 		<servlet-class>clcert.Exit</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>WeakServlet</servlet-name>
-		<url-pattern>/WeakServlet</url-pattern>
+		<servlet-name>Saludos</servlet-name>
+		<url-pattern>/Saludos</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
