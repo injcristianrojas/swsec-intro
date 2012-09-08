@@ -53,4 +53,4 @@ iniciar una nueva demo deberá limpiar la base de datos. De eso se encarga
 el archivo `clcert/DBCleanup.java`, el cual se ejecutará automáticamente
 con sólo ejecutar:
 
-    mvn exec:java
+    mvn compile exec:java
