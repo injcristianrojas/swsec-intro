@@ -71,7 +71,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>injcristianrojas.DBCleanup</mainClass>
+					<mainClass>injcristianrojas.DBSetup</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
