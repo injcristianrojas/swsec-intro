@@ -14,7 +14,7 @@ las siguientes vulnerabilidades:
 La aplicación es prácticamente autocontenida. Para utilizarla se requiere
 el siguiente software:
 
-* Java (1.5 o superior)
+* Java (1.6 o superior)
 * Maven (2 o superior)
 
 ## Modo de uso ##
