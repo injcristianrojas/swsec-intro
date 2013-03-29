@@ -8,10 +8,6 @@
 	<packaging>war</packaging>
 	<name>Java SWSEC Intro App</name>
 
-	<properties>
-		<jettyVersion>7.2.0.v20101020</jettyVersion>
-	</properties>
-
 	<repositories>
 		<repository>
 			<id>tmate</id>
@@ -23,7 +19,7 @@
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-server</artifactId>
-			<version>${jettyVersion}</version>
+			<version>7.2.0.v20101020</version>
 		</dependency>
 		<dependency>
 			<groupId>org.xerial</groupId>
