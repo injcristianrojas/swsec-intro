@@ -6,11 +6,11 @@ if (error != null) {
 	out.println("<p>ERROR: Usuario no encontrado</p>");
 }
 %>
-<form action="Login" method="post">
+<form action="Login" method="post" name="mainForm" id="mainForm">
 <p>
 Nombre: <input type="text" name="username" id="username" /><br />
 Password: <input type="password" name="password" id="password"  /><br />
-<input type="submit" value="Ingresar" />
+<input type="submit" name="submitButton" id="submitButton" value="Ingresar" />
 </p>
 </form>
 <jsp:include page="footer.inc" />

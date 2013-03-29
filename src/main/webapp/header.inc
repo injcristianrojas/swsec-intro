@@ -18,7 +18,7 @@
 				<li><a title="Muro" href="Wall">Muro</a></li><li>|</li>
 				<li><a title="Saludos" href="saludos.jsp">Saludos</a></li><li>|</li>
 				<li><a title="Usuarios" href="ListaUsuarios?type=1">Usuarios</a></li><li>|</li>
-				<li><a title="Salir" href="Exit">Salir</a></li>
+				<li><a title="Salir" id="exit" href="Exit">Salir</a></li>
 			</ul>
 		</div>
 	

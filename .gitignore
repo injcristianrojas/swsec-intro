@@ -1,3 +1,6 @@
 *.sqlite
 target/
-db/
+.classpath
+.project
+.settings/
+bin/
