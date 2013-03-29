@@ -25,12 +25,19 @@ en el directorio donde se encuentra el archivo `pom.xml`.
 ### Creación de la base de datos ###
 
 Antes de usar la aplicación, deberá ejecutar una acción la cual creará una
-base de datos sqlite para la aplicación web. Eso se logra ejecutando:
+base de datos sqlite para la aplicación web y probará que ésta esté en orden.
+Eso se logra ejecutando:
 
-    mvn compile exec:java
+    mvn compile exec:java integration-test
 
-Después de unos pocos segundos, la base de datos estará creada y podrá activar
-el servidor.
+Después de unos pocos segundos, Usted debería ver el siguiente mensaje:
+
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+
+en ese caso, la base de datos estará creada, el servidor estará probado y podrá
+activarlo.
 
 ### Activación del servidor ###
 
