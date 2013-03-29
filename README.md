@@ -22,6 +22,16 @@ el siguiente software:
 Todos los comandos descritos a continuación, requieren que Usted se sitúe
 en el directorio donde se encuentra el archivo `pom.xml`.
 
+### Creación de la base de datos ###
+
+Antes de usar la aplicación, deberá ejecutar una acción la cual creará una
+base de datos sqlite para la aplicación web. Eso se logra ejecutando:
+
+    mvn compile exec:java
+
+Después de unos pocos segundos, la base de datos estará creada y podrá activar
+el servidor.
+
 ### Activación del servidor ###
 
 Para echar a correr el servidor, escriba:
@@ -49,9 +59,8 @@ Apunte su herramienta de fuzzing preferida a <http://localhost:8080>.
 Recuerde que al utilizar este tipo de herramientas sobre la aplicación,
 éstas buscarán insertar registros en la base de datos utilizando SQL
 Injection. Por lo tanto después de utilizar la aplicación y antes de
-iniciar una nueva demo deberá limpiar la base de datos. De eso se encarga
-el archivo `injcristianrojas/DBCleanup.java`, el cual se ejecutará automáticamente
-con sólo ejecutar:
+iniciar una nueva demo deberá recrear la base de datos. Para eso sólo
+ejecute:
 
     mvn compile exec:java
 
