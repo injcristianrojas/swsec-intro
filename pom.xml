@@ -6,7 +6,7 @@
 	<artifactId>swsec-demo</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<name>Java SWSEC Demo App</name>
+	<name>Java SWSEC Intro App</name>
 
 	<properties>
 		<jettyVersion>7.2.0.v20101020</jettyVersion>
@@ -50,6 +50,12 @@
 			<groupId>net.sourceforge.jwebunit</groupId>
 			<artifactId>jwebunit-htmlunit-plugin</artifactId>
 			<version>2.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.6</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
