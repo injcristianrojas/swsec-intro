@@ -49,7 +49,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>clcert.DBCleanup</mainClass>
+					<mainClass>injcristianrojas.DBCleanup</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

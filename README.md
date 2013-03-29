@@ -50,7 +50,7 @@ Recuerde que al utilizar este tipo de herramientas sobre la aplicación,
 éstas buscarán insertar registros en la base de datos utilizando SQL
 Injection. Por lo tanto después de utilizar la aplicación y antes de
 iniciar una nueva demo deberá limpiar la base de datos. De eso se encarga
-el archivo `clcert/DBCleanup.java`, el cual se ejecutará automáticamente
+el archivo `injcristianrojas/DBCleanup.java`, el cual se ejecutará automáticamente
 con sólo ejecutar:
 
     mvn compile exec:java

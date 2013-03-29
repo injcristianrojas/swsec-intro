@@ -8,35 +8,35 @@
 		</description>
 		<display-name>Saludos</display-name>
 		<servlet-name>Saludos</servlet-name>
-		<servlet-class>clcert.Saludos</servlet-class>
+		<servlet-class>injcristianrojas.Saludos</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
 		</description>
 		<display-name>Login</display-name>
 		<servlet-name>Login</servlet-name>
-		<servlet-class>clcert.Login</servlet-class>
+		<servlet-class>injcristianrojas.Login</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
 		</description>
 		<display-name>Wall</display-name>
 		<servlet-name>Wall</servlet-name>
-		<servlet-class>clcert.Wall</servlet-class>
+		<servlet-class>injcristianrojas.Wall</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
 		</description>
 		<display-name>ListaUsuarios</display-name>
 		<servlet-name>ListaUsuarios</servlet-name>
-		<servlet-class>clcert.ListaUsuarios</servlet-class>
+		<servlet-class>injcristianrojas.ListaUsuarios</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
 		</description>
 		<display-name>Exit</display-name>
 		<servlet-name>Exit</servlet-name>
-		<servlet-class>clcert.Exit</servlet-class>
+		<servlet-class>injcristianrojas.Exit</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Saludos</servlet-name>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <!-- this template was designed by http://www.tristarwebdesign.co.uk - please visit for more templates & information - thank you. -->
 <head>
-<title>Fans de los bellos paisajes (CLCERT SWSEC Intro)</title>
+<title>Fans de los bellos paisajes (SWSEC Intro)</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
