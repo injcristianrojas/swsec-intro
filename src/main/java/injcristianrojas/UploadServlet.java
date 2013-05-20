@@ -53,10 +53,10 @@ public class UploadServlet extends HttpServlet implements Servlet {
 
 		try {
 			// Parse the request
-			List items = upload.parseRequest(request);
-			Iterator iter = items.iterator();
+			List<FileItem> items = upload.parseRequest(request);
+			Iterator<FileItem> iter = items.iterator();
 			while (iter.hasNext()) {
-				FileItem item = (FileItem) iter.next();
+				FileItem item = iter.next();
 
 				if (!item.isFormField()) {
 					String fileName = new File(item.getName()).getName();
