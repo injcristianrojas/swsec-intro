@@ -17,6 +17,7 @@
 				<li><a title="Ingresar" href="login.jsp">Ingresar</a></li><li>|</li>
 				<li><a title="Muro" href="Wall">Muro</a></li><li>|</li>
 				<li><a title="Saludos" href="saludos.jsp">Saludos</a></li><li>|</li>
+				<li><a title="Imagenes" href="pictures.jsp">Imagenes</a></li><li>|</li>
 				<li><a title="Usuarios" href="ListaUsuarios?type=1">Usuarios</a></li><li>|</li>
 				<li><a title="Salir" id="exit" href="Exit">Salir</a></li>
 			</ul>

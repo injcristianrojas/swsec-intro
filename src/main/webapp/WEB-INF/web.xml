@@ -34,6 +34,13 @@
 	<servlet>
 		<description>
 		</description>
+		<display-name>UploadServlet</display-name>
+		<servlet-name>UploadServlet</servlet-name>
+		<servlet-class>injcristianrojas.UploadServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
 		<display-name>Exit</display-name>
 		<servlet-name>Exit</servlet-name>
 		<servlet-class>injcristianrojas.Exit</servlet-class>
@@ -53,6 +60,10 @@
 	<servlet-mapping>
 		<servlet-name>ListaUsuarios</servlet-name>
 		<url-pattern>/ListaUsuarios</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UploadServlet</servlet-name>
+		<url-pattern>/UploadServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Exit</servlet-name>
