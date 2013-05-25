@@ -22,6 +22,9 @@ dependencies {
 
 jettyRun {
 	contextPath ''
+    doFirst {
+        assert file('swsecdemo.sqlite').exists() 
+    }
 }
 
 test {
@@ -32,7 +35,7 @@ task integrationTest(type: Test, depends:test) {
     description = 'Tests the web application and database.'
     include '**/*ITest.*'
     doFirst {
-    	createDB.execute()
+        createDB.execute()
         jettyRun.daemon = true
         jettyRun.execute()
     }
