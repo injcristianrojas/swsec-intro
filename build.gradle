@@ -21,7 +21,7 @@ dependencies {
 [jettyRun,jettyRunWar,jettyStop]*.stopKey = 'stopKey'
 
 jettyRun {
-	contextPath ''
+    contextPath ''
     doFirst {
         assert file('swsecdemo.sqlite').exists() 
     }
