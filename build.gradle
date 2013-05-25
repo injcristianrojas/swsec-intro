@@ -1,0 +1,34 @@
+apply plugin: 'java'
+apply plugin: 'jetty'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.eclipse.jetty:jetty-server:7.2.0.v20101020'
+    compile 'commons-io:commons-io:2.4'
+    compile 'commons-fileupload:commons-fileupload:1.3'
+    compile 'org.owasp.esapi:esapi:2.0.1'
+    compile 'org.tmatesoft.sqljet:sqljet:1.1.6'
+    compile 'org.xerial:sqlite-jdbc:3.7.2'
+    testCompile 'junit:junit:4.4'
+    testCompile 'net.sourceforge.jwebunit:jwebunit-htmlunit-plugin:2.5'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java/injcristianrojas/dbsetup'
+        }
+    }
+}
+
+task(createDB, dependsOn: 'classes', type: JavaExec) {
+    main = 'injcristianrojas.dbsetup.DBSetup'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+
+
+defaultTasks 'createDB'
