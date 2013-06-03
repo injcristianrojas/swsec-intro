@@ -6,3 +6,4 @@ target/
 bin/
 .gradle/
 build/
+src/main/webapp/findbugs

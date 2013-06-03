@@ -64,4 +64,5 @@ tasks.withType(FindBugs) {
 
 findbugs {
     effort = "max"
+    reportsDir = file("$project.projectDir/src/main/webapp/findbugs")
 }
