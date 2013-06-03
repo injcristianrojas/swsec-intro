@@ -18,7 +18,7 @@ public class MainITest {
 	@Test
 	public void test() {
 		tester.beginAt("login.jsp");
-		tester.assertTitleEquals("Fans de los bellos paisajes (SWSEC Intro)");
+		tester.assertTitleEquals("Fans de las aves chilenas (SWSEC Intro)");
 		tester.setTextField("username", "crirojas");
 		tester.setTextField("password", "123");
 		tester.submit();
