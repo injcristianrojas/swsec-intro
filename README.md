@@ -15,7 +15,7 @@ La aplicación es prácticamente autocontenida. Para utilizarla se requiere
 el siguiente software:
 
 * Java (1.6 o superior)
-* Maven (2 o superior)
+* Maven (2 o superior) o Gradle.
 
 ## Modo de uso ##
 
@@ -29,6 +29,10 @@ base de datos sqlite para la aplicación web y probará que ésta esté en orden
 Eso se logra ejecutando:
 
     mvn compile exec:java integration-test
+
+En Gradle se puede hacer escribiendo:
+
+    gradle integrationTest
 
 Después de unos pocos segundos, Usted debería ver el siguiente mensaje:
 
@@ -44,6 +48,10 @@ activarlo.
 Para echar a correr el servidor, escriba:
 
     mvn jetty:run
+
+En Gradle escriba:
+
+    gradle jettyRun
 
 El servidor se activará automáticamente y dejará la aplicación corriendo en
 <http://localhost:8080>
@@ -70,6 +78,10 @@ iniciar una nueva demo deberá recrear la base de datos. Para eso sólo
 ejecute:
 
     mvn compile exec:java
+
+En Gradle use:
+
+    gradle createDB
 
 ## Licencia ##
 
