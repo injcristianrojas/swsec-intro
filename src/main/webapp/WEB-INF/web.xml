@@ -8,42 +8,42 @@
 		</description>
 		<display-name>Saludos</display-name>
 		<servlet-name>Saludos</servlet-name>
-		<servlet-class>injcristianrojas.Saludos</servlet-class>
+		<servlet-class>swsec.Saludos</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
 		</description>
 		<display-name>Login</display-name>
 		<servlet-name>Login</servlet-name>
-		<servlet-class>injcristianrojas.Login</servlet-class>
+		<servlet-class>swsec.Login</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
 		</description>
 		<display-name>Wall</display-name>
 		<servlet-name>Wall</servlet-name>
-		<servlet-class>injcristianrojas.Wall</servlet-class>
+		<servlet-class>swsec.Wall</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
 		</description>
 		<display-name>ListaUsuarios</display-name>
 		<servlet-name>ListaUsuarios</servlet-name>
-		<servlet-class>injcristianrojas.ListaUsuarios</servlet-class>
+		<servlet-class>swsec.ListaUsuarios</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
 		</description>
 		<display-name>UploadServlet</display-name>
 		<servlet-name>UploadServlet</servlet-name>
-		<servlet-class>injcristianrojas.UploadServlet</servlet-class>
+		<servlet-class>swsec.UploadServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
 		</description>
 		<display-name>Exit</display-name>
 		<servlet-name>Exit</servlet-name>
-		<servlet-class>injcristianrojas.Exit</servlet-class>
+		<servlet-class>swsec.Exit</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Saludos</servlet-name>

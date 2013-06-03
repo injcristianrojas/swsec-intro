@@ -1,4 +1,4 @@
-package injcristianrojas;
+package swsec;
 
 import net.sourceforge.jwebunit.junit.WebTester;
 

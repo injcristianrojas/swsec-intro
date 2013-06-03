@@ -51,7 +51,7 @@ task deleteDB(type: Delete) {
 
 task(createDB, dependsOn: [deleteDB, classes], type: JavaExec) {
     description = 'Creates the database needed for the web application.'
-    main = 'injcristianrojas.dbsetup.DBSetup'
+    main = 'swsec.dbsetup.DBSetup'
     classpath = sourceSets.main.runtimeClasspath
 }
 

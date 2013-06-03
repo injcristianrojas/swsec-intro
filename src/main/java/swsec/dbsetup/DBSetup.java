@@ -1,4 +1,4 @@
-package injcristianrojas.dbsetup;
+package swsec.dbsetup;
 
 import java.io.File;
 

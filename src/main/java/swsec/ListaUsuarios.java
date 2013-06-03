@@ -1,4 +1,4 @@
-package injcristianrojas;
+package swsec;
 
 import java.io.IOException;
 import java.io.PrintWriter;
