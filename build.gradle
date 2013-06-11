@@ -4,7 +4,7 @@ apply plugin: 'findbugs'
 
 repositories {
     mavenCentral()
-    mavenLocal()
+    dependencies { 'org.ajoberstar:gradle-plugins:0.1.1' }
 }
 
 dependencies {
@@ -45,7 +45,7 @@ task integrationTest(type: Test, depends:test) {
     }
 }
 
-task deleteDB(type: Delete) {
+task(deleteDB, type: Delete) {
     description = 'Deletes the database.'
     delete 'swsecdemo.sqlite'
 }
