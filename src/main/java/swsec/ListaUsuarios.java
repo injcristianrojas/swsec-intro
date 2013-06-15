@@ -62,7 +62,7 @@ public class ListaUsuarios extends HttpServlet {
 
 	private void renderHeader(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		RequestDispatcher dispatcher = sc.getRequestDispatcher("/header.inc");
+		RequestDispatcher dispatcher = sc.getRequestDispatcher("/header.jsp");
 		dispatcher.include(request, response);
 		HttpSession session = request.getSession(true);
 		if (session.getAttribute("username") != null) {

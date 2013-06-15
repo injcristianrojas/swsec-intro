@@ -25,7 +25,7 @@ public class Saludos extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		RequestDispatcher dispatcher = sc.getRequestDispatcher("/header.inc");
+		RequestDispatcher dispatcher = sc.getRequestDispatcher("/header.jsp");
 		dispatcher.include(request, response);
 		out.println("Bienvenido al sistema, " + request.getParameter("nombre"));
 		dispatcher = sc.getRequestDispatcher("/footer.inc");

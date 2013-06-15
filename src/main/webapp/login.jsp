@@ -1,5 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
-<jsp:include page="header.inc" />
+<jsp:include page="header.jsp" />
 <%
 String error = request.getParameter("notFoundError");
 if (error != null) {

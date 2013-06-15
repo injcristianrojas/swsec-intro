@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ page import="java.io.File" %>
-<jsp:include page="header.inc" />
+<jsp:include page="header.jsp" />
 	<% if (session.getAttribute("username") != null) { %>
 	<p>Usuario: <%=(String) session.getAttribute("username")%></p>
 	<% } %>
