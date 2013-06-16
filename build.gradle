@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.eclipse.jetty:jetty-server:7.2.0.v20101020'
+    compile 'org.eclipse.jetty:jetty-server:8.1.11.v20130520'
     compile 'commons-io:commons-io:2.4'
     compile 'commons-fileupload:commons-fileupload:1.3'
     compile 'org.owasp.esapi:esapi:2.0.1'
