@@ -23,6 +23,7 @@ dependencies {
 
 jettyRun {
     contextPath ''
+    scanIntervalSeconds = 2
     doFirst {
         assert file('swsecdemo.sqlite').exists() 
     }
