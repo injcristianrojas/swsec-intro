@@ -27,7 +27,7 @@ public class MainITest {
 		tester.clickLink("exit");
 		
 		tester.assertTextNotPresent("Usuario: crirojas");
-		tester.assertTextPresent("Muro de visitas");
+		tester.assertTextPresent("Login");
 	}
 
 }
