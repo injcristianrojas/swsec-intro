@@ -9,7 +9,7 @@ import org.tmatesoft.sqljet.core.table.SqlJetDb;
 
 public class DBSetup {
 
-	static String DB_FILE = "swsecdemo.sqlite";
+	private static final String DB_FILE = "swsecdemo.sqlite";
 
 	public static void main(String[] args) throws SqlJetException {
 		// Destuimos la DB
