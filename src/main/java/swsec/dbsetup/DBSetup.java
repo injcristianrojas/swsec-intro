@@ -14,9 +14,12 @@ public class DBSetup {
 	public static void main(String[] args) throws SqlJetException {
 		// Destuimos la DB
 		File dbFile = new File(DB_FILE);
-		if (!dbFile.delete())
-            System.out.println("No se pudo borrar el archivo de la base de datos");
-            System.exit(1);
+		if (dbFile.exists()) {
+            if (!dbFile.delete()) {
+                System.out.println("No se pudo borrar el archivo de la base de datos");
+                System.exit(1);
+            }
+        }
 
 		// ...y la creamos desde cero
 		SqlJetDb db = SqlJetDb.open(dbFile, true);
