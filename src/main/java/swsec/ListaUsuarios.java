@@ -66,7 +66,7 @@ public class ListaUsuarios extends HttpServlet {
 		dispatcher.include(request, response);
 		HttpSession session = request.getSession(true);
 		if (session.getAttribute("username") != null) {
-			out.println("<p>Usuario: " + (String) session.getAttribute("username") + "</p>");
+			out.println("<p>Usuario: " + session.getAttribute("username") + "</p>");
 		}
 	}
 	

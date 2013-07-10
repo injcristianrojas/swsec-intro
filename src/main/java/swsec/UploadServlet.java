@@ -2,7 +2,6 @@ package swsec;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.Servlet;
@@ -54,19 +53,16 @@ public class UploadServlet extends HttpServlet implements Servlet {
 		try {
 			// Parse the request
 			List<FileItem> items = upload.parseRequest(request);
-			Iterator<FileItem> iter = items.iterator();
-			while (iter.hasNext()) {
-				FileItem item = iter.next();
+            for (FileItem item : items) {
+                if (!item.isFormField()) {
+                    String fileName = new File(item.getName()).getName();
+                    String filePath = uploadFolder + File.separator + fileName;
+                    File uploadedFile = new File(filePath);
 
-				if (!item.isFormField()) {
-					String fileName = new File(item.getName()).getName();
-					String filePath = uploadFolder + File.separator + fileName;
-					File uploadedFile = new File(filePath);
-
-					// saves the file to upload directory
-					item.write(uploadedFile);
-				}
-			}
+                    // saves the file to upload directory
+                    item.write(uploadedFile);
+                }
+            }
 
 			// displays done.jsp page after upload finished
 			getServletContext().getRequestDispatcher("/pictures.jsp").forward(request, response);
