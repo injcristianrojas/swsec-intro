@@ -79,7 +79,6 @@
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<scanintervalseconds>0</scanintervalseconds>
 							<daemon>true</daemon>
 						</configuration>
 					</execution>
