@@ -25,7 +25,7 @@ jettyRun {
     contextPath ''
     scanIntervalSeconds = 2
     doFirst {
-        assert file('swsecdemo.sqlite').exists() 
+        assert file('src/main/webapp/WEB-INF/swsecdemo.sqlite').exists() 
     }
 }
 
@@ -48,7 +48,7 @@ task integrationTest(type: Test, depends:test) {
 
 task(deleteDB, type: Delete) {
     description = 'Deletes the database.'
-    delete 'swsecdemo.sqlite'
+    delete 'src/main/webapp/WEB-INF/swsecdemo.sqlite'
 }
 
 task(createDB, dependsOn: [deleteDB, classes], type: JavaExec) {
@@ -67,4 +67,10 @@ tasks.withType(FindBugs) {
 findbugs {
     effort = "max"
     reportsDir = file("$project.projectDir/src/main/webapp/findbugs")
+}
+
+war {
+    doFirst {
+        createDB.execute()
+    }
 }
