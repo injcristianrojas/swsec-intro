@@ -1,12 +1,5 @@
 package swsec;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -15,23 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.commons.configuration.Configuration;
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.PropertiesConfiguration;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class ListaUsuarios extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletContext sc;
-	private Configuration config = null;
 	
 	public ListaUsuarios() {
 		super();
-		try {
-			config = new PropertiesConfiguration("app.properties");
-		} catch (ConfigurationException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void init(ServletConfig config) throws ServletException {
@@ -42,7 +31,7 @@ public class ListaUsuarios extends HttpServlet {
 		renderHeader(request, response);
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(config.getString("JDBC.connectionURL"));
+			Connection conexion = DriverManager.getConnection(Config.SQLITE_URL);
 			Statement statement = conexion.createStatement();
 			String query = "SELECT * FROM usuarios WHERE type=" + request.getParameter("type");
 			ResultSet resultado = statement.executeQuery(query);
