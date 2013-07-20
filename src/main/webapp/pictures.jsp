@@ -6,7 +6,7 @@
 	<% } %>
 	<%
 	String localDir = getServletContext().getRealPath("/upload");
-	String webDir = "/upload/";
+	String webDir = "upload/";
 	File dir = new File(localDir);
 	File[] list = dir.listFiles();
 	for (int i = 0; i < list.length; i++) {
@@ -17,5 +17,5 @@
 		}
 	}
 	%>
-	<p style="text-align:center;"><a href="/upload.jsp">Subir imagen</a></p>
+	<p style="text-align:center;"><a href="upload.jsp">Subir imagen</a></p>
 <jsp:include page="footer.inc" />

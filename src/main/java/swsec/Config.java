@@ -1,5 +1,11 @@
 package swsec;
 
+import javax.servlet.ServletContext;
+
 public class Config {
-    public static final String SQLITE_URL = "jdbc:sqlite:src/main/webapp/WEB-INF/swsecdemo.sqlite";
+
+    public static final String getSqliteUrl(ServletContext servletContext) {
+        return "jdbc:sqlite:" + servletContext.getRealPath("WEB-INF/swsecdemo.sqlite");
+    }
+
 }

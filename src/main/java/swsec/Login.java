@@ -2,6 +2,8 @@ package swsec;
 
 import org.owasp.esapi.ESAPI;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +17,14 @@ import java.sql.Statement;
 
 public class Login extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private ServletContext servletcontext;
 
     public Login() {
         super();
+    }
+
+    public void init(ServletConfig config) throws ServletException {
+        servletcontext = config.getServletContext();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,7 +33,7 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Config.SQLITE_URL);
+			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl(servletcontext));
 			Statement statement = conexion.createStatement();
 			String query = "select * from usuarios where username='" + username + "' and password = '" + password + "'";
 			ResultSet resultado = statement.executeQuery(query);

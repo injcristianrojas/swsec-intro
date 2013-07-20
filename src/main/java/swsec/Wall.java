@@ -17,21 +17,21 @@ import java.sql.Statement;
 
 public class Wall extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ServletContext sc;
+	private ServletContext servletContext;
 	
 	public Wall() {
 		super();
 	}
 
 	public void init(ServletConfig config) throws ServletException {
-		sc = config.getServletContext();
+		servletContext = config.getServletContext();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		renderHeader(request, response);
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Config.SQLITE_URL);
+			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl(servletContext));
 			Statement statement = conexion.createStatement();
 			String query = "select mensaje from mensajes";
 			ResultSet resultado = statement.executeQuery(query);
@@ -50,7 +50,7 @@ public class Wall extends HttpServlet {
 		String mensaje = request.getParameter("mensaje");
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Config.SQLITE_URL);
+			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl(servletContext));
 			Statement statement = conexion.createStatement();
 			String query = "insert into mensajes (mensaje) values ('" + mensaje + "')";
 			statement.executeUpdate(query);
@@ -64,7 +64,7 @@ public class Wall extends HttpServlet {
 
 	private void renderHeader(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		RequestDispatcher dispatcher = sc.getRequestDispatcher("/header.jsp");
+		RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/header.jsp");
 		dispatcher.include(request, response);
 		HttpSession session = request.getSession(true);
 		if (session.getAttribute("username") != null) {
@@ -78,7 +78,7 @@ public class Wall extends HttpServlet {
 	}
 	
 	private void renderFooter(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		RequestDispatcher dispatcher = sc.getRequestDispatcher("/footer.inc");
+		RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/footer.inc");
 		dispatcher.include(request, response);
 	}
 

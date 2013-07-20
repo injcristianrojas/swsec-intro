@@ -17,21 +17,17 @@ import java.sql.Statement;
 
 public class ListaUsuarios extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ServletContext sc;
-	
-	public ListaUsuarios() {
-		super();
-	}
+	private ServletContext servletContext;
 
 	public void init(ServletConfig config) throws ServletException {
-		sc = config.getServletContext();
+		servletContext = config.getServletContext();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		renderHeader(request, response);
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Config.SQLITE_URL);
+			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl(servletContext));
 			Statement statement = conexion.createStatement();
 			String query = "SELECT * FROM usuarios WHERE type=" + request.getParameter("type");
 			ResultSet resultado = statement.executeQuery(query);
@@ -51,7 +47,7 @@ public class ListaUsuarios extends HttpServlet {
 
 	private void renderHeader(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		RequestDispatcher dispatcher = sc.getRequestDispatcher("/header.jsp");
+		RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/header.jsp");
 		dispatcher.include(request, response);
 		HttpSession session = request.getSession(true);
 		if (session.getAttribute("username") != null) {
@@ -60,7 +56,7 @@ public class ListaUsuarios extends HttpServlet {
 	}
 	
 	private void renderFooter(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		RequestDispatcher dispatcher = sc.getRequestDispatcher("/footer.inc");
+		RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/footer.inc");
 		dispatcher.include(request, response);
 	}
 
