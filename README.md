@@ -28,7 +28,7 @@ Antes de usar la aplicación, deberá ejecutar una acción la cual creará una
 base de datos sqlite para la aplicación web y probará que ésta esté en orden.
 Eso se logra ejecutando:
 
-    mvn compile exec:java integration-test
+    mvn integration-test
 
 En Gradle se puede hacer escribiendo:
 
