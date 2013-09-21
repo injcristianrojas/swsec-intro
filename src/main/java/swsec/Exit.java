@@ -12,7 +12,7 @@ public class Exit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public Exit() {
-        super();
+      super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

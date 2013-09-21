@@ -20,11 +20,11 @@ public class Login extends HttpServlet {
     private ServletContext servletcontext;
 
     public Login() {
-        super();
+      super();
     }
 
     public void init(ServletConfig config) throws ServletException {
-        servletcontext = config.getServletContext();
+      servletcontext = config.getServletContext();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
