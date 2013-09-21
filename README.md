@@ -77,7 +77,7 @@ Injection. Por lo tanto después de utilizar la aplicación y antes de
 iniciar una nueva demo deberá recrear la base de datos. Para eso sólo
 ejecute:
 
-    mvn compile exec:java
+    mvn integration-test
 
 En Gradle use:
 
