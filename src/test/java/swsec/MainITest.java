@@ -17,6 +17,8 @@ public class MainITest {
 
 	@Test
 	public void test() {
+		System.out.println("Basic test (login)...");
+
 		tester.beginAt("login.jsp");
 		tester.assertTitleEquals("Fans de las aves chilenas (SWSEC Intro)");
 		tester.setTextField("username", "crirojas");
