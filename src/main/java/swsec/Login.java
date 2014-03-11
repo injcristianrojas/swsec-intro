@@ -1,7 +1,5 @@
 package swsec;
 
-import org.owasp.esapi.ESAPI;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -45,7 +43,7 @@ public class Login extends HttpServlet {
 			if (numFilas > 0) {
 				session.setAttribute("userIP", request.getRemoteAddr());
 				session.setAttribute("userHost", request.getRemoteHost());
-				session.setAttribute("username", ESAPI.encoder().encodeForURL(username));
+				session.setAttribute("username", username);
 				response.sendRedirect("saludos.jsp");
 			} else {
 				response.sendRedirect("login.jsp?notFoundError=1");
