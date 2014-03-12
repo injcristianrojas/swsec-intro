@@ -5,7 +5,7 @@ import net.sourceforge.jwebunit.junit.WebTester;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MainITest {
+public class SQLInjectionITest {
 
 	private WebTester tester;
 
@@ -17,18 +17,16 @@ public class MainITest {
 
 	@Test
 	public void test() {
-		System.out.println("Basic test (login)...");
-
 		tester.beginAt("login.jsp");
 		tester.assertTitleEquals("Fans de las aves chilenas (SWSEC Intro)");
-		tester.setTextField("username", "crirojas");
-		tester.setTextField("password", "123");
+		tester.setTextField("username", "hackerMalo");
+		tester.setTextField("password", "' or 1=1;--");
 		tester.submit();
 		
-		tester.assertTextPresent("Usuario: crirojas");
+		tester.assertTextPresent("Usuario: hackerMalo");
 		tester.clickLink("exit");
 		
-		tester.assertTextNotPresent("Usuario: crirojas");
+		tester.assertTextNotPresent("Usuario: hackerMalo");
 		tester.assertTextPresent("Login");
 	}
 
