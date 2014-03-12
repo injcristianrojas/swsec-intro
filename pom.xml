@@ -9,7 +9,7 @@
   <name>Java SWSEC Intro App</name>
 
   <properties>
-    <jettyVersion>8.1.11.v20130520</jettyVersion>
+    <jettyVersion>9.1.3.v20140225</jettyVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -61,13 +61,14 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.mortbay.jetty</groupId>
+        <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
         <version>${jettyVersion}</version>
         <configuration>
           <scanIntervalSeconds>10</scanIntervalSeconds>
           <stopKey>stopKey</stopKey>
           <stopPort>8081</stopPort>
+          <stopWait>10</stopWait>
         </configuration>
         <executions>
           <execution>
