@@ -33,7 +33,7 @@ test {
     exclude '**/*ITest.*'
 }
 
-task integrationTest(type: Test, depends:test) {
+task integrationTest(type: Test, dependsOn:test) {
     description = 'Tests the web application and database.'
     include '**/*ITest.*'
     doFirst {
