@@ -1,9 +1,11 @@
 *.sqlite
-target/
+*.iml
+
 .classpath
 .project
 .settings/
-bin/
 .gradle/
+bin/
+target/
 build/
 src/main/webapp/findbugs
