@@ -12,22 +12,15 @@ public class DBSetup {
 	private static final String DB_FILE = "src/main/webapp/WEB-INF/swsecdemo.sqlite";
 
 	public static void main(String[] args) throws SqlJetException {
-		// Destuimos la DB
-		File dbFile = new File(DB_FILE);
-		if (dbFile.exists()) {
-      if (!dbFile.delete()) {
-        System.out.println("No se pudo borrar el archivo de la base de datos");
-        System.exit(1);
-      }
-    }
 
-		// ...y la creamos desde cero
+		// creamos la db desde cero
+		File dbFile = new File(DB_FILE);
 		SqlJetDb db = SqlJetDb.open(dbFile, true);
 		db.getOptions().setAutovacuum(true);
 		db.beginTransaction(SqlJetTransactionMode.WRITE);
 		try {
-			db.createTable("CREATE TABLE 'mensajes' ('id' INTEGER PRIMARY KEY  NOT NULL , 'mensaje' TEXT NOT NULL );");
-			db.createTable("CREATE TABLE 'usuarios' ('id' INTEGER PRIMARY KEY  NOT NULL , 'username' VARCHAR(10) NOT NULL , 'password' VARCHAR(10) NOT NULL , 'type' INTEGER);");
+			db.createTable("CREATE TABLE 'mensajes' ('id' INTEGER PRIMARY KEY NOT NULL , 'mensaje' TEXT NOT NULL );");
+			db.createTable("CREATE TABLE 'usuarios' ('id' INTEGER PRIMARY KEY NOT NULL , 'username' VARCHAR(10) NOT NULL , 'password' VARCHAR(10) NOT NULL , 'type' INTEGER);");
 		} finally {
 			db.commit();
 		}
