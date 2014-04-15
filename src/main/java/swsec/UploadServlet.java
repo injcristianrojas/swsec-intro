@@ -20,7 +20,7 @@ public class UploadServlet extends HttpServlet implements Servlet {
 
 	private static final String DATA_DIRECTORY = "upload";
 	private static final int MAX_MEMORY_SIZE = 1024 * 1024 * 2;
-	private static final int MAX_REQUEST_SIZE = 1024 * 1024;
+	private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 2;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Check that we have a file upload request
