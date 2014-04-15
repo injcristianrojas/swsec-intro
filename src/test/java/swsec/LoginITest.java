@@ -19,14 +19,14 @@ public class LoginITest {
 	public void test() {
 		tester.beginAt("login.jsp");
 		tester.assertTitleEquals("Fans de las aves chilenas (SWSEC Intro)");
-		tester.setTextField("username", "crirojas");
+		tester.setTextField("username", "jperez");
 		tester.setTextField("password", "123");
 		tester.submit();
 		
-		tester.assertTextPresent("Usuario: crirojas");
+		tester.assertTextPresent("Usuario: jperez");
 		tester.clickLink("exit");
 		
-		tester.assertTextNotPresent("Usuario: crirojas");
+		tester.assertTextNotPresent("Usuario: jperez");
 		tester.assertTextPresent("Login");
 	}
 

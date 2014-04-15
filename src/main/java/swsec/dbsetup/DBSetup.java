@@ -35,9 +35,9 @@ public class DBSetup {
 		db.beginTransaction(SqlJetTransactionMode.WRITE);
 		try {
 			ISqlJetTable table = db.getTable("usuarios");
-			table.insert("crirojas", "123", "1");
-			table.insert("jperez", "12345", "1");
-			table.insert("skramer", "skramer", "1");
+			table.insert("jperez", "123", "1");
+			table.insert("basaber", "12345", "1");
+			table.insert("skramer", "skramer", "2");
 			table.insert("aeinstein", "simple", "2");
 		} finally {
 			db.commit();
