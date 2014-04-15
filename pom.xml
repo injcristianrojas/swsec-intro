@@ -135,11 +135,11 @@
             <goals>
               <goal>java</goal>
             </goals>
+            <configuration>
+              <mainClass>swsec.dbsetup.DBSetup</mainClass>
+            </configuration>
           </execution>
         </executions>
-        <configuration>
-          <mainClass>swsec.dbsetup.DBSetup</mainClass>
-        </configuration>
       </plugin>
     </plugins>
   </build>
