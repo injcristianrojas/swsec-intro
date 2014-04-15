@@ -57,6 +57,10 @@ task(createDB, dependsOn: [deleteDB, classes], type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 }
 
+task(install) {
+    integrationTest.execute()
+}
+
 tasks.withType(FindBugs) {
     reports {
         xml.enabled = false
