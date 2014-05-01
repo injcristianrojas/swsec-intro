@@ -28,11 +28,11 @@ Antes de usar la aplicación, deberá ejecutar una acción la cual creará una
 base de datos sqlite para la aplicación web y probará que ésta esté en orden.
 Eso se logra ejecutando:
 
-    mvn integration-test
+    mvn install
 
 En Gradle se puede hacer escribiendo:
 
-    gradle integrationTest
+    gradle install
 
 Después de unos pocos segundos, Usted debería ver el siguiente mensaje:
 
@@ -56,17 +56,6 @@ En Gradle escriba:
 El servidor se activará automáticamente y dejará la aplicación corriendo en
 <http://localhost:8080>
 
-### Pruebas internas ###
-
-Usted puede utilizar el analizador estático de su preferencia, sin embargo
-la configuración Maven ya trae uno llamado
-[Findbugs](http://http://findbugs.sourceforge.net/), desarrollado por la
-Universidad de Maryland. Usted podrá ejecutarlo desde Maven escribiendo
-
-    mvn findbugs:findbugs findbugs:gui
-
-Luego de lo cual aparecerá la interfaz de usuario de Findbugs.
-
 ### Pruebas externas (fuzzing) y posterior limpieza ###
 
 Apunte su herramienta de fuzzing preferida a <http://localhost:8080>.
@@ -77,11 +66,11 @@ Injection. Por lo tanto después de utilizar la aplicación y antes de
 iniciar una nueva demo deberá recrear la base de datos. Para eso sólo
 ejecute:
 
-    mvn integration-test
+    mvn install
 
 En Gradle use:
 
-    gradle createDB
+    gradle install
 
 ## Licencia ##
 
