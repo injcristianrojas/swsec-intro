@@ -76,7 +76,7 @@ En Gradle use:
 
 El código de esta aplicación es distribuido bajo la [licencia MIT](http://opensource.org/licenses/MIT):
 
-	Copyright (c) 2012 Cristián Rojas
+	Copyright (c) 2012-2014 Cristián Rojas
 
 	Permission is hereby granted, free of charge, to any person obtaining
 	a copy of this software and associated documentation files (the "Software"),
