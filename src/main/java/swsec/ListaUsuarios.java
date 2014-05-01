@@ -33,7 +33,7 @@ public class ListaUsuarios extends HttpServlet {
 			ResultSet resultado = statement.executeQuery(query);
 			PrintWriter writer = response.getWriter();
 			writer.println("<table border='1'>");
-			writer.println("<tr><td>Usuarios del sistema</td></tr>");
+			writer.println("<tr><td><b>Usuarios del sistema</b></td></tr>");
 			while (resultado.next())
 				writer.println("<tr><td>" + resultado.getString("username") + "</td></tr>");
 			writer.println("</table>");
