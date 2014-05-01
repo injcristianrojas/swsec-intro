@@ -1,6 +1,5 @@
 apply plugin: 'java'
 apply plugin: 'jetty'
-apply plugin: 'findbugs'
 
 repositories {
     mavenCentral()
@@ -46,12 +45,7 @@ task integrationTest(type: Test, dependsOn:test) {
     }
 }
 
-task(deleteDB, type: Delete) {
-    description = 'Deletes the database.'
-    delete 'src/main/webapp/WEB-INF/swsecdemo.sqlite'
-}
-
-task(createDB, dependsOn: [deleteDB, classes], type: JavaExec) {
+task(createDB, type: JavaExec) {
     description = 'Creates the database needed for the web application.'
     main = 'swsec.dbsetup.DBSetup'
     classpath = sourceSets.main.runtimeClasspath
@@ -59,22 +53,4 @@ task(createDB, dependsOn: [deleteDB, classes], type: JavaExec) {
 
 task(install) {
     integrationTest.execute()
-}
-
-tasks.withType(FindBugs) {
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
-}
-
-findbugs {
-    effort = "max"
-    reportsDir = file("$project.projectDir/src/main/webapp/findbugs")
-}
-
-war {
-    doFirst {
-        createDB.execute()
-    }
 }
