@@ -17,6 +17,12 @@ dependencies {
     testCompile 'net.sourceforge.jwebunit:jwebunit-htmlunit-plugin:3.1'
 }
 
+task(createDB, dependsOn:classes, type: JavaExec) {
+    description = 'Creates the database needed for the web application.'
+    main = 'swsec.dbsetup.DBSetup'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 [jettyRun,jettyRunWar,jettyStop]*.stopPort = 8081
 [jettyRun,jettyRunWar,jettyStop]*.stopKey = 'stopKey'
 
@@ -45,12 +51,4 @@ task integrationTest(type: Test, dependsOn:test) {
     }
 }
 
-task(createDB, type: JavaExec) {
-    description = 'Creates the database needed for the web application.'
-    main = 'swsec.dbsetup.DBSetup'
-    classpath = sourceSets.main.runtimeClasspath
-}
-
-task(install) {
-    integrationTest.execute()
-}
+task install(dependsOn:integrationTest)
