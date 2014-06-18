@@ -15,10 +15,13 @@ public class DBSetup {
 
 		// creamos la db desde cero
 		File dbFile = new File(DB_FILE);
-		if (!dbFile.delete()) {
-			System.err.println("Error de borrado de base de datos. Verifique privilegios.");
-			return;
+		if (dbFile.exists()) {
+			if (!dbFile.delete()) {
+				System.err.println("Error de borrado de base de datos. Verifique privilegios.");
+				return;
+			}
 		}
+		System.out.println("Creando base de datos");
 		SqlJetDb db = SqlJetDb.open(dbFile, true);
 		db.getOptions().setAutovacuum(true);
 		db.beginTransaction(SqlJetTransactionMode.WRITE);
