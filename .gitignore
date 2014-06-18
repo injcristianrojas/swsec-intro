@@ -1,10 +1,12 @@
 *.sqlite
 *.iml
+*.log
 
 .classpath
 .project
 .settings/
 .gradle/
+.victims/
 bin/
 target/
 build/
