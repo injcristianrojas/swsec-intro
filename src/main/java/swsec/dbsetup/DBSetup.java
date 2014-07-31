@@ -37,8 +37,14 @@ public class DBSetup {
 			ISqlJetTable table = db.getTable("usuarios");
 			table.insert("jperez", "123", "1");
 			table.insert("basaber", "12345", "1");
-			table.insert("skramer", "skramer", "2");
+			table.insert("skramer", "power", "2");
 			table.insert("aeinstein", "simple", "2");
+			table.insert("tstark", "ironman", "2");
+			table.insert("cpalma", "lepego", "2");
+			table.insert("asavage", "boom", "1");
+			table.insert("jhyneman", "boom", "1");
+			table.insert("tanderson", "matrix", "1");
+			table.insert("zcool", "god", "1");
 		} finally {
 			db.commit();
 		}
