@@ -22,10 +22,10 @@ public class SQLInjectionITest {
 		tester.setTextField("username", "hackerMalo");
 		tester.setTextField("password", "' or 1=1;--");
 		tester.submit();
-		
+
 		tester.assertTextPresent("Usuario: hackerMalo");
 		tester.clickLink("exit");
-		
+
 		tester.assertTextNotPresent("Usuario: hackerMalo");
 		tester.assertTextPresent("Login");
 	}

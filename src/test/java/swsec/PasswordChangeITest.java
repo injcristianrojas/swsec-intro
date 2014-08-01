@@ -22,7 +22,7 @@ public class PasswordChangeITest {
 		tester.setTextField("username", "jperez");
 		tester.setTextField("password", "123");
 		tester.submit();
-		
+
 		tester.assertTextPresent("Usuario: jperez");
 		tester.clickLink("account");
 
@@ -38,7 +38,7 @@ public class PasswordChangeITest {
 		tester.submit();
 		tester.assertTextPresent("Password cambiada exitosamente");
 		tester.clickLink("exit");
-		
+
 		tester.assertTextNotPresent("Usuario: jperez");
 		tester.assertTextPresent("Login");
 	}

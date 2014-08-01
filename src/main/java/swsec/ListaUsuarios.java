@@ -22,7 +22,7 @@ public class ListaUsuarios extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		servletContext = config.getServletContext();
 	}
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		renderHeader(request, response);
 		try {
@@ -54,7 +54,7 @@ public class ListaUsuarios extends HttpServlet {
 			out.println("<p>Usuario: " + session.getAttribute("username") + "</p>");
 		}
 	}
-	
+
 	private void renderFooter(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/footer.inc");
 		dispatcher.include(request, response);

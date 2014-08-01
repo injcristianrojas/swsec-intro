@@ -10,10 +10,10 @@ import javax.servlet.http.HttpSession;
 
 public class Exit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public Exit() {
-      super();
-    }
+
+	public Exit() {
+		super();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);

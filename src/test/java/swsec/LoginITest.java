@@ -71,10 +71,10 @@ public class LoginITest {
 		tester.setTextField("username", username);
 		tester.setTextField("password", password);
 		tester.submit();
-		
+
 		tester.assertTextPresent("Usuario: " + username);
 		tester.clickLink("exit");
-		
+
 		tester.assertTextNotPresent("Usuario: " + username);
 		tester.assertTextPresent("Login");
 	}

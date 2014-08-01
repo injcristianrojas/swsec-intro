@@ -31,7 +31,7 @@ public class DBSetup {
 		} finally {
 			db.commit();
 		}
-		
+
 		db.beginTransaction(SqlJetTransactionMode.WRITE);
 		try {
 			ISqlJetTable table = db.getTable("usuarios");
