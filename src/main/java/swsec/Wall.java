@@ -18,7 +18,7 @@ import java.sql.Statement;
 public class Wall extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletContext servletContext;
-	
+
 	public Wall() {
 		super();
 	}
@@ -26,7 +26,7 @@ public class Wall extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		servletContext = config.getServletContext();
 	}
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		renderHeader(request, response);
 		try {
@@ -76,7 +76,7 @@ public class Wall extends HttpServlet {
 		out.println("</form>");
 		out.println("<p><a href='index.jsp'>Volver</a></p>");
 	}
-	
+
 	private void renderFooter(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/footer.inc");
 		dispatcher.include(request, response);

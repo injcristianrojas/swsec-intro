@@ -13,16 +13,17 @@
 		
 		<div id="menu">
 			<ul>
-				<li><a title="Home" href="index.jsp">Home</a></li><li>|</li>
+				<li><a title="Home" id="home" href="index.jsp">Home</a></li><li>|</li>
 				<% if (session.getAttribute("username") == null) { %>
-				<li><a title="Ingresar" href="login.jsp">Ingresar</a></li><li>|</li>
+				<li><a title="Ingresar" id="login" href="login.jsp">Ingresar</a></li><li>|</li>
 				<% } %>
-				<li><a title="Saludos" href="saludos.jsp">Saludos</a></li>
+				<li><a title="Saludos" id="hello" href="saludos.jsp">Saludos</a></li>
 				<% if (session.getAttribute("username") != null) { %>
 				<li>|</li>
-				<li><a title="Muro" href="Wall">Muro</a></li><li>|</li>
-				<li><a title="Imagenes" href="pictures.jsp">Imagenes</a></li><li>|</li>
-				<li><a title="Usuarios" href="ListaUsuarios?type=1">Usuarios</a></li><li>|</li>
+				<li><a title="Muro" id="wall" href="Wall">Muro</a></li><li>|</li>
+				<li><a title="Imagenes" id="images" href="pictures.jsp">Imagenes</a></li><li>|</li>
+				<li><a title="Usuarios" id="users" href="ListaUsuarios?type=1">Usuarios</a></li><li>|</li>
+				<li><a title="Cuenta" id="account" href="cuenta.jsp">Cuenta</a></li><li>|</li>
 				<li><a title="Salir" id="exit" href="Exit">Salir</a></li>
 				<% } %>
 			</ul>

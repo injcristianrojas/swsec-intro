@@ -33,7 +33,8 @@ public class UploadServlet extends HttpServlet implements Servlet {
 		// Create a factory for disk-based file items
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 
-		// Sets the size threshold beyond which files are written directly to disk.
+		// Sets the size threshold beyond which files are written directly to
+		// disk.
 		factory.setSizeThreshold(MAX_MEMORY_SIZE);
 
 		// Sets the directory used to temporarily store files that are larger
@@ -53,16 +54,16 @@ public class UploadServlet extends HttpServlet implements Servlet {
 		try {
 			// Parse the request
 			List<FileItem> items = upload.parseRequest(request);
-      for (FileItem item : items) {
-        if (!item.isFormField()) {
-          String fileName = new File(item.getName()).getName();
-          String filePath = uploadFolder + File.separator + fileName;
-          File uploadedFile = new File(filePath);
+			for (FileItem item : items) {
+				if (!item.isFormField()) {
+					String fileName = new File(item.getName()).getName();
+					String filePath = uploadFolder + File.separator + fileName;
+					File uploadedFile = new File(filePath);
 
-          // saves the file to upload directory
-          item.write(uploadedFile);
-        }
-      }
+					// saves the file to upload directory
+					item.write(uploadedFile);
+				}
+			}
 
 			// displays done.jsp page after upload finished
 			getServletContext().getRequestDispatcher("/pictures.jsp").forward(request, response);

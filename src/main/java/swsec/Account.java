@@ -1,5 +1,11 @@
 package swsec;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -8,41 +14,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
-public class ListaUsuarios extends HttpServlet {
+public class Account extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletContext servletContext;
+
+	public Account() {
+		super();
+	}
 
 	public void init(ServletConfig config) throws ServletException {
 		servletContext = config.getServletContext();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
+		String password = request.getParameter("password");
 		renderHeader(request, response);
 		try {
 			Class.forName("org.sqlite.JDBC");
 			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl(servletContext));
 			Statement statement = conexion.createStatement();
-			String query = "SELECT * FROM usuarios WHERE type=" + request.getParameter("type");
-			ResultSet resultado = statement.executeQuery(query);
+			String username = (String) session.getAttribute("username");
+			String query = "UPDATE usuarios set password = '" + password + "' where username = '" + username + "'";
+			int updatedRows = statement.executeUpdate(query);
 			PrintWriter writer = response.getWriter();
-			writer.println("<table border='1'>");
-			writer.println("<tr><td><b>Usuarios del sistema</b></td></tr>");
-			while (resultado.next())
-				writer.println("<tr><td>" + resultado.getString("username") + "</td></tr>");
-			writer.println("</table>");
-			statement.close();
-			conexion.close();
+			writer.println(updatedRows > 0 ? "Password cambiada exitosamente."
+					: "Error al intentar cambiar la password<br /><a href='cuenta.jsp'>Volver</a>");
+			renderFooter(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-		renderFooter(request, response);
 	}
 
 	private void renderHeader(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
