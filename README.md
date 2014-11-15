@@ -22,11 +22,11 @@ el siguiente software:
 Todos los comandos descritos a continuación, requieren que Usted se sitúe
 en el directorio donde se encuentra el archivo `pom.xml`.
 
-### Creación de la base de datos ###
+### Instalación ###
 
-Antes de usar la aplicación, deberá ejecutar una acción la cual creará una
-base de datos sqlite para la aplicación web y probará que ésta esté en orden.
-Eso se logra ejecutando:
+Antes de usar la aplicación, deberá instalarla. Ésto creará la base de datos
+sqlite para la aplicación web y realizará pruebas de integración para asegurar
+que ésta esté en orden. Eso se logra ejecutando:
 
     mvn install
 
