@@ -1,5 +1,5 @@
 FROM ubuntu:precise
-MAINTAINER injcristianrojas
+MAINTAINER Cristián Rojas "injcristianrojas@gmail.com"
 
 RUN apt-get update
-RUN apt-get install -y tomcat6 maven
+RUN apt-get install -y maven
