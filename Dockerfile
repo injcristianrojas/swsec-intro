@@ -1,5 +1,6 @@
-FROM ubuntu:precise
-MAINTAINER Cristián Rojas "injcristianrojas@gmail.com"
+FROM niaquinto/maven
+MAINTAINER Cristián Rojas
 
-RUN apt-get update
-RUN apt-get install -y maven
+COPY . /code
+WORKDIR /code
+RUN mvn clean install
