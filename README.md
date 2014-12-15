@@ -54,7 +54,7 @@ En Gradle escriba:
     gradle jettyRun
 
 El servidor se activará automáticamente y dejará la aplicación corriendo en
-<http://localhost:8080>
+<http://localhost:8080>.
 
 ### Pruebas externas (fuzzing) y posterior limpieza ###
 
@@ -71,6 +71,27 @@ ejecute:
 En Gradle use:
 
     gradle install
+
+## Uso con Docker ##
+
+Una forma interesante de usar la aplicación es mediante la plataforma Docker,
+la cual permite el uso de _contenedores_ para probar y desplegar aplicaciones.
+Para usar la aplicación con Docker se requiere la versión 1.3.2 o superior,
+disponible en los repositorios respectivos para sistemas Linux. Sistemas Mac o
+Windows requerirán la aplicación adicional [boot2docker](https://github.com/boot2docker/boot2docker).
+
+Ya teniendo Docker instalado, primero se requiere construir la imagen inicial.
+Para ello ejecute:
+
+    docker build -t swsec-intro .
+
+Teniendo la imagen ya lista, cree el contenedor y ejecútelo:
+
+    docker run --rm -p 8080:8080 -v "$(pwd)":/app swsec-intro jetty:run
+
+El el contenedor con el servidor se activará automáticamente y dejará la
+aplicación corriendo en <http://localhost:8080>.
+
 
 ## Licencia ##
 
