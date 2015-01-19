@@ -89,7 +89,7 @@ Teniendo la imagen ya lista, cree el contenedor y ejecútelo:
 
     docker run --rm -p 8080:8080 -v "$(pwd)":/app swsec-intro jetty:run
 
-El el contenedor con el servidor se activará automáticamente y dejará la
+El contenedor con el servidor se activará automáticamente y dejará la
 aplicación corriendo en <http://localhost:8080>.
 
 
