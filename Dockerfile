@@ -3,4 +3,4 @@ MAINTAINER Cristián Rojas
 
 COPY . /code
 WORKDIR /code
-RUN mvn clean install
+RUN mvn clean install site
