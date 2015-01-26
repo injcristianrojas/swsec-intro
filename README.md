@@ -15,19 +15,17 @@ las siguientes vulnerabilidades:
 
 ## Modo de uso
 
-Ya teniendo Docker instalado, primero se requiere construir la imagen inicial.
+Ya teniendo Docker instalado, primero se requiere bajar la imagen inicial.
 Para ello ejecute:
 
-    docker build -t swsec-intro .
+    docker pull injcristianrojas/swsec-intro
 
 Teniendo la imagen ya lista, cree el contenedor y ejecútelo:
 
-    docker run --rm -p 8080:8080 -v "$(pwd)":/app swsec-intro install jetty:run
-
-Las veces subsiguientes en las que lo ejecute sólo deberá emitir el
-comando:
-
-    docker run --rm -p 8080:8080 -v "$(pwd)":/app swsec-intro jetty:run
+    docker run --rm --name swsec-intro -p 8080:8080 swsec-intro
 
 El contenedor con el servidor se activará automáticamente y dejará la
-aplicación corriendo en <http://localhost:8080>.
+aplicación corriendo en <http://localhost:8080>. Para acceder al servidor,
+escriba:
+
+    docker exec -it swsec-intro /bin/bash

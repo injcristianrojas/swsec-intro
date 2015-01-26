@@ -1,6 +1,7 @@
 FROM niaquinto/maven
 MAINTAINER Cristián Rojas
 
+RUN export TERM="xterm-256color"
 RUN apt-get install -y emacs23-nox nano
 
 COPY . /app
