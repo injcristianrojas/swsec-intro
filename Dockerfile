@@ -1,8 +1,12 @@
 FROM niaquinto/maven
 MAINTAINER Cristián Rojas
 
-COPY . /code
-WORKDIR /code
-RUN mvn clean install site
+RUN apt-get install -y emacs23-nox nano
+
+COPY . /app
 WORKDIR /app
-RUN rm -rf /code
+
+RUN mvn clean install site
+
+EXPOSE 8080
+CMD ["jetty:run"]
