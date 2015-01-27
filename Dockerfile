@@ -1,13 +1,8 @@
-FROM niaquinto/maven
+FROM maven:3.2-jdk-7-onbuild
 MAINTAINER Cristián Rojas
 
-RUN printf '\nexport TERM="xterm-256color"' >> /root/.bashrc
-RUN apt-get install -y emacs23-nox nano
-
-COPY . /app
-WORKDIR /app
-
-RUN mvn clean install site
+RUN apt-get update
+RUN apt-get install -y nano vim emacs24-nox
 
 EXPOSE 8080
-CMD ["jetty:run"]
+CMD ["mvn", "jetty:run"]
