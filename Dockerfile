@@ -4,5 +4,7 @@ MAINTAINER Cristián Rojas
 RUN apt-get update
 RUN apt-get install -y nano vim emacs24-nox
 
+VOLUME /usr/src/app
+
 EXPOSE 8080
 CMD ["mvn", "jetty:run"]
