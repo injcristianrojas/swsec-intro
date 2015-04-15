@@ -60,7 +60,7 @@
 
   <build>
     <plugins>
-      
+
       <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
@@ -140,29 +140,6 @@
             </goals>
             <configuration>
               <mainClass>swsec.dbsetup.DBSetup</mainClass>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.7</version>
-        <executions>
-            <execution>
-            <id>db-cleanup</id>
-            <phase>clean</phase>
-            <goals>
-                <goal>run</goal>
-            </goals>
-            <configuration>
-              <target>
-                <echo message="deleting database file" />
-                <delete>
-                  <fileset dir="src/main/webapp/WEB-INF/" includes="**/*.sqlite" />
-                </delete>
-              </target>
             </configuration>
           </execution>
         </executions>
