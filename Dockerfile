@@ -4,4 +4,4 @@ MAINTAINER Cristián Rojas
 VOLUME /usr/src/app
 
 EXPOSE 8080
-CMD ["mvn", "jetty:run"]
+CMD ["mvn", "install", "jetty:run"]
