@@ -14,16 +14,26 @@ public class DBSetup {
 	public static void main(String[] args) {
 
 		// creamos la db desde cero
-		File dbFile = new File(DB_FILE);
-		if (dbFile.exists()) {
-			if (!dbFile.delete()) {
-				System.err.println("Error de borrado de base de datos. Verifique privilegios.");
-				return;
-			}
-		}
 		System.out.println("[INFO] ");
 		System.out.println("[INFO] Creando base de datos...");
-    SqlJetDb db = null;
+		File dbFile = new File(DB_FILE);
+		SqlJetDb db = null;
+		boolean tableExists = false;
+		if (dbFile.exists()) {
+			try {
+				db = SqlJetDb.open(dbFile, true);
+	      db.beginTransaction(SqlJetTransactionMode.WRITE);
+				tableExists = db.getSchema().getTable("usuarios") != null;
+				db.commit();
+				db.close();
+			} catch (SqlJetException e) {
+	      e.printStackTrace();
+	    }
+		}
+		if (tableExists) {
+			System.out.println("[INFO] Base de datos ya contiene información.");
+			return;
+		}
     try {
       db = SqlJetDb.open(dbFile, true);
       db.getOptions().setAutovacuum(true);

@@ -9,7 +9,7 @@
   <name>Java SWSEC Intro App</name>
 
   <properties>
-    <jetty.version>9.2.1.v20140609</jetty.version>
+    <jetty.version>9.2.10.v20150310</jetty.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -76,9 +76,10 @@
             <id>start-jetty</id>
             <phase>pre-integration-test</phase>
             <goals>
-              <goal>run</goal>
+              <goal>start</goal>
             </goals>
             <configuration>
+              <scanIntervalSeconds>0</scanIntervalSeconds>
               <daemon>true</daemon>
             </configuration>
           </execution>
@@ -135,7 +136,7 @@
         <executions>
           <execution>
             <id>db-setup</id>
-            <phase>pre-integration-test</phase>
+            <phase>compile</phase>
             <goals>
               <goal>java</goal>
             </goals>
