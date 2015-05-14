@@ -6,7 +6,7 @@
   <artifactId>swsec-intro</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
-  <name>Java SWSEC Intro App</name>
+  <name>Fans de las Aves Chilenas</name>
 
   <properties>
     <jetty.version>9.2.10.v20150310</jetty.version>
