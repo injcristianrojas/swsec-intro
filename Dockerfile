@@ -1,7 +1,10 @@
-FROM maven:onbuild
+FROM maven
 MAINTAINER Cristián Rojas
 
-RUN ["mvn", "site"]
+COPY . /usr/src/app
+WORKDIR /usr/src/app
+
+RUN ["mvn", "site", "install"]
 
 EXPOSE 8080
 CMD ["mvn", "install", "jetty:run"]
