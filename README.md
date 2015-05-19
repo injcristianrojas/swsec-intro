@@ -22,7 +22,7 @@ Para ello ejecute:
 
 Teniendo la imagen ya lista, cree el contenedor y ejecútelo:
 
-    docker run --rm --name swsec-intro --privileged=true -p 8080:8080 -v ${PWD}:/usr/src/app injcristianrojas/swsec-intro
+    docker run --rm --name swsec-intro -p 8080:8080 -v ${PWD}:/usr/src/app:rw injcristianrojas/swsec-intro
 
 El contenedor con el servidor se activará automáticamente y dejará la
 aplicación corriendo en <http://localhost:8080>. Para acceder al servidor,
@@ -92,4 +92,3 @@ ejecute:
 En Gradle use:
 
     gradle install
-
