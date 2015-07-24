@@ -1,4 +1,4 @@
-FROM maven
+FROM vyolin/alpine-maven
 MAINTAINER Cristián Rojas
 
 COPY . /usr/src/app
