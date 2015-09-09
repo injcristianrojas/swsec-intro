@@ -174,31 +174,31 @@
         <artifactId>findbugs-maven-plugin</artifactId>
         <version>3.0.1</version>
         <configuration>
-            <effort>Max</effort>
-            <threshold>Low</threshold>
-            <failOnError>true</failOnError>
-            <includeFilterFile>${session.executionRootDirectory}/findbugs-security-include.xml</includeFilterFile>
-            <excludeFilterFile>${session.executionRootDirectory}/findbugs-security-exclude.xml</excludeFilterFile>
-            <plugins>
-              <plugin>
-                <groupId>com.h3xstream.findsecbugs</groupId>
-                <artifactId>findsecbugs-plugin</artifactId>
-                <version>1.4.2</version>
-              </plugin>
-            </plugins>
+          <effort>Max</effort>
+          <threshold>Low</threshold>
+          <failOnError>true</failOnError>
+          <includeFilterFile>${session.executionRootDirectory}/findbugs-security-include.xml</includeFilterFile>
+          <excludeFilterFile>${session.executionRootDirectory}/findbugs-security-exclude.xml</excludeFilterFile>
+          <plugins>
+            <plugin>
+              <groupId>com.h3xstream.findsecbugs</groupId>
+              <artifactId>findsecbugs-plugin</artifactId>
+              <version>1.4.2</version>
+            </plugin>
+          </plugins>
         </configuration>
       </plugin>
 
       <plugin>
           <groupId>org.owasp</groupId>
           <artifactId>dependency-check-maven</artifactId>
-          <version>1.2.10</version>
+          <version>1.3.0</version>
           <reportSets>
-              <reportSet>
-                  <reports>
-                      <report>aggregate</report>
-                  </reports>
-              </reportSet>
+            <reportSet>
+              <reports>
+                <report>aggregate</report>
+              </reports>
+            </reportSet>
           </reportSets>
       </plugin>
 
