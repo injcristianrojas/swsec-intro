@@ -172,7 +172,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
-        <version>3.0.1</version>
         <configuration>
           <effort>Max</effort>
           <threshold>Low</threshold>
@@ -192,7 +191,6 @@
       <plugin>
           <groupId>org.owasp</groupId>
           <artifactId>dependency-check-maven</artifactId>
-          <version>1.3.0</version>
           <reportSets>
             <reportSet>
               <reports>
