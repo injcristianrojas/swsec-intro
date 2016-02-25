@@ -42,13 +42,13 @@ escriba:
 
     docker exec -it swsec-intro /bin/bash
 
-## Funcionamiento directo con Maven/Gradle
+## Funcionamiento directo con Maven
 
 La aplicación es prácticamente autocontenida. Para utilizarla se requiere
 el siguiente software:
 
 * Java (1.7 o superior)
-* Maven (2 o superior) o Gradle.
+* Maven (2 o superior)
 
 ### Modo de uso
 
@@ -62,10 +62,6 @@ sqlite para la aplicación web y realizará pruebas de integración para asegura
 que ésta esté en orden. Eso se logra ejecutando:
 
     mvn install
-
-En Gradle se puede hacer escribiendo:
-
-    gradle install
 
 Después de unos pocos segundos, Usted debería ver el siguiente mensaje:
 
@@ -82,16 +78,12 @@ Para echar a correr el servidor, escriba:
 
     mvn jetty:run
 
-En Gradle escriba:
-
-    gradle jettyRun
-
 El servidor se activará automáticamente y dejará la aplicación corriendo en
 <http://localhost:8080>.
 
-## Pruebas externas (fuzzing) y posterior limpieza
+## Pruebas externas y posterior limpieza
 
-Apunte su herramienta de fuzzing preferida a <http://localhost:8080>.
+Apunte su herramienta de scanner preferida a <http://localhost:8080>.
 
 Recuerde que al utilizar este tipo de herramientas sobre la aplicación,
 éstas buscarán insertar registros en la base de datos utilizando SQL
@@ -100,7 +92,3 @@ iniciar una nueva demo deberá recrear la base de datos. Para eso sólo
 ejecute:
 
     mvn install
-
-En Gradle use:
-
-    gradle install
