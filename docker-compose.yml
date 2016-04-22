@@ -1,6 +1,6 @@
-swsec-intro:
-  build: .
-  #image: injcristianrojas/swsec-intro
+victim:
+  #build: .
+  image: injcristianrojas/swsec-intro
   privileged: true
   ports:
     - "8080:8080"
