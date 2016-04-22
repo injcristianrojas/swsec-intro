@@ -21,26 +21,32 @@ errores.
 vulnerables (existen registros [CVE](https://cve.mitre.org/) asociados a
 tales versiones).
 
-## Requisitos
+## Uso mediante Docker (regular)
+
+### Requisitos
 
 * Docker 1.3.2 o superior
+* Docker Compose 1.6.2 o superior
 
-## Modo de uso
+### Modo de uso
 
 Ya teniendo Docker instalado, primero se requiere bajar la imagen inicial.
 Para ello ejecute:
 
     docker pull injcristianrojas/swsec-intro
 
-Teniendo la imagen ya lista, cree el contenedor y ejecútelo:
+Teniendo la imagen ya lista, active el contenedor:
 
-    docker run --rm --name swsec-intro -p 8080:8080 -v ${PWD}:/usr/src/app:rw injcristianrojas/swsec-intro
+    docker-compose up
 
 El contenedor con el servidor se activará automáticamente y dejará la
-aplicación corriendo en <http://localhost:8080>. Para acceder al servidor,
-escriba:
+aplicación corriendo en <http://localhost:8080>, y tendrá como nombre algo como
+`swsecintro_victim_1`. Para acceder al shell del servidor, escriba en otro
+terminal:
 
-    docker exec -it swsec-intro /bin/bash
+    docker exec -it swsecintro_victim_1 /bin/bash
+
+Para detener el contendor, sólo presione <kbd>Ctrl</kbd>+<kbd>C</kbd>.
 
 ## Funcionamiento directo con Maven
 
