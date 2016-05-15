@@ -6,7 +6,7 @@ if (error != null) {
 	out.println("<p>ERROR: Usuario no encontrado</p>");
 }
 %>
-<form action="Login" method="post" name="mainForm" id="mainForm">
+<form action="Login?landingPage=saludos.jsp" method="post" name="mainForm" id="mainForm">
 <p>
 Nombre: <input type="text" name="username" id="username" /><br />
 Password: <input type="password" name="password" id="password"  /><br />

@@ -7,7 +7,7 @@ Es una aplicación débil a propósito, la cual contiene las siguientes
 vulnerabilidades incluidas en el
 [OWASP Top 10 - 2013](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project):
 
-* __A1: Injection__ (SQL).
+* __A1: Injection__: SQL Injection en este caso.
 * __A2: Broken Authentication and Session Management__: Falta de redundancia en
 la función de cambio de password, passwords mal almacenadas.
 * __A3: Cross-Site Scripting (XSS)__.
@@ -20,6 +20,7 @@ errores.
 * __A9: Using Components with Known Vulnerabilities__: Uso de bibliotecas Java
 vulnerables (existen registros [CVE](https://cve.mitre.org/) asociados a
 tales versiones).
+* __A10: Unvalidated Redirects and Forwards__.
 
 ## Uso mediante Docker (regular)
 
