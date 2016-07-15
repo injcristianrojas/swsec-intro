@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-mvn jetty:run
+(cd /app; mvn jetty:run)
