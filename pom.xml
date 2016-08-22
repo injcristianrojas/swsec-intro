@@ -185,6 +185,16 @@
         </executions>
       </plugin>
 
+      <plugin>
+        <groupId>org.owasp</groupId>
+        <artifactId>dependency-check-maven</artifactId>
+        <version>1.4.2</version>
+        <configuration>
+          <format>XML</format>
+          <outputDirectory>${dependency.check.report.dir}</outputDirectory>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 
