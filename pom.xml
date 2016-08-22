@@ -10,7 +10,9 @@
 
   <properties>
     <jetty.version>9.2.10.v20150310</jetty.version>
+    <owasp.depcheck.version>1.4.2</owasp.depcheck.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <sonar.dependencyCheck.reportPath>${dependency.check.report.dir}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
   </properties>
 
   <dependencies>
@@ -188,7 +190,7 @@
       <plugin>
         <groupId>org.owasp</groupId>
         <artifactId>dependency-check-maven</artifactId>
-        <version>1.4.2</version>
+        <version>${owasp.depcheck.version}</version>
         <configuration>
           <format>XML</format>
           <outputDirectory>${dependency.check.report.dir}</outputDirectory>
@@ -224,7 +226,7 @@
       <plugin>
           <groupId>org.owasp</groupId>
           <artifactId>dependency-check-maven</artifactId>
-          <version>1.4.2</version>
+          <version>${owasp.depcheck.version}</version>
           <reportSets>
             <reportSet>
               <reports>
