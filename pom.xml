@@ -12,6 +12,7 @@
     <jetty.version>9.2.10.v20150310</jetty.version>
     <owasp.depcheck.version>1.4.2</owasp.depcheck.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <dependency.check.report.dir>${project.build.directory}/dependency-check</dependency.check.report.dir>
     <sonar.dependencyCheck.reportPath>${dependency.check.report.dir}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
   </properties>
 
@@ -185,6 +186,12 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.0.2</version>
       </plugin>
 
       <plugin>
