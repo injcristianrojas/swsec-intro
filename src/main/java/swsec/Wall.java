@@ -71,7 +71,7 @@ public class Wall extends HttpServlet {
 			out.println("<p>Usuario: " + session.getAttribute("username") + "</p>");
 		}
 		out.println("<form action='Wall' method='post'>");
-		out.println("<input type='text' name='mensaje' id='mensaje'>");
+		out.println("<input type='text' name='mensaje' id='mensaje' size='70'>");
 		out.println("<input type='submit' value='Postear'>");
 		out.println("</form>");
 		out.println("<p><a href='index.jsp'>Volver</a></p>");
