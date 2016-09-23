@@ -24,6 +24,7 @@ public class Saludos extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.addHeader("X-XSS-Protection", "0");
 		PrintWriter out = response.getWriter();
 		RequestDispatcher dispatcher = sc.getRequestDispatcher("/header.jsp");
 		dispatcher.include(request, response);
