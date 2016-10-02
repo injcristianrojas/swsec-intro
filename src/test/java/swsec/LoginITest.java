@@ -7,7 +7,24 @@ import org.junit.Test;
 
 public class LoginITest {
 
+	private static String DEFAULT_USER = "jperez";
+	private static String DEFAULT_PASSWORD = "123";
+
 	private WebTester tester;
+
+	private void loginTest(String username, String password) {
+		tester.beginAt("login.jsp");
+		tester.assertTitleEquals("Fans de las aves chilenas (SWSEC Intro)");
+		tester.setTextField("username", username);
+		tester.setTextField("password", password);
+		tester.submit();
+
+		tester.assertTextPresent("Usuario: " + username);
+		tester.clickLink("exit");
+
+		tester.assertTextNotPresent("Usuario: " + username);
+		tester.assertTextPresent("Login");
+	}
 
 	@Before
 	public void prepare() {
@@ -17,7 +34,7 @@ public class LoginITest {
 
 	@Test
 	public void userTest1() {
-		loginTest("jperez", "123");
+		loginTest(DEFAULT_USER, DEFAULT_PASSWORD);
 	}
 
 	@Test
@@ -65,18 +82,14 @@ public class LoginITest {
 		loginTest("zcool", "god");
 	}
 
-	private void loginTest(String username, String password) {
+	@Test
+	public void dirtyDatabaseTest() {
 		tester.beginAt("login.jsp");
-		tester.assertTitleEquals("Fans de las aves chilenas (SWSEC Intro)");
-		tester.setTextField("username", username);
-		tester.setTextField("password", password);
+		tester.setTextField("username", DEFAULT_USER);
+		tester.setTextField("password", DEFAULT_PASSWORD);
 		tester.submit();
-
-		tester.assertTextPresent("Usuario: " + username);
+		tester.clickLink("wall");
+		tester.assertElementNotPresentByXPath("//script");
 		tester.clickLink("exit");
-
-		tester.assertTextNotPresent("Usuario: " + username);
-		tester.assertTextPresent("Login");
 	}
-
 }
