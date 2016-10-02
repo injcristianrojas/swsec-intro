@@ -10,7 +10,7 @@
 
   <properties>
     <jetty.version>9.2.10.v20150310</jetty.version>
-    <owasp.depcheck.version>1.4.2</owasp.depcheck.version>
+    <owasp.depcheck.version>1.4.3</owasp.depcheck.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <dependency.check.report.dir>${project.build.directory}/dependency-check</dependency.check.report.dir>
     <sonar.dependencyCheck.reportPath>${dependency.check.report.dir}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
@@ -40,7 +40,7 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.4</version>
+      <version>2.5</version>
     </dependency>
     <dependency>
       <groupId>commons-fileupload</groupId>
@@ -50,13 +50,13 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.4</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>net.sourceforge.jwebunit</groupId>
       <artifactId>jwebunit-htmlunit-plugin</artifactId>
-      <version>3.2</version>
+      <version>3.3</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
