@@ -9,8 +9,8 @@
   <name>Fans de las Aves Chilenas</name>
 
   <properties>
-    <jetty.version>9.3.13.M0</jetty.version>
-    <owasp.depcheck.version>1.4.3</owasp.depcheck.version>
+    <jetty.version>9.4.0.v20161208</jetty.version>
+    <owasp.depcheck.version>1.4.4</owasp.depcheck.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <dependency.check.report.dir>${project.build.directory}/dependency-check</dependency.check.report.dir>
     <sonar.dependencyCheck.reportPath>${dependency.check.report.dir}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
@@ -135,7 +135,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2.1</version>
+        <version>1.5.0</version>
         <executions>
           <execution>
             <id>db-setup</id>
