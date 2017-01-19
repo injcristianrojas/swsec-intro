@@ -224,23 +224,23 @@
             <plugin>
               <groupId>com.h3xstream.findsecbugs</groupId>
               <artifactId>findsecbugs-plugin</artifactId>
-              <version>1.4.6</version>
+              <version>1.5.0</version>
             </plugin>
           </plugins>
         </configuration>
       </plugin>
 
       <plugin>
-          <groupId>org.owasp</groupId>
-          <artifactId>dependency-check-maven</artifactId>
-          <version>${owasp.depcheck.version}</version>
-          <reportSets>
-            <reportSet>
-              <reports>
-                <report>aggregate</report>
-              </reports>
-            </reportSet>
-          </reportSets>
+        <groupId>org.owasp</groupId>
+        <artifactId>dependency-check-maven</artifactId>
+        <version>${owasp.depcheck.version}</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
       </plugin>
 
       <plugin>
