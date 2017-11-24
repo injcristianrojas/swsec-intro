@@ -73,6 +73,7 @@
           <stopKey>stopKey</stopKey>
           <stopPort>8081</stopPort>
           <stopWait>10</stopWait>
+          <waitForChild>false</waitForChild>
         </configuration>
         <executions>
           <execution>
