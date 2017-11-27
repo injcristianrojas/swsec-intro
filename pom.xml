@@ -12,7 +12,7 @@
     <jetty.version>9.4.3.v20170317</jetty.version>
     <owasp.depcheck.version>3.0.2</owasp.depcheck.version>
     <zap.plugin.version>0.1.0</zap.plugin.version>
-    <findbugs.plugin.version>3.0.4</findbugs.plugin.version>
+    <spotbugs.plugin.version>3.1.0-RC8</spotbugs.plugin.version>
     <findsecbugs.plugin.version>1.7.1</findsecbugs.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <dependency.check.report.dir>${project.build.directory}/dependency-check</dependency.check.report.dir>
@@ -247,15 +247,15 @@
     <plugins>
 
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <version>${findbugs.plugin.version}</version>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>${spotbugs.plugin.version}</version>
         <configuration>
           <effort>Max</effort>
           <threshold>Low</threshold>
           <failOnError>true</failOnError>
-          <includeFilterFile>${session.executionRootDirectory}/findbugs-security-include.xml</includeFilterFile>
-          <excludeFilterFile>${session.executionRootDirectory}/findbugs-security-exclude.xml</excludeFilterFile>
+          <includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile>
+          <excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>
           <plugins>
             <plugin>
               <groupId>com.h3xstream.findsecbugs</groupId>
