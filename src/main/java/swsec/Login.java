@@ -42,7 +42,8 @@ public class Login extends HttpServlet {
 			conexion.close();
 			if (numFilas > 0) {
 				session.setAttribute("username", username);
-				response.sendRedirect(request.getParameter("landingPage"));
+				String landingPage = request.getParameter("landingPage");
+				response.sendRedirect(landingPage != null ? landingPage : "saludos.jsp");
 			} else {
 				response.sendRedirect("login.jsp?notFoundError=1");
 			}
