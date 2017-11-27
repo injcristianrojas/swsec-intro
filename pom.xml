@@ -212,6 +212,12 @@
             <zapPort>9090</zapPort>
             <targetUrl>http://localhost:8080/</targetUrl>
             <zapPath>/home/cristian/tools/owasp-zap</zapPath>
+            <authenticationType>form</authenticationType>
+        		<username>jperez</username>
+        		<password>123</password>
+        		<loginUrl>http://localhost:8080/Login</loginUrl>
+        		<loggedInRegex><![CDATA[\Q<p>Usuario:\E]]></loggedInRegex>
+            <zapOptions>-daemon -config scanner.strength=INSANE</zapOptions>
           </configuration>
           <executions>
             <execution>
@@ -222,7 +228,7 @@
                 </goals>
           	</execution>
             <execution>
-        			<id>selenium-analyze</id>
+        			<id>analyze</id>
         			<phase>integration-test</phase>
         			<goals>
                 <goal>analyze</goal>
