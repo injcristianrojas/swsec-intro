@@ -204,6 +204,33 @@
         </configuration>
       </plugin>
 
+      <plugin>
+          <groupId>de.martinreinhardt-online</groupId>
+          <artifactId>zap-maven-plugin</artifactId>
+          <version>0.1.0</version>
+          <configuration>
+            <zapPort>9090</zapPort>
+            <targetUrl>http://localhost:8080/</targetUrl>
+            <zapPath>/home/cristian/tools/owasp-zap</zapPath>
+          </configuration>
+          <executions>
+            <execution>
+          			<id>start-zap</id>
+          			<phase>pre-integration-test</phase>
+          			<goals>
+                  <goal>startZap</goal>
+                </goals>
+          	</execution>
+            <execution>
+        			<id>selenium-analyze</id>
+        			<phase>integration-test</phase>
+        			<goals>
+                <goal>analyze</goal>
+              </goals>
+        		</execution>
+          </executions>
+      </plugin>
+
     </plugins>
   </build>
 
