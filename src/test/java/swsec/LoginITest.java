@@ -88,7 +88,11 @@ public class LoginITest {
 		tester.setTextField("username", DEFAULT_USER);
 		tester.setTextField("password", DEFAULT_PASSWORD);
 		tester.submit();
-		tester.clickLink("wall");
+		try {
+			tester.clickLink("wall");
+		} catch (Exception e) {
+			tester.assertResetButtonNotPresent();
+		}
 		tester.assertElementNotPresentByXPath("//script");
 		tester.clickLink("exit");
 	}
