@@ -214,7 +214,7 @@
           <configuration>
             <zapPort>9090</zapPort>
             <targetUrl>http://localhost:8080/</targetUrl>
-            <zapPath>/home/cristian/tools/owasp-zap</zapPath>
+            <zapPath>${env.ZAP_PATH}</zapPath>
             <authenticationType>form</authenticationType>
         		<username>jperez</username>
         		<password>123</password>
