@@ -221,7 +221,7 @@
         		<password>123</password>
         		<loginUrl>http://localhost:8080/Login</loginUrl>
         		<loggedInRegex><![CDATA[\Q<p>Usuario:\E]]></loggedInRegex>
-            <zapOptions>-daemon -config scanner.strength=INSANE</zapOptions>
+            <zapOptions>-daemon -config scanner.strength=INSANE -config api.disablekey=true -config api.incerrordetails=true -config proxy.ip=0.0.0.0</zapOptions>
           </configuration>
           <executions>
             <execution>
