@@ -15,6 +15,7 @@
     <spotbugs.plugin.version>3.1.0-RC8</spotbugs.plugin.version>
     <findsecbugs.plugin.version>1.7.1</findsecbugs.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <zap.location>${env.ZAP_PATH}</zap.location>
     <dependency.check.report.dir>${project.build.directory}/dependency-check</dependency.check.report.dir>
     <sonar.dependencyCheck.reportPath>${dependency.check.report.dir}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
   </properties>
@@ -214,7 +215,7 @@
           <configuration>
             <zapPort>9090</zapPort>
             <targetUrl>http://localhost:8080/</targetUrl>
-            <zapPath>${env.ZAP_PATH}</zapPath>
+            <zapPath>${zap.location}</zapPath>
             <authenticationType>form</authenticationType>
         		<username>jperez</username>
         		<password>123</password>
@@ -254,7 +255,7 @@
               <rules>
                 <requireFilesExist>
                   <files>
-                   <file>${env.ZAP_PATH}</file>
+                   <file>${zap.location}</file>
                   </files>
                 </requireFilesExist>
               </rules>
