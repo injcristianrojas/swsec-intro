@@ -13,10 +13,17 @@ public class DBSetup {
 
 	public static void main(String[] args) {
 
+		boolean clean = (args.length != 0);
+
 		// creamos la db desde cero
-		System.out.println("[INFO] ");
-		System.out.println("[INFO] Creando base de datos...");
 		File dbFile = new File(DB_FILE);
+		if (clean) {
+			if (dbFile.delete()) {
+				System.out.println("[INFO] Database reset successful.");
+			} else {
+				System.out.println("[INFO] Error during database reset.");
+			}
+		}
 		SqlJetDb db = null;
 		boolean tableExists = false;
 		if (dbFile.exists()) {
@@ -31,7 +38,7 @@ public class DBSetup {
 	    }
 		}
 		if (tableExists) {
-			System.out.println("[INFO] Base de datos ya contiene información.");
+			System.out.println("[INFO] Database already contains data.");
 			return;
 		}
     try {

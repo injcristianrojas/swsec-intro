@@ -151,6 +151,17 @@
               <mainClass>swsec.dbsetup.DBSetup</mainClass>
             </configuration>
           </execution>
+          <execution>
+            <id>db-cleanup</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>swsec.dbsetup.DBSetup</mainClass>
+              <commandlineArgs>clean</commandlineArgs>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
 
