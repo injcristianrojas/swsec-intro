@@ -64,7 +64,15 @@ en el directorio donde se encuentra el archivo `pom.xml`.
 
 ### Instalación
 
-Antes de usar la aplicación, deberá instalarla. Ésto creará la base de datos
+Lo primero es bajar OWASP ZAP
+(https://github.com/zaproxy/zaproxy/releases/tag/2.7.0), y luego crear un
+archivo `env.properties` con el siguiente contenido:
+
+```
+zap.path=<directorio donde está instalado ZAP>
+```
+
+Luego deberá instalar la aplicación. Ésto creará la base de datos
 sqlite para la aplicación web y realizará pruebas de integración para asegurar
 que ésta esté en orden. Eso se logra ejecutando:
 
