@@ -10,7 +10,7 @@
 
   <properties>
     <jetty.version>9.4.3.v20170317</jetty.version>
-    <owasp.depcheck.version>3.0.2</owasp.depcheck.version>
+    <owasp.depcheck.version>2.1.1</owasp.depcheck.version>
     <zap.plugin.version>0.1.0</zap.plugin.version>
     <spotbugs.plugin.version>3.1.0-RC8</spotbugs.plugin.version>
     <findsecbugs.plugin.version>1.7.1</findsecbugs.plugin.version>
