@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+TARGET_IP=172.26.0.1
+
+docker-compose up --build -d
+docker run --rm byrnedo/alpine-curl http://$TARGET_IP:8080
+docker-compose down
