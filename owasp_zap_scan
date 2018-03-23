@@ -8,5 +8,7 @@ ip_address=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}
 echo "Waiting 10 seconds for HTTP server http://$ip_address:8080 to come up..."
 sleep 10
 #docker run --rm byrnedo/alpine-curl http://$ip_address:8080
-docker run --network="container:$NGINX_CONTAINER_NAME" -t owasp/zap2docker-stable zap-baseline.py -a -j -z "-config scanner.strength=INSANE" -t https://$ip_address:8080
+docker run --network="container:$NGINX_CONTAINER_NAME" -t ictu/zap2docker-weekly zap-baseline.py \
+  -a -j -z "-config scanner.strength=INSANE" \
+  -t http://$ip_address:8080 \
 docker-compose stop
