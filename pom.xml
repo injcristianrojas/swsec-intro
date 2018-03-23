@@ -218,58 +218,6 @@
         </configuration>
       </plugin>
 
-      <plugin>
-          <groupId>de.martinreinhardt-online</groupId>
-          <artifactId>zap-maven-plugin</artifactId>
-          <version>${zap.plugin.version}</version>
-          <configuration>
-            <zapPort>9090</zapPort>
-            <targetUrl>http://localhost:8080/</targetUrl>
-            <zapPath>${zap.path}</zapPath>
-            <authenticationType>form</authenticationType>
-        		<username>jperez</username>
-        		<password>123</password>
-        		<loginUrl>http://localhost:8080/Login</loginUrl>
-        		<loggedInRegex><![CDATA[\Q<p>Usuario:\E]]></loggedInRegex>
-            <zapOptions>-daemon -config scanner.strength=INSANE -config api.disablekey=true -config api.incerrordetails=true -config proxy.ip=0.0.0.0</zapOptions>
-          </configuration>
-          <executions>
-            <execution>
-        			<id>start-zap</id>
-        			<phase>pre-integration-test</phase>
-        			<goals>
-                <goal>startZap</goal>
-              </goals>
-          	</execution>
-            <execution>
-        			<id>analyze</id>
-        			<phase>integration-test</phase>
-        			<goals>
-                <goal>analyze</goal>
-              </goals>
-        		</execution>
-          </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>properties-maven-plugin</artifactId>
-        <version>1.0.0</version>
-        <executions>
-          <execution>
-            <phase>initialize</phase>
-            <goals>
-              <goal>read-project-properties</goal>
-            </goals>
-            <configuration>
-              <files>
-                <file>${basedir}/env.properties</file>
-              </files>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
     </plugins>
   </build>
 
