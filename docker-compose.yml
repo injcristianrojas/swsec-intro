@@ -1,9 +1,8 @@
 victim:
   build: .
   #image: injcristianrojas/swsec-intro
-  privileged: true
   ports:
     - "8080:8080"
   volumes:
-    - .:/usr/src/app:rw
-  working_dir: /usr/src/app
+    - ./:/usr/src/mymaven
+  working_dir: /usr/src/mymaven
