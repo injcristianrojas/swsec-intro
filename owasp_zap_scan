@@ -4,11 +4,12 @@
 NGINX_CONTAINER_NAME=swsecintro_victim_1
 
 docker-compose up -d
-ip_address=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $NGINX_CONTAINER_NAME)
-echo "Waiting 10 seconds for HTTP server http://$ip_address:8080 to come up..."
+IP_ADDRESS=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $NGINX_CONTAINER_NAME)
+BASE_URL=http://$IP_ADDRESS:8080
+echo "Waiting 10 seconds for HTTP server $BASE_URL to come up..."
 sleep 10
-#docker run --rm byrnedo/alpine-curl http://$ip_address:8080
+#docker run --rm byrnedo/alpine-curl $BASE_URL
 docker run --network="container:$NGINX_CONTAINER_NAME" -t ictu/zap2docker-weekly zap-baseline.py \
   -a -j -z "-config scanner.strength=INSANE" \
-  -t http://$ip_address:8080 \
+  -t $BASE_URL \
 docker-compose stop
