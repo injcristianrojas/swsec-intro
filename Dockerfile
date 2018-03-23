@@ -1,5 +1,6 @@
 FROM maven:3-jdk-8-alpine
 
+COPY . /usr/src/mymaven
 WORKDIR /usr/src/mymaven
 RUN mvn clean install
 

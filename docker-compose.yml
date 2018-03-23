@@ -5,4 +5,3 @@ victim:
     - "8080:8080"
   volumes:
     - ./:/usr/src/mymaven
-  working_dir: /usr/src/mymaven
