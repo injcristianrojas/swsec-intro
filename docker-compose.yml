@@ -1,7 +1,10 @@
-victim:
-  build: .
-  #image: injcristianrojas/swsec-intro
-  ports:
-    - "8080:8080"
-  volumes:
-    - ./:/usr/src/mymaven
+version: '3'
+
+services:
+  victim:
+    build: .
+    #image: injcristianrojas/swsec-intro
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./:/usr/src/mymaven
