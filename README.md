@@ -119,3 +119,11 @@ Cuando la máquina esté arriba y corriendo, en otro terminal, realice el
 análisis:
 
     mvn clean verify sonar:sonar
+
+Luego, en otra ventana, levante el servidor:
+
+    mvn jetty:run
+
+Y haga el análisis externo con OWASP ZAP:
+
+    mvn de.martinreinhardt-online:zap-maven-plugin:startZap de.martinreinhardt-online:zap-maven-plugin:analyze sonar:sonar

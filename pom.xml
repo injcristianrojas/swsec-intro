@@ -17,6 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <dependency.check.report.dir>${project.build.directory}/dependency-check</dependency.check.report.dir>
     <sonar.dependencyCheck.reportPath>${dependency.check.report.dir}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
+    <sonar.zaproxy.reportPath>${project.build.directory}/zap-reports/zapReport.xml</sonar.zaproxy.reportPath>
   </properties>
 
   <dependencies>
