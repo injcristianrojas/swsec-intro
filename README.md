@@ -107,3 +107,15 @@ iniciar una nueva demo deberá recrear la base de datos. Para eso sólo
 ejecute:
 
     mvn install
+
+## Uso de Sonarqube
+
+Levante la máquina Docker de Sonarqube:
+
+    cd sonarqube
+    docker-compose up
+
+Cuando la máquina esté arriba y corriendo, en otro terminal, realice el
+análisis:
+
+    mvn clean verify sonar:sonar
