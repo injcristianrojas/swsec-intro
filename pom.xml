@@ -212,6 +212,13 @@
         <groupId>org.owasp</groupId>
         <artifactId>dependency-check-maven</artifactId>
         <version>${owasp.depcheck.version}</version>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>check</goal>
+                </goals>
+            </execution>
+        </executions>
         <configuration>
           <format>XML</format>
           <outputDirectory>${dependency.check.report.dir}</outputDirectory>
@@ -233,7 +240,7 @@
         		<loggedInRegex><![CDATA[\Q<p>Usuario:\E]]></loggedInRegex>
             <zapOptions>-daemon -config scanner.strength=INSANE -config api.disablekey=true -config api.incerrordetails=true -config proxy.ip=0.0.0.0</zapOptions>
           </configuration>
-          <executions>
+          <!-- <executions>
             <execution>
         			<id>start-zap</id>
         			<phase>pre-integration-test</phase>
@@ -248,7 +255,7 @@
                 <goal>analyze</goal>
               </goals>
         		</execution>
-          </executions>
+          </executions> -->
       </plugin>
 
       <plugin>
@@ -275,39 +282,6 @@
 
   <reporting>
     <plugins>
-
-      <plugin>
-        <groupId>com.github.spotbugs</groupId>
-        <artifactId>spotbugs-maven-plugin</artifactId>
-        <version>${spotbugs.plugin.version}</version>
-        <configuration>
-          <effort>Max</effort>
-          <threshold>Low</threshold>
-          <failOnError>true</failOnError>
-          <includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile>
-          <excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>
-          <plugins>
-            <plugin>
-              <groupId>com.h3xstream.findsecbugs</groupId>
-              <artifactId>findsecbugs-plugin</artifactId>
-              <version>${findsecbugs.plugin.version}</version>
-            </plugin>
-          </plugins>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.owasp</groupId>
-        <artifactId>dependency-check-maven</artifactId>
-        <version>${owasp.depcheck.version}</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>aggregate</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
