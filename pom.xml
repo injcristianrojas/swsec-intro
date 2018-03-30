@@ -136,36 +136,7 @@
         </configuration>
       </plugin>
 
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.6.0</version>
-        <executions>
-          <execution>
-            <id>db-setup</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>java</goal>
-            </goals>
-            <configuration>
-              <mainClass>swsec.dbsetup.DBSetup</mainClass>
-            </configuration>
-          </execution>
-          <execution>
-            <id>db-cleanup</id>
-            <phase>post-integration-test</phase>
-            <goals>
-              <goal>java</goal>
-            </goals>
-            <configuration>
-              <mainClass>swsec.dbsetup.DBSetup</mainClass>
-              <commandlineArgs>clean</commandlineArgs>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
+      <!-- <plugin>
         <artifactId>maven-clean-plugin</artifactId>
         <version>3.0.0</version>
         <configuration>
@@ -179,7 +150,7 @@
             </fileset>
           </filesets>
         </configuration>
-      </plugin>
+      </plugin> -->
 
       <plugin>
         <groupId>org.eclipse.jetty</groupId>
