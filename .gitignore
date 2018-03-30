@@ -1,6 +1,7 @@
 *.sqlite
 *.iml
 *.log
+*.jar
 
 .classpath
 .project
