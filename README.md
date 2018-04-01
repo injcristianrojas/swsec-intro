@@ -107,3 +107,19 @@ iniciar una nueva demo deberá recrear la base de datos. Para eso sólo
 ejecute:
 
     mvn install
+
+## Uso de Sonarqube
+
+Levante la máquina Docker de Sonarqube:
+
+    cd sonarqube
+    docker-compose up
+
+Cuando la máquina esté arriba y corriendo, en otro terminal, realice el
+análisis y añada a la linea de `mvn`: `sonar:sonar`
+
+## Deshabilitación de pruebas ZAP
+
+A ratos las pruebas con OWASP ZAP son un tanto disruptivas para el trabajo, ya
+que toman tiempo. Para deshabilitarlas, ir al `pom.xml` y en la sección
+`<zap.skip>false</zap.skip>` setear su valor a `true`.
