@@ -1,8 +1,8 @@
 <%@ page pageEncoding="UTF-8" %>
 <jsp:include page="header.jsp" />
-<% if (session.getAttribute("username") != null) { %>
-<p>Usuario: <%=(String) session.getAttribute("username")%></p>
-<% } %>
+<c:if test="${not empty username}" >
+<p>Usuario: ${username}</p>
+</c:if>
 <form action="Account" method="post" name="mainForm" id="mainForm">
 <p>
 Cambiar Password: <input type="password" name="password" id="password"  /><br />

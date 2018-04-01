@@ -1,8 +1,8 @@
 <%@ page pageEncoding="UTF-8" %>
 <jsp:include page="header.jsp" />
-<% if (session.getAttribute("username") != null) { %>
-<p>Usuario: <%=(String) session.getAttribute("username")%></p>
-<% } %>
+<c:if test="${not empty username}" >
+<p>Usuario: ${username}</p>
+</c:if>
 <p>
 <a href="login.jsp">Login</a><br />
 <a href="saludos.jsp">Saludos</a>

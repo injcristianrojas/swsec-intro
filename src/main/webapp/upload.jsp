@@ -1,8 +1,8 @@
 <%@ page pageEncoding="UTF-8" %>
 <jsp:include page="header.jsp" />
-<% if (session.getAttribute("username") != null) { %>
-<p>Usuario: <%=(String) session.getAttribute("username")%></p>
-<% } %>
+<c:if test="${not empty username}" >
+<p>Usuario: ${username}</p>
+</c:if>
 <form action="UploadServlet" method="post" enctype="multipart/form-data" onSubmit="if(document.getElementById('file_to_upload').value == '') return false;">
 <input type="file" name="file_to_upload" id="file_to_upload" size="50" />
 <br />
