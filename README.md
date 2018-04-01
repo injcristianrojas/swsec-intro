@@ -116,14 +116,10 @@ Levante la máquina Docker de Sonarqube:
     docker-compose up
 
 Cuando la máquina esté arriba y corriendo, en otro terminal, realice el
-análisis:
+análisis y añada a la linea de `mvn`: `sonar:sonar`
 
-    mvn clean verify sonar:sonar
+## Deshabilitación de pruebas ZAP
 
-Luego, en otra ventana, levante el servidor:
-
-    mvn jetty:run
-
-Y haga el análisis externo con OWASP ZAP:
-
-    mvn de.martinreinhardt-online:zap-maven-plugin:startZap de.martinreinhardt-online:zap-maven-plugin:analyze sonar:sonar
+A ratos las pruebas con OWASP ZAP son un tanto disruptivas para el trabajo, ya
+que toman tiempo. Para deshabilitarlas, ir al `pom.xml` y en la sección
+`<zap.skip>false</zap.skip>` setear su valor a `true`.

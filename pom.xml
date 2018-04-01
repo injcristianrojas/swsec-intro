@@ -18,6 +18,7 @@
         <sonar.dependencyCheck.reportPath>${project.build.directory}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
         <sonar.dependencyCheck.htmlReportPath>${project.build.directory}/site/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
         <sonar.zaproxy.reportPath>${project.build.directory}/zap-reports/zapReport.xml</sonar.zaproxy.reportPath>
+        <zap.skip>false</zap.skip>
     </properties>
 
     <dependencies>
@@ -202,6 +203,7 @@
                 <artifactId>zap-maven-plugin</artifactId>
                 <version>${zap.plugin.version}</version>
                 <configuration>
+                    <skip>${zap.skip}</skip>
                     <zapPort>9090</zapPort>
                     <targetUrl>http://localhost:8080/</targetUrl>
                     <zapPath>${zap.path}</zapPath>
