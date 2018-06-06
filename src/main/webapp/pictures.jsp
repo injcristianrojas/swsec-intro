@@ -1,9 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ page import="java.io.File" %>
 <jsp:include page="header.jsp" />
-<c:if test="${not empty username}" >
-<p>Usuario: ${username}</p>
-</c:if>
+<jsp:include page="username.jsp" />
 <div class="yoxview">
 <%
 String localDir = getServletContext().getRealPath("/upload");

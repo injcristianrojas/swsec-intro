@@ -1,8 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <jsp:include page="header.jsp" />
-<c:if test="${not empty username}" >
-<p>Usuario: ${username}</p>
-</c:if>
+<jsp:include page="username.jsp" />
 <form action="Account" method="post" name="mainForm" id="mainForm">
 <p>
 Cambiar Password: <input type="password" name="password" id="password"  /><br />
