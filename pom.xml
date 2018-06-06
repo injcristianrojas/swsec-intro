@@ -11,14 +11,11 @@
     <properties>
         <jetty.version>9.4.6.v20170531</jetty.version>
         <owasp.depcheck.version>3.1.2</owasp.depcheck.version>
-        <zap.plugin.version>0.1.0</zap.plugin.version>
         <spotbugs.plugin.version>3.1.1</spotbugs.plugin.version>
         <findsecbugs.plugin.version>1.7.1</findsecbugs.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.dependencyCheck.reportPath>${project.build.directory}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
         <sonar.dependencyCheck.htmlReportPath>${project.build.directory}/site/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
-        <sonar.zaproxy.reportPath>${project.build.directory}/zap-reports/zapReport.xml</sonar.zaproxy.reportPath>
-        <zap.skip>false</zap.skip>
     </properties>
 
     <dependencies>
@@ -153,28 +150,6 @@
             </plugin>
 
             <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-jspc-maven-plugin</artifactId>
-                <version>${jetty.version}</version>
-                <executions>
-                    <execution>
-                        <id>jspc</id>
-                        <goals>
-                            <goal>jspc</goal>
-                        </goals>
-                        <configuration>
-                            <jspc>
-                                <smapSuppressed>false</smapSuppressed>
-                                <smapDumped>true</smapDumped>
-                            </jspc>
-                            <keepSources>true</keepSources>
-                            <useProvidedScope>true</useProvidedScope>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.4.0.905</version>
@@ -195,60 +170,6 @@
                     <format>XML</format>
                     <outputDirectory>${dependency.check.report.dir}</outputDirectory>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>de.martinreinhardt-online</groupId>
-                <artifactId>zap-maven-plugin</artifactId>
-                <version>${zap.plugin.version}</version>
-                <configuration>
-                    <skip>${zap.skip}</skip>
-                    <zapPort>9090</zapPort>
-                    <targetUrl>http://localhost:8080/</targetUrl>
-                    <zapPath>${zap.path}</zapPath>
-                    <authenticationType>form</authenticationType>
-                    <username>jperez</username>
-                    <password>123</password>
-                    <loginUrl>http://localhost:8080/Login</loginUrl>
-                    <loggedInRegex><![CDATA[\Q<p>Usuario:\E]]></loggedInRegex>
-                    <zapOptions>-daemon -config scanner.strength=INSANE -config api.disablekey=true -config api.incerrordetails=true -config proxy.ip=0.0.0.0
-                    </zapOptions>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>start-zap</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>startZap</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>analyze</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>analyze</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <executions>
-                    <execution>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>read-project-properties</goal>
-                        </goals>
-                        <configuration>
-                            <files>
-                                <file>${basedir}/env.properties</file>
-                            </files>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
 
         </plugins>
