@@ -1,9 +1,10 @@
 FROM maven:alpine
 
-WORKDIR /tmp
-ADD pom.xml /tmp/pom.xml
-RUN ["mvn", "clean", "compile"]
-
+RUN ["mkdir", "/app"]
 WORKDIR /app
+COPY pom.xml /app/pom.xml
+COPY src/ /app/src
+RUN ["mvn", "compile", "integration-test"]
+
 EXPOSE 8080
 ENTRYPOINT ["mvn", "jetty:run"]
