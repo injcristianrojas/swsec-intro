@@ -8,12 +8,11 @@ services:
     volumes:
       - .:/app:rw
 
-  owasp-zap:
-    image: owasp/zap2docker-stable
-    command: zap-baseline.py -t http://victim:8080
-    
+  # owasp-zap:
+  #   image: owasp/zap2docker-stable
+  #   command: zap-baseline.py -t http://victim:8080
+  #
   # code-analysis:
-  #   build: .
-  #   command: dependency-check:aggregate
+  #   image: owasp/dependency-check
   #   volumes:
-  #     - .:/app:rw
+  #     - .:/app:ro

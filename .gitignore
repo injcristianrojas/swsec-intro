@@ -17,3 +17,5 @@ src/main/webapp/upload/*
 
 supervisord.pid
 env.properties
+
+dependency_check/
