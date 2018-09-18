@@ -10,12 +10,7 @@
 
     <properties>
         <jetty.version>9.4.6.v20170531</jetty.version>
-        <owasp.depcheck.version>3.1.2</owasp.depcheck.version>
-        <spotbugs.plugin.version>3.1.1</spotbugs.plugin.version>
-        <findsecbugs.plugin.version>1.8.0</findsecbugs.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sonar.dependencyCheck.reportPath>${project.build.directory}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
-        <sonar.dependencyCheck.htmlReportPath>${project.build.directory}/site/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
     </properties>
 
     <dependencies>
