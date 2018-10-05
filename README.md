@@ -28,12 +28,8 @@ tales versiones).
 
 ### Modo de uso
 
-Ya teniendo Docker instalado, primero se requiere bajar la imagen inicial.
-Para ello ejecute:
-
-    docker pull injcristianrojas/swsec-intro
-
-Teniendo la imagen ya lista, active el contenedor:
+Ya teniendo Docker Compose instalado, debe levantar el servidor. Para ello
+ejecute:
 
     docker-compose up
 
@@ -61,15 +57,7 @@ en el directorio donde se encuentra el archivo `pom.xml`.
 
 ### Instalación
 
-Lo primero es bajar OWASP ZAP
-(https://github.com/zaproxy/zaproxy/releases/tag/2.7.0), y luego crear un
-archivo `env.properties` con el siguiente contenido:
-
-```
-zap.path=<directorio donde está instalado ZAP>
-```
-
-Luego deberá instalar la aplicación. Ésto creará la base de datos
+Deberá instalar la aplicación. Ésto creará la base de datos
 sqlite para la aplicación web y realizará pruebas de integración para asegurar
 que ésta esté en orden. Eso se logra ejecutando:
 
@@ -92,31 +80,3 @@ Para echar a correr el servidor, escriba:
 
 El servidor se activará automáticamente y dejará la aplicación corriendo en
 <http://localhost:8080>.
-
-## Pruebas externas y posterior limpieza
-
-Apunte su herramienta de scanner preferida a <http://localhost:8080>.
-
-Recuerde que al utilizar este tipo de herramientas sobre la aplicación,
-éstas buscarán insertar registros en la base de datos utilizando SQL
-Injection. Por lo tanto después de utilizar la aplicación y antes de
-iniciar una nueva demo deberá recrear la base de datos. Para eso sólo
-ejecute:
-
-    mvn install
-
-## Uso de Sonarqube
-
-Levante la máquina Docker de Sonarqube:
-
-    cd sonarqube
-    docker-compose up
-
-Cuando la máquina esté arriba y corriendo, en otro terminal, realice el
-análisis y añada a la linea de `mvn`: `sonar:sonar`
-
-## Deshabilitación de pruebas ZAP
-
-A ratos las pruebas con OWASP ZAP son un tanto disruptivas para el trabajo, ya
-que toman tiempo. Para deshabilitarlas, ir al `pom.xml` y en la sección
-`<zap.skip>false</zap.skip>` setear su valor a `true`.
