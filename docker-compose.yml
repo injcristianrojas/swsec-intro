@@ -9,11 +9,11 @@ services:
       - .:/app:rw
 
   jenkins:
-    image: jenkins/jenkins:lts
+    image: jenkinsci/blueocean
     ports:
       - 8081:8081
       - 50000:50000
     volumes:
-      - .:/code:ro
+      - ./:/code
     environment:
       - JENKINS_OPTS="--httpPort=8081"
