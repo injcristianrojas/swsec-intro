@@ -145,6 +145,28 @@
             </plugin>
 
             <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-jspc-maven-plugin</artifactId>
+                <version>${jetty.version}</version>
+                <executions>
+                    <execution>
+                        <id>jspc</id>
+                        <goals>
+                            <goal>jspc</goal>
+                        </goals>
+                        <configuration>
+                          <jspc>
+                              <smapSuppressed>false</smapSuppressed>
+                              <smapDumped>true</smapDumped>
+                          </jspc>
+                          <keepSources>true</keepSources>
+                          <useProvidedScope>true</useProvidedScope>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>3.1.1</version>
