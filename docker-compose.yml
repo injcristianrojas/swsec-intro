@@ -4,15 +4,16 @@ services:
   victim:
     build: .
     ports:
-      - "8080:8080"
+      - 8080:8080
     volumes:
       - .:/app:rw
 
-  # owasp-zap:
-  #   image: owasp/zap2docker-stable
-  #   command: zap-baseline.py -t http://victim:8080
-  #
-  # code-analysis:
-  #   image: owasp/dependency-check
-  #   volumes:
-  #     - .:/app:ro
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - 8081:8081
+      - 50000:50000
+    volumes:
+      - .:/code:ro
+    environment:
+      - JENKINS_OPTS="--httpPort=8081"
