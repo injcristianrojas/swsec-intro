@@ -80,3 +80,20 @@ Para echar a correr el servidor, escriba:
 
 El servidor se activará automáticamente y dejará la aplicación corriendo en
 <http://localhost:8080>.
+
+### ESPECIAL: Sonarqube
+
+Para esto se requiere Docker y Docker Compose.
+
+En un terminal, lanzar SonarQube:
+
+```shell
+cd sonarqube
+docker-compose up
+```
+
+En otro terminal, envíe el análisis a SonarQube:
+
+```shell
+mvn compile findbugs:findbugs org.owasp:dependency-check-maven:check org.sonarsource.scanner.maven:sonar-maven-plugin:3.5.0.1254:sonar
+```
