@@ -15,5 +15,4 @@ build/
 src/main/webapp/findbugs
 src/main/webapp/upload/*
 
-supervisord.pid
-env.properties
+dependency_check/

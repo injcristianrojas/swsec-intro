@@ -1,9 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ page import="java.io.File" %>
 <jsp:include page="header.jsp" />
-<% if (session.getAttribute("username") != null) { %>
-<p>Usuario: <%=(String) session.getAttribute("username")%></p>
-<% } %>
+<jsp:include page="username.jsp" />
 <div class="yoxview">
 <%
 String localDir = getServletContext().getRealPath("/upload");

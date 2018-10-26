@@ -1,8 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <jsp:include page="header.jsp" />
-<% if (session.getAttribute("username") != null) { %>
-<p>Usuario: <%=(String) session.getAttribute("username")%></p>
-<% } %>
+<jsp:include page="username.jsp" />
 <p>
 <a href="login.jsp">Login</a><br />
 <a href="saludos.jsp">Saludos</a>

@@ -10,15 +10,7 @@
 
     <properties>
         <jetty.version>9.4.6.v20170531</jetty.version>
-        <owasp.depcheck.version>3.1.1</owasp.depcheck.version>
-        <zap.plugin.version>0.1.0</zap.plugin.version>
-        <spotbugs.plugin.version>3.1.0-RC8</spotbugs.plugin.version>
-        <findsecbugs.plugin.version>1.7.1</findsecbugs.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sonar.dependencyCheck.reportPath>${project.build.directory}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
-        <sonar.dependencyCheck.htmlReportPath>${project.build.directory}/site/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
-        <sonar.zaproxy.reportPath>${project.build.directory}/zap-reports/zapReport.xml</sonar.zaproxy.reportPath>
-        <zap.skip>false</zap.skip>
     </properties>
 
     <dependencies>
@@ -33,9 +25,14 @@
             <version>3.7.2</version>
         </dependency>
         <dependency>
-            <groupId>com.coverity.security</groupId>
-            <artifactId>coverity-escapers</artifactId>
-            <version>1.1.1</version>
+            <groupId>org.owasp.encoder</groupId>
+            <artifactId>encoder</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.owasp.encoder</groupId>
+            <artifactId>encoder-jsp</artifactId>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -63,7 +60,6 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -148,176 +144,11 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-jspc-maven-plugin</artifactId>
-                <version>${jetty.version}</version>
-                <executions>
-                    <execution>
-                        <id>jspc</id>
-                        <goals>
-                            <goal>jspc</goal>
-                        </goals>
-                        <configuration>
-                            <jspc>
-                                <smapSuppressed>false</smapSuppressed>
-                                <smapDumped>true</smapDumped>
-                            </jspc>
-                            <keepSources>true</keepSources>
-                            <useProvidedScope>true</useProvidedScope>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.4.0.905</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.owasp</groupId>
-                <artifactId>dependency-check-maven</artifactId>
-                <version>${owasp.depcheck.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <format>XML</format>
-                    <outputDirectory>${dependency.check.report.dir}</outputDirectory>
-                    <cveUrl12Modified>https://nvd.nist.gov/download/nvdcve-Modified.xml.gz</cveUrl12Modified>
-                    <cveUrl20Modified>https://nvd.nist.gov/feeds/xml/cve/2.0/nvdcve-2.0-modified.xml.gz
-                    </cveUrl20Modified>
-                    <cveUrl12Base>https://nvd.nist.gov/download/nvdcve-%d.xml.gz</cveUrl12Base>
-                    <cveUrl20Base>https://nvd.nist.gov/feeds/xml/cve/2.0/nvdcve-2.0-%d.xml.gz</cveUrl20Base>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>de.martinreinhardt-online</groupId>
-                <artifactId>zap-maven-plugin</artifactId>
-                <version>${zap.plugin.version}</version>
-                <configuration>
-                    <skip>${zap.skip}</skip>
-                    <zapPort>9090</zapPort>
-                    <targetUrl>http://localhost:8080/</targetUrl>
-                    <zapPath>${zap.path}</zapPath>
-                    <authenticationType>form</authenticationType>
-                    <username>jperez</username>
-                    <password>123</password>
-                    <loginUrl>http://localhost:8080/Login</loginUrl>
-                    <loggedInRegex><![CDATA[\Q<p>Usuario:\E]]></loggedInRegex>
-                    <zapOptions>-daemon -config scanner.strength=INSANE -config api.disablekey=true -config api.incerrordetails=true -config proxy.ip=0.0.0.0
-                    </zapOptions>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>start-zap</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>startZap</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>analyze</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>analyze</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <executions>
-                    <execution>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>read-project-properties</goal>
-                        </goals>
-                        <configuration>
-                            <files>
-                                <file>${basedir}/env.properties</file>
-                            </files>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
     </build>
 
     <reporting>
         <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>${spotbugs.plugin.version}</version>
-                <configuration>
-                    <effort>Max</effort>
-                    <threshold>Low</threshold>
-                    <failOnError>true</failOnError>
-                    <includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile>
-                    <excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>
-                    <plugins>
-                        <plugin>
-                            <groupId>com.h3xstream.findsecbugs</groupId>
-                            <artifactId>findsecbugs-plugin</artifactId>
-                            <version>${findsecbugs.plugin.version}</version>
-                        </plugin>
-                    </plugins>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.owasp</groupId>
-                <artifactId>dependency-check-maven</artifactId>
-                <version>${owasp.depcheck.version}</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>aggregate</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-                <configuration>
-                    <format>HTML</format>
-                    <outputDirectory>${dependency.check.report.dir}</outputDirectory>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.3</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>dependency-updates-report</report>
-                            <report>plugin-updates-report</report>
-                            <report>property-updates-report</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
 
         </plugins>
     </reporting>

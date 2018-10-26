@@ -1,9 +1,18 @@
-victim:
-  build: .
-  #image: injcristianrojas/swsec-intro
-  privileged: true
-  ports:
-    - "8080:8080"
-  volumes:
-    - .:/usr/src/app:rw
-  working_dir: /usr/src/app
+version: '3'
+
+services:
+  victim:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app:rw
+
+  # owasp-zap:
+  #   image: owasp/zap2docker-stable
+  #   command: zap-baseline.py -t http://victim:8080
+  #
+  # code-analysis:
+  #   image: owasp/dependency-check
+  #   volumes:
+  #     - .:/app:ro

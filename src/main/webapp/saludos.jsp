@@ -1,8 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <jsp:include page="header.jsp" />
-	<% if (session.getAttribute("username") != null) { %>
-	<p>Usuario: <%=(String) session.getAttribute("username")%></p>
-	<% } %>
+<jsp:include page="username.jsp" />
 	<form action="Saludos" method="get">
 		<p>Escriba su nombre en el cuadro y oprima el bot&oacute;n "Aceptar"</p>
 		<input type="text" name="nombre">
