@@ -27,7 +27,7 @@ public class ListaUsuarios extends HttpServlet {
 		renderHeader(request, response);
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl(servletContext));
+			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl());
 			Statement statement = conexion.createStatement();
 			String query = "SELECT * FROM usuarios WHERE type=" + request.getParameter("type");
 			ResultSet resultado = statement.executeQuery(query);

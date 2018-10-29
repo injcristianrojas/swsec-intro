@@ -31,7 +31,7 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl(servletcontext));
+			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl());
 			Statement statement = conexion.createStatement();
 			String query = "select * from usuarios where username = '" + username + "' and password = '" + password + "'";
 			ResultSet resultado = statement.executeQuery(query);
