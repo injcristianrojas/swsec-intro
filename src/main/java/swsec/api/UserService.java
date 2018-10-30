@@ -1,6 +1,6 @@
 package swsec.api;
 
-import swsec.Config;
+import swsec.Helpers;
 import swsec.api.mappings.User;
 
 import javax.ws.rs.GET;
@@ -21,7 +21,7 @@ public class UserService {
         User user = new User();
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conexion = DriverManager.getConnection(Config.getSqliteUrl());
+            Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
             Statement statement = conexion.createStatement();
             String query = "SELECT * FROM usuarios WHERE id=" + id;
             ResultSet resultado = statement.executeQuery(query);

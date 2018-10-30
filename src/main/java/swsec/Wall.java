@@ -31,7 +31,7 @@ public class Wall extends HttpServlet {
 		renderHeader(request, response);
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl());
+			Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
 			Statement statement = conexion.createStatement();
 			String query = "select mensaje from mensajes";
 			ResultSet resultado = statement.executeQuery(query);
@@ -50,7 +50,7 @@ public class Wall extends HttpServlet {
 		String mensaje = request.getParameter("mensaje");
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl());
+			Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
 			Statement statement = conexion.createStatement();
 			String query = "insert into mensajes (mensaje) values ('" + mensaje + "')";
 			statement.executeUpdate(query);
