@@ -13,9 +13,9 @@ import org.jose4j.lang.JoseException;
 public class TokenSecurity {
 	
 	private static RsaJsonWebKey rsaJsonWebKey = null;
-	private static String issuer = "tutorial-academy.com";
-	private static int timeToExpire = 30;
-	public static String bearer = "Bearer ";
+	private static String TOKEN_ISSUER = "tutorial-academy.com";
+	private static int EXPIRATION_TIME_IN_MINUTES = 30;
+	public static String TOKEN_PREFIX = "Bearer ";
 	
 	// 	Generate an RSA key pair, which will be used for signing and verification of the JWT, wrapped in a JWK
 	static {
@@ -33,9 +33,9 @@ public class TokenSecurity {
 	    // Create the Claims, which will be the content of the JWT
 	    JwtClaims claims = new JwtClaims();
 	    // who creates the token and signs it
-	    claims.setIssuer( issuer );  
+	    claims.setIssuer( TOKEN_ISSUER );  
 	    // time when the token will expire (timeToExpire minutes from now)
-	    claims.setExpirationTimeMinutesInTheFuture( timeToExpire ); 
+	    claims.setExpirationTimeMinutesInTheFuture( EXPIRATION_TIME_IN_MINUTES ); 
 	    // a unique identifier for the token
 	    claims.setGeneratedJwtId(); 
 	    // when the token was issued/created (now)
@@ -81,7 +81,7 @@ public class TokenSecurity {
 	            // allow some leeway in validating time based claims to account for clock skew
 	            .setAllowedClockSkewInSeconds( 30 ) 
 	            // whom the JWT needs to have been issued by
-	            .setExpectedIssuer( issuer ) 
+	            .setExpectedIssuer( TOKEN_ISSUER ) 
 	            // verify the signature with the public key
 	            .setVerificationKey( rsaJsonWebKey.getKey() )
 	            .build(); 

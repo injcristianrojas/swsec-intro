@@ -18,6 +18,6 @@ public class ResponseBuilder {
 	}
 	
 	public static Response createResponse( Response.Status status, String token ) {
-		return Response.status( status ).header("Authorization", TokenSecurity.bearer + token).build();
+		return Response.status( status ).header("Authorization", TokenSecurity.TOKEN_PREFIX + token).build();
 	}
 }
