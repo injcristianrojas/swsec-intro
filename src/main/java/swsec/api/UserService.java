@@ -27,7 +27,7 @@ public class UserService {
         User user = new User();
         try {
             String token = authorization.replace(TokenSecurity.TOKEN_PREFIX, "");
-        	TokenSecurity.validateJwtToken(token);
+        	TokenSecurity.validateJwtTokenSHA(token);
         	Class.forName("org.sqlite.JDBC");
             Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
             Statement statement = conexion.createStatement();
