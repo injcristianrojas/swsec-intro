@@ -15,6 +15,7 @@ public class TokenSecurity {
 	private static RsaJsonWebKey rsaJsonWebKey = null;
 	private static String issuer = "tutorial-academy.com";
 	private static int timeToExpire = 30;
+	public static String bearer = "Bearer ";
 	
 	// 	Generate an RSA key pair, which will be used for signing and verification of the JWT, wrapped in a JWK
 	static {
