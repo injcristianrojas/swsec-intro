@@ -3,6 +3,7 @@ package swsec.api.mappings;
 public class User {
 
     String username;
+    String password;
     int type;
 
     public String getUsername() {
@@ -21,11 +22,17 @@ public class User {
         this.type = type;
     }
 
-    @Override
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
     public String toString() {
         return "User [username=" + username + ", type=" + type + "]";
     }
-
-
 
 }
