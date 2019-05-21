@@ -7,9 +7,6 @@ import org.junit.Test;
 
 public class LoginITest {
 
-	private static String DEFAULT_USER = "jperez";
-	private static String DEFAULT_PASSWORD = "123";
-
 	private WebTester tester;
 
 	private void loginTest(String username, String password) {
@@ -34,7 +31,7 @@ public class LoginITest {
 
 	@Test
 	public void userTest1() {
-		loginTest(DEFAULT_USER, DEFAULT_PASSWORD);
+		loginTest(Vars.DEFAULT_USER, Vars.DEFAULT_PASSWORD);
 	}
 
 	@Test
@@ -85,8 +82,8 @@ public class LoginITest {
 	@Test
 	public void dirtyDatabaseTest() {
 		tester.beginAt("login.jsp");
-		tester.setTextField("username", DEFAULT_USER);
-		tester.setTextField("password", DEFAULT_PASSWORD);
+		tester.setTextField("username", Vars.DEFAULT_USER);
+		tester.setTextField("password", Vars.DEFAULT_PASSWORD);
 		tester.submit();
 		try {
 			tester.clickLink("wall");
