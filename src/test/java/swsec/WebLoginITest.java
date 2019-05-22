@@ -31,7 +31,7 @@ public class WebLoginITest {
 
 	@Test
 	public void userTest1() {
-		loginTest(Vars.DEFAULT_USER, Vars.DEFAULT_PASSWORD);
+		loginTest(Config.DEFAULT_USER, Config.DEFAULT_PASSWORD);
 	}
 
 	@Test
@@ -82,8 +82,8 @@ public class WebLoginITest {
 	@Test
 	public void dirtyDatabaseTest() {
 		tester.beginAt("login.jsp");
-		tester.setTextField("username", Vars.DEFAULT_USER);
-		tester.setTextField("password", Vars.DEFAULT_PASSWORD);
+		tester.setTextField("username", Config.DEFAULT_USER);
+		tester.setTextField("password", Config.DEFAULT_PASSWORD);
 		tester.submit();
 		try {
 			tester.clickLink("wall");

@@ -49,7 +49,7 @@ public class TokenSecurity {
 		        .setRelaxVerificationKeyValidation() // relaxes key length requirement 
 		        .build();
 
-		JwtClaims processedClaims = jwtConsumer.processToClaims(jwt);
+		JwtClaims processedClaims = jwtConsumer.processToClaims(jwt.replace(TOKEN_PREFIX, ""));
 		return processedClaims.getClaimsMap().get("id").toString();
 	}
 }

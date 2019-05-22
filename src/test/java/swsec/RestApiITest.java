@@ -22,7 +22,7 @@ public class RestApiITest {
 	
 	private String getJWTToken() throws ClientProtocolException, IOException {
 		HttpPost request = new HttpPost("http://127.0.0.1:8080/api/auth/login");
-		StringEntity rawData = new StringEntity("{ \"username\": \"" + Vars.DEFAULT_USER + "\", \"password\": \"" + Vars.DEFAULT_PASSWORD + "\"}");
+		StringEntity rawData = new StringEntity("{ \"username\": \"" + Config.DEFAULT_USER + "\", \"password\": \"" + Config.DEFAULT_PASSWORD + "\"}");
 		request.addHeader("content-type", "application/json");
 		request.setEntity(rawData);
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
