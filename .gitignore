@@ -2,6 +2,7 @@
 *.iml
 *.log
 *.jar
+.attach_pid*
 
 .classpath
 .project

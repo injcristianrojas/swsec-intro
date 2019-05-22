@@ -33,7 +33,7 @@ public class Account extends HttpServlet {
 		renderHeader(request, response);
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl(servletContext));
+			Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
 			Statement statement = conexion.createStatement();
 			String username = (String) session.getAttribute("username");
 			String query = "UPDATE usuarios set password = '" + password + "' where username = '" + username + "'";

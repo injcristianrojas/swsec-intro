@@ -14,7 +14,7 @@ public class SWSECContextListener implements ServletContextListener {
             Class.forName("org.sqlite.JDBC");
             String messageTable = "CREATE TABLE IF NOT EXISTS 'mensajes' ('id' INTEGER PRIMARY KEY NOT NULL, 'mensaje' TEXT NOT NULL );";
             String userTable = "CREATE TABLE IF NOT EXISTS 'usuarios' ('id' INTEGER PRIMARY KEY NOT NULL, 'username' VARCHAR(10) NOT NULL, 'password' VARCHAR(10) NOT NULL ,'type' INTEGER);";
-            Connection conn = DriverManager.getConnection(Config.getSqliteUrl(sce.getServletContext()));
+            Connection conn = DriverManager.getConnection(Helpers.getSqliteUrl());
             Statement stmt = conn.createStatement();
             stmt.setQueryTimeout(30);
             stmt.executeUpdate(userTable);

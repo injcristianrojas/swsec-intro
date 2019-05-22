@@ -5,10 +5,7 @@ import net.sourceforge.jwebunit.junit.WebTester;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LoginITest {
-
-	private static String DEFAULT_USER = "jperez";
-	private static String DEFAULT_PASSWORD = "123";
+public class WebLoginITest {
 
 	private WebTester tester;
 
@@ -34,7 +31,7 @@ public class LoginITest {
 
 	@Test
 	public void userTest1() {
-		loginTest(DEFAULT_USER, DEFAULT_PASSWORD);
+		loginTest(TestConfig.DEFAULT_USER, TestConfig.DEFAULT_PASSWORD);
 	}
 
 	@Test
@@ -85,8 +82,8 @@ public class LoginITest {
 	@Test
 	public void dirtyDatabaseTest() {
 		tester.beginAt("login.jsp");
-		tester.setTextField("username", DEFAULT_USER);
-		tester.setTextField("password", DEFAULT_PASSWORD);
+		tester.setTextField("username", TestConfig.DEFAULT_USER);
+		tester.setTextField("password", TestConfig.DEFAULT_PASSWORD);
 		tester.submit();
 		try {
 			tester.clickLink("wall");
