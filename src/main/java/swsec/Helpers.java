@@ -36,7 +36,7 @@ public class Helpers {
 		conexion.close();
 	}
     
-	public static List<String> getMessages() throws ClassNotFoundException, SQLException {
+	public static List<String> getPosts() throws ClassNotFoundException, SQLException {
 		Class.forName("org.sqlite.JDBC");
 		Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
 		Statement statement = conexion.createStatement();

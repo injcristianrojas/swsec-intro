@@ -28,7 +28,7 @@ public class Wall extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		renderHeader(request, response);
 		try {
-			List<String> mensajes = Helpers.getMessages();
+			List<String> mensajes = Helpers.getPosts();
 			PrintWriter writer = response.getWriter();
 			for (String mensaje: mensajes)
 				writer.println("<p>" + mensaje + "</p>");

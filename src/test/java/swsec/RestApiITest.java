@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 
+import javax.ws.rs.core.Response;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
@@ -16,7 +18,9 @@ import org.junit.Test;
 
 public class RestApiITest {
 
-	public String getJWTToken() throws ClientProtocolException, IOException {
+	private static String EXAMPLE_MESSAGE = "Bienvenidos a Fans de las Aves Chilenas. Soy el administrador.";
+	
+	private String getJWTToken() throws ClientProtocolException, IOException {
 		HttpPost request = new HttpPost("http://127.0.0.1:8080/api/auth/login");
 		StringEntity rawData = new StringEntity("{ \"username\": \"" + Vars.DEFAULT_USER + "\", \"password\": \"" + Vars.DEFAULT_PASSWORD + "\"}");
 		request.addHeader("content-type", "application/json");
@@ -28,13 +32,37 @@ public class RestApiITest {
 
 	@Test
 	public void checkUser() throws ClientProtocolException, IOException {
-		HttpUriRequest request = new HttpGet("http://127.0.0.1:8080/api/users/get/1");
+		HttpGet request = new HttpGet("http://127.0.0.1:8080/api/users/get/1");
 		String token = null;
 		token = getJWTToken();
 		request.setHeader("Authorization", token);
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
 		String responseString = EntityUtils.toString(response.getEntity(), "UTF-8");
 		assertTrue(responseString.contains("jperez"));
+	}
+	
+	@Test
+	public void testPost() throws ClientProtocolException, IOException {
+		HttpPost request = new HttpPost("http://127.0.0.1:8080/api/posts/add");
+		String token = null;
+		token = getJWTToken();
+		request.setHeader("Authorization", token);
+		StringEntity rawData = new StringEntity("{ \"message\": \"" + EXAMPLE_MESSAGE+ "\" }");
+		request.addHeader("content-type", "application/json");
+		request.setEntity(rawData);
+		HttpResponse response = HttpClientBuilder.create().build().execute(request);
+		assertTrue(response.getStatusLine().getStatusCode() == Response.Status.OK.getStatusCode());
+	}
+	
+	@Test
+	public void testIsPostCreated() throws ClientProtocolException, IOException {
+		HttpGet request = new HttpGet("http://127.0.0.1:8080/api/posts/get");
+		String token = null;
+		token = getJWTToken();
+		request.setHeader("Authorization", token);
+		HttpResponse response = HttpClientBuilder.create().build().execute(request);
+		String responseString = EntityUtils.toString(response.getEntity(), "UTF-8");
+		assertTrue(responseString.contains(EXAMPLE_MESSAGE));
 	}
 
 }

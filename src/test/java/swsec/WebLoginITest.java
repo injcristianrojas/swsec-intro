@@ -5,7 +5,7 @@ import net.sourceforge.jwebunit.junit.WebTester;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LoginITest {
+public class WebLoginITest {
 
 	private WebTester tester;
 
