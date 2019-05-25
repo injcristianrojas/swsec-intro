@@ -106,7 +106,7 @@
     
       <filter>
 	    <filter-name>headersFilter</filter-name>
-	    <filter-class>swsec.headers.MyHeadersFilter</filter-class>
+	    <filter-class>swsec.http.MyHeadersFilter</filter-class>
 	  </filter>
 	
 	  <filter-mapping>
@@ -115,7 +115,7 @@
 	  </filter-mapping>
 
     <listener>
-        <listener-class>swsec.SWSECContextListener</listener-class>
+        <listener-class>swsec.http.ContextListener</listener-class>
     </listener>
 
     <welcome-file-list>
