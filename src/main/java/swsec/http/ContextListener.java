@@ -34,6 +34,7 @@ public class ContextListener implements ServletContextListener {
             stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('jhyneman', 'boom', '1')");
             stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('tanderson', 'matrix', '1')");
             stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('zcool', 'god', '1')");
+            stmt.executeUpdate("INSERT into mensajes(mensaje) VALUES ('Bienvenidos al foro de Fans de las Aves Chilenas. Soy el Administrador.')");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
