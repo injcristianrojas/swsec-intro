@@ -22,6 +22,7 @@ public class MyHeadersFilter implements Filter {
 			throws IOException, ServletException {
 		final HttpServletResponse httpResponse = (HttpServletResponse) response;
         httpResponse.addHeader("Access-Control-Allow-Origin", "*");
+        httpResponse.addHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
         chain.doFilter(request, response);
 		
 	}
