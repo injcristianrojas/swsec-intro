@@ -1,6 +1,7 @@
 package swsec.api;
 
 import swsec.Helpers;
+import swsec.api.helpers.Config;
 import swsec.api.helpers.ResponseBuilder;
 import swsec.api.helpers.TokenSecurity;
 import swsec.api.mappings.User;

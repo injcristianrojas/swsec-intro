@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response.Status;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import swsec.Helpers;
+import swsec.api.helpers.Config;
 import swsec.api.helpers.ResponseBuilder;
 import swsec.api.helpers.TokenSecurity;
 import swsec.api.mappings.Post;

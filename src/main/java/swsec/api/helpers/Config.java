@@ -1,4 +1,4 @@
-package swsec.api;
+package swsec.api.helpers;
 
 public class Config {
 
