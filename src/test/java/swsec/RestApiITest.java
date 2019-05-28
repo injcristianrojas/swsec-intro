@@ -15,7 +15,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
-import swsec.api.helpers.Config;
+import swsec.api.helpers.Constants;
 
 public class RestApiITest {
 
@@ -23,7 +23,7 @@ public class RestApiITest {
 	private String jwtToken;
 	
 	public void setUp() throws ClientProtocolException, IOException {
-		jwtToken = Config.USE_JWT_AUTH ? getJWTToken() : null;
+		jwtToken = Constants.USE_JWT_AUTH ? getJWTToken() : null;
 	}
 	
 	private String getJWTToken() throws ClientProtocolException, IOException {

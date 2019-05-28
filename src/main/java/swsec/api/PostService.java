@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response.Status;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import swsec.Helpers;
-import swsec.api.helpers.Config;
+import swsec.api.helpers.Constants;
 import swsec.api.helpers.ResponseBuilder;
 import swsec.api.helpers.TokenSecurity;
 import swsec.api.mappings.Post;
@@ -30,7 +30,7 @@ public class PostService {
 	public Response getPostJSON(@HeaderParam("Authorization") String authorization) {
 		List<Post> postList = new ArrayList<Post>();
 		try {
-			if (Config.USE_JWT_AUTH)
+			if (Constants.USE_JWT_AUTH)
 				TokenSecurity.validateJwtTokenSHA(authorization);
 			List<String> posts = Helpers.getPosts();
 			for (String post : posts)
@@ -47,7 +47,7 @@ public class PostService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addPost(String json, @HeaderParam("Authorization") String authorization) {
 		try {
-			if (Config.USE_JWT_AUTH)
+			if (Constants.USE_JWT_AUTH)
 				TokenSecurity.validateJwtTokenSHA(authorization);
 			ObjectMapper mapper = new ObjectMapper();
 			Post post = mapper.readValue(json, Post.class);

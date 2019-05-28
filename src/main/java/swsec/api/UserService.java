@@ -1,7 +1,7 @@
 package swsec.api;
 
 import swsec.Helpers;
-import swsec.api.helpers.Config;
+import swsec.api.helpers.Constants;
 import swsec.api.helpers.ResponseBuilder;
 import swsec.api.helpers.TokenSecurity;
 import swsec.api.mappings.User;
@@ -27,7 +27,7 @@ public class UserService {
 
         User user = new User();
         try {
-        	if (Config.USE_JWT_AUTH)
+        	if (Constants.USE_JWT_AUTH)
         		TokenSecurity.validateJwtTokenSHA(authorization);
         	Class.forName("org.sqlite.JDBC");
             Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
