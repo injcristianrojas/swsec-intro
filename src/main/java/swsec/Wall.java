@@ -1,5 +1,9 @@
 package swsec;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -8,12 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class Wall extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,16 +28,10 @@ public class Wall extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		renderHeader(request, response);
 		try {
-			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl(servletContext));
-			Statement statement = conexion.createStatement();
-			String query = "select mensaje from mensajes";
-			ResultSet resultado = statement.executeQuery(query);
+			List<String> mensajes = Helpers.getPosts();
 			PrintWriter writer = response.getWriter();
-			while (resultado.next())
-				writer.println("<p>" + resultado.getString(1) + "</p>");
-			statement.close();
-			conexion.close();
+			for (String mensaje: mensajes)
+				writer.println("<p>" + mensaje + "</p>");
 			renderFooter(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
@@ -49,18 +41,13 @@ public class Wall extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mensaje = request.getParameter("mensaje");
 		try {
-			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Config.getSqliteUrl(servletContext));
-			Statement statement = conexion.createStatement();
-			String query = "insert into mensajes (mensaje) values ('" + mensaje + "')";
-			statement.executeUpdate(query);
-			statement.close();
-			conexion.close();
+			Helpers.insertPost(mensaje);
 			doGet(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
 	}
+
 
 	private void renderHeader(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.addHeader("X-XSS-Protection", "0");
