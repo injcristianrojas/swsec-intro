@@ -95,5 +95,5 @@ docker-compose up
 En otro terminal, envíe el análisis a SonarQube:
 
 ```shell
-mvn compile findbugs:findbugs org.owasp:dependency-check-maven:check org.sonarsource.scanner.maven:sonar-maven-plugin:3.5.0.1254:sonar
+mvn compile findbugs:findbugs org.owasp:dependency-check-maven:check org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar
 ```
