@@ -17,3 +17,5 @@ src/main/webapp/findbugs
 src/main/webapp/upload/*
 
 dependency_check/
+
+settings.json
