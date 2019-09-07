@@ -10,7 +10,7 @@
 
     <properties>
         <jetty.version>9.4.6.v20170531</jetty.version>
-        <jetty.http.port>8090</jetty.http.port>
+        <jetty.port>8090</jetty.port>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -87,9 +87,7 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
-                    <httpConnector>
-                      <port>${jetty.http.port}</port>
-                    </httpConnector>
+                    <jettyXml>src/main/resources/jetty.xml</jettyXml>
                     <scanIntervalSeconds>3</scanIntervalSeconds>
                     <stopKey>stopKey</stopKey>
                     <stopPort>8085</stopPort>
