@@ -50,7 +50,7 @@
             </Array>
         </Arg>
 
-        <Set name="port">8091</Set>
+        <Set name="port">8090</Set>
     </New>
 
     <Call name="setConnectors">
