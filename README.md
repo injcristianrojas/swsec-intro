@@ -17,7 +17,7 @@ la función de cambio de password, passwords mal almacenadas.
 * __A9: Using Components with Known Vulnerabilities__: Uso de bibliotecas Java
 vulnerables (existen registros [CVE](https://cve.mitre.org/) asociados a
 tales versiones).
-* __A10: -Insufficient Logging & Monitoring__.
+* __A10: Insufficient Logging & Monitoring__.
 
 ## Uso mediante Docker (regular)
 
