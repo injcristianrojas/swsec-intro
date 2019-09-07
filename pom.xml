@@ -88,7 +88,6 @@
                 <version>${jetty.version}</version>
                 <configuration>
                     <httpConnector>
-                      <host>localhost.localdomain</host>
                       <port>${jetty.http.port}</port>
                     </httpConnector>
                     <scanIntervalSeconds>3</scanIntervalSeconds>
