@@ -29,7 +29,7 @@ public class RestApiITest {
 	}
 	
 	private String getJWTToken() throws ClientProtocolException, IOException {
-		HttpPost request = new HttpPost("http://127.0.0.1:8090/api/auth/login");
+		HttpPost request = new HttpPost(TestConfig.DEFAULT_HOST + "/api/auth/login");
 		StringEntity rawData = new StringEntity("{ \"username\": \"" + TestConfig.DEFAULT_USER + "\", \"password\": \"" + TestConfig.DEFAULT_PASSWORD + "\"}");
 		request.addHeader("Content-Type", "application/json");
 		request.setEntity(rawData);
@@ -40,7 +40,7 @@ public class RestApiITest {
 
 	@Test
 	public void checkUser() throws ClientProtocolException, IOException {
-		HttpGet request = new HttpGet("http://127.0.0.1:8090/api/users/get/1");
+		HttpGet request = new HttpGet(TestConfig.DEFAULT_HOST + "/api/users/get/1");
 		if (jwtToken != null) request.addHeader("Authorization", jwtToken);
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
 		String responseString = EntityUtils.toString(response.getEntity(), "UTF-8");
@@ -49,7 +49,7 @@ public class RestApiITest {
 	
 	@Test
 	public void testPost() throws ClientProtocolException, IOException {
-		HttpPost request = new HttpPost("http://127.0.0.1:8090/api/posts/add");
+		HttpPost request = new HttpPost(TestConfig.DEFAULT_HOST + "/api/posts/add");
 		if (jwtToken != null) request.addHeader("Authorization", jwtToken);
 		StringEntity rawData = new StringEntity("{ \"message\": \"" + EXAMPLE_MESSAGE+ "\" }");
 		request.addHeader("Content-Type", "application/json");
@@ -60,7 +60,7 @@ public class RestApiITest {
 	
 	@Test
 	public void testIsPostCreated() throws ClientProtocolException, IOException {
-		HttpGet request = new HttpGet("http://127.0.0.1:8090/api/posts/get");
+		HttpGet request = new HttpGet(TestConfig.DEFAULT_HOST + "/api/posts/get");
 		if (jwtToken != null) request.setHeader("Authorization", jwtToken);
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
 		String responseString = EntityUtils.toString(response.getEntity(), "UTF-8");
