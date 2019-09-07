@@ -1,10 +1,10 @@
-FROM maven:alpine
+# Build using docker build -t jenkins-zaproxy .
 
-RUN ["mkdir", "/app"]
-WORKDIR /app
-COPY pom.xml /app/pom.xml
-COPY src/ /app/src
-RUN ["mvn", "compile", "integration-test"]
+FROM jenkins/jenkins:lts-alpine
 
-EXPOSE 8090
-ENTRYPOINT ["mvn", "jetty:run"]
+USER root
+
+RUN wget https://github.com/zaproxy/zaproxy/releases/download/v2.8.1/ZAP_2.8.1_Linux.tar.gz
+RUN tar -xzvf ZAP_2.8.1_Linux.tar.gz -C /opt/
+RUN mv /opt/ZAP_2.8.1 /opt/zaproxy
+RUN ls /opt/zaproxy
