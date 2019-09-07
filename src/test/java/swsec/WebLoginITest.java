@@ -26,7 +26,7 @@ public class WebLoginITest {
 	@Before
 	public void prepare() {
 		tester = new WebTester();
-		tester.setBaseUrl("http://127.0.0.1:8080/");
+		tester.setBaseUrl("http://127.0.0.1:8090/");
 	}
 
 	@Test

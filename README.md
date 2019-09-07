@@ -34,7 +34,7 @@ ejecute:
     docker-compose up
 
 El contenedor con el servidor se activará automáticamente y dejará la
-aplicación corriendo en <http://localhost:8080>, y tendrá como nombre algo como
+aplicación corriendo en <http://localhost:8090>, y tendrá como nombre algo como
 `swsecintro_victim_1`. Para acceder al shell del servidor, escriba en otro
 terminal:
 
@@ -79,4 +79,4 @@ Para echar a correr el servidor, escriba:
     mvn jetty:run
 
 El servidor se activará automáticamente y dejará la aplicación corriendo en
-<http://localhost:8080>.
+<http://localhost:8090>.
