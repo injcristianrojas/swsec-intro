@@ -94,6 +94,7 @@
                     <stopKey>stopKey</stopKey>
                     <stopPort>8085</stopPort>
                     <stopWait>10</stopWait>
+                    <waitForChild>false</waitForChild>
                 </configuration>
                 <executions>
                     <execution>
