@@ -93,4 +93,30 @@ public class WebLoginITest {
 		tester.assertElementNotPresentByXPath("//script");
 		tester.clickLink("exit");
 	}
+
+	@Test
+	public void siteCrawlTest() {
+		tester.beginAt("login.jsp");
+		tester.assertTitleEquals("Fans de las aves chilenas (SWSEC Intro)");
+		tester.setTextField("username", TestConfig.DEFAULT_USER);
+		tester.setTextField("password", TestConfig.DEFAULT_PASSWORD);
+		tester.submit();
+
+		tester.clickLink("home");
+		tester.clickLink("hello");
+		tester.setTextField("nombre", "hacker");
+		tester.submit();
+		tester.clickLink("wall");
+		tester.setTextField("mensaje", "Hola a todos, soy el usuario de prueba");
+		tester.submit();
+		//tester.clickLink("images");
+		tester.clickLink("users");
+		tester.clickLink("account");
+
+		tester.assertTextPresent("Usuario: " + TestConfig.DEFAULT_USER);
+		tester.clickLink("exit");
+
+		tester.assertTextNotPresent("Usuario: " + TestConfig.DEFAULT_USER);
+		tester.assertTextPresent("Login");
+	}
 }
