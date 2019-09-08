@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Compilation and server startup') {
             steps {
-                sh 'mvn compile -Dformat=XML org.owasp:dependency-check-maven:check jetty:run-forked'
+                sh 'mvn compile spotbugs:spotbugs -Dformat=XML org.owasp:dependency-check-maven:check jetty:run-forked'
             }
         }
         stage('ZAP startup') {
@@ -49,6 +49,7 @@ pipeline {
             script {
                 dependencyCheckPublisher()
                 archiveZap()
+                recordIssues enabledForFailure: true, tool: spotBugs(pattern: 'target/spotbugsXml.xml'), sourceCodeEncoding: 'UTF-8', referenceJobName: 'Plugins/warnings-ng-plugin/master'
             }
         }
     }
