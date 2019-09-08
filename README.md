@@ -1,82 +1,20 @@
-# Aplicación de demostración de Seguridad de Software
+# Software Security Demo App (CI/CD demo)
 
-La presente es una aplicación simple Java (JEE) que sirve para
-realizar una demostración de un programa básico de seguridad de software.
+## Integration testing using Jenkins
 
-Es una aplicación débil a propósito, la cual contiene las siguientes
-vulnerabilidades incluidas en el
-[OWASP Top 10 - 2017](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_2017_Project):
+This project includes a Docker environment for security testing demo in a CI/CD environment.
+This will require [Docker](https://docs.docker.com/v17.12/install/) installed. To set up,
+follow these steps:
 
-* __A1: Injection__: SQL Injection en este caso.
-* __A2: Broken Authentication and Session Management__: Falta de redundancia en
-la función de cambio de password, passwords mal almacenadas.
-* __A3: Sensitive Data Exposure__: Passwords mal almacenadas, no uso de HTTPS.
-* __A5: Broken Access Control__: Acceso por URL directa a archivos subidos.
-* __A6: Security Misconfiguration__: Exceso de información en errores (ej. 500).
-* __A7: Cross-Site Scripting (XSS)__.
-* __A9: Using Components with Known Vulnerabilities__: Uso de bibliotecas Java
-vulnerables (existen registros [CVE](https://cve.mitre.org/) asociados a
-tales versiones).
-* __A10: Insufficient Logging & Monitoring__.
-
-## Uso mediante Docker (regular)
-
-### Requisitos
-
-* Docker 1.3.2 o superior
-* Docker Compose 1.6.2 o superior
-
-### Modo de uso
-
-Ya teniendo Docker Compose instalado, debe levantar el servidor. Para ello
-ejecute:
-
-    docker-compose up
-
-El contenedor con el servidor se activará automáticamente y dejará la
-aplicación corriendo en <http://localhost:8090>, y tendrá como nombre algo como
-`swsecintro_victim_1`. Para acceder al shell del servidor, escriba en otro
-terminal:
-
-    docker exec -it swsecintro_victim_1 /bin/bash
-
-Para detener el contendor, sólo presione <kbd>Ctrl</kbd>+<kbd>C</kbd>.
-
-## Funcionamiento directo con Maven
-
-La aplicación es prácticamente autocontenida. Para utilizarla se requiere
-el siguiente software:
-
-* Java (1.7 o superior)
-* Maven (2 o superior)
-
-### Modo de uso
-
-Todos los comandos descritos a continuación, requieren que Usted se sitúe
-en el directorio donde se encuentra el archivo `pom.xml`.
-
-### Instalación
-
-Deberá instalar la aplicación. Ésto creará la base de datos
-sqlite para la aplicación web y realizará pruebas de integración para asegurar
-que ésta esté en orden. Eso se logra ejecutando:
-
-    mvn install
-
-Después de unos pocos segundos, Usted debería ver el siguiente mensaje:
-
-    [INFO] ------------------------------------------------------------------------
-    [INFO] BUILD SUCCESS
-    [INFO] ------------------------------------------------------------------------
-
-en ese caso, la base de datos estará creada, el servidor estará probado y podrá
-activarlo.
-
-### Activación del servidor
-
-Para echar a correr el servidor, escriba:
-
-    mvn jetty:run
-
-El servidor se activará automáticamente y dejará la aplicación corriendo en
-<http://localhost:8090>.
+1. Create a docker image: `docker build -t jenkins-zaproxy .`
+1. Launch a new container from this image: `docker run -p 8081:8080 jenkins-zaproxy`
+1. Go to http://127.0.0.1:8081 and follow Jenkins instructions to install.
+1. Go to "Manage Jenkins", then "Global Tool Configuration", then "Add Maven". Then fill
+the "Name" field with `M3` and click Save.
+1. Go to "Manage Jenkins" again, then "Manage Plugins", and install the "Zap Pipeline"
+plugin, then restart Jenkins.
+1. Create a new Pipeline job. In the Pipeline section, select "Pipeline script from SCM" as
+the Definition. Select Git as your SCM. In the Repository URL, enter this repo
+(https://github.com/injcristianrojas/swsec-intro.git) and in
+"Branches to build" enter `*/jenkins`. Click save.
+1. Click on "Build now", and watch the magic happen.
