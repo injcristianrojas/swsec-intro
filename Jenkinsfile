@@ -11,9 +11,9 @@ pipeline {
                 git branch: 'jenkins', url: 'https://github.com/injcristianrojas/swsec-intro.git'
             }
         }
-        stage('Server startup') {
+        stage('Compilation and server startup') {
             steps {
-                sh 'mvn compile jetty:run-forked'
+                sh 'mvn compile -Dformat=XML org.owasp:dependency-check-maven:check jetty:run-forked'
             }
         }
         stage('ZAP startup') {
@@ -47,6 +47,7 @@ pipeline {
         }
         success {
             script {
+                dependencyCheckPublisher()
                 archiveZap()
             }
         }

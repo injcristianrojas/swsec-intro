@@ -11,8 +11,8 @@ follow these steps:
 1. Go to http://127.0.0.1:8081 and follow Jenkins instructions to install.
 1. Go to "Manage Jenkins", then "Global Tool Configuration", then "Add Maven". Then fill
 the "Name" field with `M3` and click Save.
-1. Go to "Manage Jenkins" again, then "Manage Plugins", and install the "Zap Pipeline"
-plugin, then restart Jenkins.
+1. Go to "Manage Jenkins" again, then "Manage Plugins", and install the "ZAP Pipeline"
+and "OWASP Dependency-Check Plugin" plugins, then restart Jenkins.
 1. Create a new Pipeline job. In the Pipeline section, select "Pipeline script from SCM" as
 the Definition. Select Git as your SCM. In the Repository URL, enter this repo
 (https://github.com/injcristianrojas/swsec-intro.git) and in
