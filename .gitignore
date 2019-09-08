@@ -10,6 +10,7 @@
 .gradle/
 .victims/
 .idea/
+.vscode/
 bin/
 target/
 build/
