@@ -1,9 +1,5 @@
 pipeline {
     agent any
-
-    tools {
-        maven 'M3'
-    }
     
     stages {
         stage('Preparation') { // for display purposes
