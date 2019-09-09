@@ -189,6 +189,22 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>de.martinreinhardt-online</groupId>
+                <artifactId>zap-maven-plugin</artifactId>
+                <version>0.1.0</version>
+                <configuration>
+                    <zapPort>9090</zapPort>
+                    <targetUrl>http://localhost:8090/</targetUrl>
+                    <authenticationType>form</authenticationType>
+                        <username>jperez</username>
+                        <password>123</password>
+                        <loginUrl>http://localhost:8090/Login</loginUrl>
+                        <loggedInRegex><![CDATA[\Q<p>Usuario:\E]]></loggedInRegex>
+                    <zapOptions>-daemon -config scanner.strength=HIGH -config api.disablekey=true -config api.incerrordetails=true -config proxy.ip=0.0.0.0</zapOptions>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

@@ -16,7 +16,6 @@ pipeline {
             steps {
                 script {
                     startZap(host: "127.0.0.1", port: 9090, timeout:500, zapHome: "/opt/zaproxy")
-                    importZapScanPolicy(policyPath: "${env.WORKSPACE}/scan.policy")
                 }
             }
         }
@@ -29,9 +28,7 @@ pipeline {
         }
         stage('ZAP Attack') {
             steps {
-                script {
-                    runZapAttack(scanPolicyName: "scan")
-                }
+                sh 'mvn -Dzap.path=/opt/zaproxy de.martinreinhardt-online:zap-maven-plugin:startZap de.martinreinhardt-online:zap-maven-plugin:analyze'
             }
         }
     }
