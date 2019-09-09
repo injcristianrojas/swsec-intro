@@ -12,9 +12,16 @@ pipeline {
                 sh 'mvn compile spotbugs:spotbugs -Dformat=XML org.owasp:dependency-check-maven:check jetty:run-forked'
             }
         }
+        stage('ZAP startup') {
+            steps {
+                script {
+                    startZap(host: "127.0.0.1", port: 9090, timeout:500, zapHome: "/opt/zaproxy")
+                }
+            }
+        }
         stage('ZAP Attack') {
             steps {
-                sh 'mvn -Dzap.path=/opt/zaproxy de.martinreinhardt-online:zap-maven-plugin:startZap de.martinreinhardt-online:zap-maven-plugin:analyze'
+                sh 'mvn -DzapPath=/opt/zaproxy de.martinreinhardt-online:zap-maven-plugin:analyze'
             }
         }
     }
