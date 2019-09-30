@@ -9,7 +9,7 @@
     <name>Fans de las Aves Chilenas</name>
 
     <properties>
-        <jetty.version>9.4.6.v20170531</jetty.version>
+        <jetty.version>9.4.20.v20190813</jetty.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -81,6 +81,13 @@
 
     <build>
         <plugins>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+            
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
