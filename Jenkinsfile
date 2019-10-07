@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage('Preparation') { // for display purposes
+        stage('Preparation') {
             steps {
                 git branch: 'jenkins', url: 'https://github.com/injcristianrojas/swsec-intro.git'
             }
