@@ -2,7 +2,6 @@ version: '3'
 
 services:
   sonarqube:
-    image: sonarqube:7.7-community
     build: .
     ports:
       - '9000:9000'
