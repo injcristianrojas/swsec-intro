@@ -1,4 +1,4 @@
-FROM maven:alpine
+FROM maven:3.6.3-ibmjava-alpine
 
 RUN ["mkdir", "/app"]
 WORKDIR /app
