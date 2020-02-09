@@ -16,8 +16,6 @@ import org.apache.http.util.EntityUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import swsec.api.helpers.Constants;
-
 public class RestApiITest {
 
 	private static String EXAMPLE_MESSAGE = "Bienvenidos a Fans de las Aves Chilenas. Soy el administrador.";
@@ -25,7 +23,7 @@ public class RestApiITest {
 	
 	@Before
 	public void setUp() throws ClientProtocolException, IOException {
-		jwtToken = Constants.USE_JWT_AUTH ? getJWTToken() : null;
+		jwtToken = ApplicationProperties.INSTANCE.usesJWT() ? getJWTToken() : null;
 	}
 	
 	private String getJWTToken() throws ClientProtocolException, IOException {

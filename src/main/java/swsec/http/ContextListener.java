@@ -4,15 +4,29 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import swsec.Helpers;
+import swsec.ApplicationProperties;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        Logger.getLogger(getClass().getName()).log(Level.INFO, "JWT is " + (ApplicationProperties.INSTANCE.usesJWT() ? "enabled" : "disabled"));
+        populateDatabase();
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+
+    }
+
+    private void populateDatabase() {
         try {
             Class.forName("org.sqlite.JDBC");
             String messageTable = "CREATE TABLE IF NOT EXISTS 'mensajes' ('id' INTEGER PRIMARY KEY NOT NULL, 'mensaje' TEXT NOT NULL );";
@@ -40,11 +54,5 @@ public class ContextListener implements ServletContextListener {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-
     }
 }
