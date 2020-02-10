@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 class Login extends React.Component {
 
@@ -21,8 +22,25 @@ class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('A login was submitted: ' + this.state.username);
-        //event.preventDefault();
+        axios.post(
+            'http://127.0.0.1:8080/api/auth/login/', 
+            {
+                username: this.state.username,
+                password: this.state.password,
+            }
+        ).then(
+            res => {
+                console.log(res.headers['authorization']);
+                alert('Successfully logged in.')
+            }
+        ).catch((error) => {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                alert('Error while logging in.')
+            }
+        });
+        event.preventDefault();
     }
 
     render() {
