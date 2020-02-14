@@ -16,11 +16,11 @@ public class ListaUsuarios extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletContext servletContext;
 
-	public void init(ServletConfig config) throws ServletException {
+	public void init(ServletConfig config) {
 		servletContext = config.getServletContext();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		try {
 			renderHeader(request, response);
 			List<String> usuarios = Helpers.getUsers(Integer.parseInt(request.getParameter("type")));

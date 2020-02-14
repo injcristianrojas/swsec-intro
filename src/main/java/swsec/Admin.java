@@ -21,11 +21,11 @@ public class Admin extends HttpServlet {
 		super();
 	}
 
-	public void init(ServletConfig config) throws ServletException {
+	public void init(ServletConfig config) {
 		servletContext = config.getServletContext();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		try {
 			renderHeader(request, response);
 			if (request.getParameter("delete") != null) {
@@ -44,7 +44,7 @@ public class Admin extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		try {

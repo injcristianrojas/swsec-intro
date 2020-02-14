@@ -7,7 +7,6 @@ import swsec.Helpers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 import java.util.logging.Level;
@@ -30,7 +29,7 @@ public class ContextListener implements ServletContextListener {
             Class.forName("org.sqlite.JDBC");
             String messageTable = "CREATE TABLE IF NOT EXISTS 'mensajes' ('id' INTEGER PRIMARY KEY NOT NULL, 'mensaje' TEXT NOT NULL );";
             String userTable = "CREATE TABLE IF NOT EXISTS 'usuarios' ('id' INTEGER PRIMARY KEY NOT NULL, 'username' VARCHAR(10) NOT NULL, 'password' VARCHAR(10) NOT NULL ,'type' INTEGER);";
-            Connection conn = DriverManager.getConnection(Helpers.getSqliteUrl());
+            Connection conn = DriverManager.getConnection(Helpers.SQLITE_URL);
             Statement stmt = conn.createStatement();
             stmt.setQueryTimeout(30);
             stmt.executeUpdate(userTable);
@@ -49,9 +48,7 @@ public class ContextListener implements ServletContextListener {
             stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('tanderson', 'matrix', '2')");
             stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('zcool', 'god', '2')");
             stmt.executeUpdate("INSERT into mensajes(mensaje) VALUES ('Bienvenidos al foro de Fans de las Aves Chilenas. Soy el Administrador.')");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

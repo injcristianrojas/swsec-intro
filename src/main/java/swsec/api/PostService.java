@@ -28,7 +28,7 @@ public class PostService {
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPostJSON(@HeaderParam("Authorization") String authorization) {
-		List<Post> postList = new ArrayList<Post>();
+		List<Post> postList = new ArrayList<>();
 		try {
 			if (ApplicationProperties.INSTANCE.usesJWT())
 				TokenSecurity.validateJwtTokenSHA(authorization);

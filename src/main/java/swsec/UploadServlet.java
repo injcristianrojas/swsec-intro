@@ -1,7 +1,6 @@
 package swsec;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.Servlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
@@ -22,7 +20,7 @@ public class UploadServlet extends HttpServlet implements Servlet {
 	private static final int MAX_MEMORY_SIZE = 1024 * 1024 * 2;
 	private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 2;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		// Check that we have a file upload request
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
@@ -68,10 +66,8 @@ public class UploadServlet extends HttpServlet implements Servlet {
 			// displays done.jsp page after upload finished
 			getServletContext().getRequestDispatcher("/pictures.jsp").forward(request, response);
 
-		} catch (FileUploadException ex) {
-			throw new ServletException(ex);
-		} catch (Exception ex) {
-			throw new ServletException(ex);
+		} catch (Exception e) {
+			throw new ServletException(e);
 		}
 	}
 }

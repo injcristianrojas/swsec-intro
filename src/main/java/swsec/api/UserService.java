@@ -26,7 +26,7 @@ public class UserService {
         	if (ApplicationProperties.INSTANCE.usesJWT())
         		TokenSecurity.validateJwtTokenSHA(authorization);
         	Class.forName("org.sqlite.JDBC");
-            Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
+            Connection conexion = DriverManager.getConnection(Helpers.SQLITE_URL);
             Statement statement = conexion.createStatement();
             String query = "SELECT * FROM usuarios WHERE id = " + id;
             ResultSet resultado = statement.executeQuery(query);

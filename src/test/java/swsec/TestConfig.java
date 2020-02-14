@@ -1,6 +1,6 @@
 package swsec;
 
 public class TestConfig {
-	public static String DEFAULT_USER = "jperez";
-	public static String DEFAULT_PASSWORD = "123";
+	public static final String DEFAULT_USER = "jperez";
+	public static final String DEFAULT_PASSWORD = "123";
 }

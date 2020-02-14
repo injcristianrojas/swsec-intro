@@ -21,7 +21,7 @@ public class Wall extends HttpServlet {
 		super();
 	}
 
-	public void init(ServletConfig config) throws ServletException {
+	public void init(ServletConfig config) {
 		servletContext = config.getServletContext();
 	}
 
@@ -38,7 +38,7 @@ public class Wall extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		String mensaje = request.getParameter("mensaje");
 		try {
 			Helpers.insertPost(mensaje);

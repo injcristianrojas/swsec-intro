@@ -9,9 +9,9 @@ public class PropertiesITest {
     @Test
     public void propertiesTest() {
         if (ApplicationProperties.INSTANCE.getProperties().contains("true")) {
-            Assert.assertEquals(true, ApplicationProperties.INSTANCE.usesJWT());
+            Assert.assertTrue(ApplicationProperties.INSTANCE.usesJWT());
         } else {
-            Assert.assertEquals(false, ApplicationProperties.INSTANCE.usesJWT());
+            Assert.assertFalse(ApplicationProperties.INSTANCE.usesJWT());
         }
     }
 
