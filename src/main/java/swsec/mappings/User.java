@@ -3,6 +3,7 @@ package swsec.mappings;
 public class User {
 
     String username;
+    String password;
     int type;
     
     public User() {
@@ -10,6 +11,10 @@ public class User {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setUsername(String username) {

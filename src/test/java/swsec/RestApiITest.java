@@ -29,7 +29,7 @@ public class RestApiITest {
 	
 	private String getJWTToken() throws IOException {
 		HttpPost request = new HttpPost("http://127.0.0.1:8080/api/auth/login");
-		StringEntity rawData = new StringEntity("{ \"username\": \"" + TestConfig.DEFAULT_USER + "\", \"password\": \"" + TestConfig.DEFAULT_PASSWORD + "\"}");
+		StringEntity rawData = new StringEntity("{ \"username\": \"" + ApplicationProperties.INSTANCE.testUser() + "\", \"password\": \"" + ApplicationProperties.INSTANCE.testPassword() + "\"}");
 		request.addHeader("Content-Type", "application/json");
 		request.setEntity(rawData);
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
@@ -53,7 +53,8 @@ public class RestApiITest {
 		request.addHeader("Content-Type", "application/json");
 		request.setEntity(rawData);
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
-		assertEquals(response.getStatusLine().getStatusCode(), Response.Status.OK.getStatusCode());
+		System.out.print(response.getStatusLine().getStatusCode());
+		assertEquals(Response.Status.OK.getStatusCode(), response.getStatusLine().getStatusCode());
 	}
 	
 	@Test
