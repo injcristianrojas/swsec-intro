@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.List;
 
 public class ListaUsuarios extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,25 +21,19 @@ public class ListaUsuarios extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		renderHeader(request, response);
 		try {
-			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
-			Statement statement = conexion.createStatement();
-			String query = "SELECT * FROM usuarios WHERE type=" + request.getParameter("type");
-			ResultSet resultado = statement.executeQuery(query);
+			renderHeader(request, response);
+			List<String> usuarios = Helpers.getUsers(Integer.parseInt(request.getParameter("type")));
 			PrintWriter writer = response.getWriter();
 			writer.println("<table border='1'>");
 			writer.println("<tr><td><b>Usuarios del sistema</b></td></tr>");
-			while (resultado.next())
-				writer.println("<tr><td>" + resultado.getString("username") + "</td></tr>");
+			for (String usuario: usuarios)
+				writer.println("<tr><td>" + usuario + "</td></tr>");
 			writer.println("</table>");
-			statement.close();
-			conexion.close();
+			renderFooter(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-		renderFooter(request, response);
 	}
 
 	private void renderHeader(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

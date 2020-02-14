@@ -35,6 +35,26 @@ public class Helpers {
 		statement.close();
 		conexion.close();
 	}
+
+	public static void insertUser(String username, String password) throws ClassNotFoundException, SQLException {
+		Class.forName("org.sqlite.JDBC");
+		Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
+		Statement statement = conexion.createStatement();
+		String query = "INSERT INTO usuarios(username, password, type) VALUES ('" + username + "', '" + password + "', '2')";
+		statement.executeUpdate(query);
+		statement.close();
+		conexion.close();
+	}
+
+	public static void deleteUser(String username) throws ClassNotFoundException, SQLException {
+		Class.forName("org.sqlite.JDBC");
+		Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
+		Statement statement = conexion.createStatement();
+		String query = "DELETE FROM usuarios WHERE username = '" + username + "'" ;
+		statement.executeUpdate(query);
+		statement.close();
+		conexion.close();
+	}
     
 	public static List<String> getPosts() throws ClassNotFoundException, SQLException {
 		Class.forName("org.sqlite.JDBC");
@@ -48,9 +68,24 @@ public class Helpers {
 		statement.close();
 		conexion.close();
 		return mensajes;
+    }
+    
+    public static List<String> getUsers(int userType) throws ClassNotFoundException, SQLException {
+		Class.forName("org.sqlite.JDBC");
+		Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
+		Statement statement = conexion.createStatement();
+		String query = "select username from usuarios" + (userType != 0 ? " where type = " + userType : "");
+		ResultSet resultado = statement.executeQuery(query);
+		List<String> usernames = new ArrayList<String>();
+		while (resultado.next())
+			usernames.add(resultado.getString(1));
+		statement.close();
+		conexion.close();
+		return usernames;
 	}
 
     public static final String getSqliteUrl() {
         return "jdbc:sqlite:swsecdemo.sqlite";
     }
+
 }

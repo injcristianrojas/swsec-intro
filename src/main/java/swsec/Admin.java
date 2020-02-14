@@ -26,12 +26,18 @@ public class Admin extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		renderHeader(request, response);
 		try {
-			List<String> mensajes = Helpers.getPosts();
+			renderHeader(request, response);
+			if (request.getParameter("delete") != null) {
+				Helpers.deleteUser(request.getParameter("delete"));
+			}
+			List<String> usuarios = Helpers.getUsers(2);
 			PrintWriter writer = response.getWriter();
-			for (String mensaje: mensajes)
-				writer.println("<p>" + mensaje + "</p>");
+			writer.println("<table border='1'>");
+			writer.println("<tr><td colspan='2'><b>Usuarios del sistema</b></td></tr>");
+			for (String usuario: usuarios)
+				writer.println("<tr><td>" + usuario + "</td><td><a href='Admin?delete=" + usuario + "'>&nbsp;Borrar&nbsp;</a></td></tr>");
+			writer.println("</table>");
 			renderFooter(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
@@ -39,9 +45,10 @@ public class Admin extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mensaje = request.getParameter("mensaje");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 		try {
-			Helpers.insertPost(mensaje);
+			Helpers.insertUser(username, password);
 			doGet(request, response);
 		} catch (Exception e) {
 			throw new ServletException(e);
@@ -57,11 +64,12 @@ public class Admin extends HttpServlet {
 		if (session.getAttribute("username") != null) {
 			out.println("<p>Usuario: " + session.getAttribute("username") + "</p>");
 		}
-		out.println("<form action='Wall' method='post'>");
-		out.println("<input type='text' name='mensaje' id='mensaje' size='70'>");
-		out.println("<input type='submit' value='Postear'>");
+		out.println("<form action='Admin' method='post'>");
+		out.println("Nombre de usuario: <input type='text' name='username' id='username' size='20'> ");
+		out.println("Password: <input type='text' name='password' id='password' type='password' size='20'>");
+		out.println("<input type='submit' value='A&ntilde;adir'>");
 		out.println("</form>");
-		out.println("<p><a href='index.jsp'>Volver</a></p>");
+		out.println("<p />");
 	}
 
 	private void renderFooter(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
