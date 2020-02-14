@@ -23,8 +23,10 @@ public class UserService {
 
         User user = new User();
         try {
-        	if (ApplicationProperties.INSTANCE.usesJWT())
-        		TokenSecurity.validateJwtTokenSHA(authorization);
+            if (ApplicationProperties.INSTANCE.usesJWT()) {
+                if (!TokenSecurity.isTokenValid(authorization))
+                    throw new Exception();
+            }
         	Class.forName("org.sqlite.JDBC");
             Connection conexion = DriverManager.getConnection(Helpers.SQLITE_URL);
             Statement statement = conexion.createStatement();
@@ -47,7 +49,7 @@ public class UserService {
     public Response deleteUser(@PathParam("username") String username, @HeaderParam("Authorization") String authorization) {
         try {
             if (ApplicationProperties.INSTANCE.usesJWT())
-                TokenSecurity.validateJwtTokenSHA(authorization);
+                TokenSecurity.isTokenValid(authorization);
             Helpers.deleteUser(username);
         } catch (Exception e) {
             return ResponseBuilder.createResponse( Response.Status.UNAUTHORIZED );

@@ -3,7 +3,6 @@ package swsec.mappings;
 public class User {
 
     String username;
-    String password;
     int type;
     
     public User() {
@@ -17,21 +16,9 @@ public class User {
         this.username = username;
     }
 
-    public int getType() {
-        return type;
-    }
-
     public void setType(int type) {
         this.type = type;
     }
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	@Override
     public String toString() {

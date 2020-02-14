@@ -5,6 +5,7 @@ import java.security.Key;
 
 import org.jose4j.jws.JsonWebSignature;
 import org.jose4j.jwt.JwtClaims;
+import org.jose4j.jwt.MalformedClaimException;
 import org.jose4j.jwt.consumer.InvalidJwtException;
 import org.jose4j.jwt.consumer.JwtConsumer;
 import org.jose4j.jwt.consumer.JwtConsumerBuilder;
@@ -32,7 +33,7 @@ public class TokenSecurity {
 	    return jws.getCompactSerialization();
 	}
 	
-	public static void validateJwtTokenSHA(String jwt) throws InvalidJwtException {
+	public static boolean isTokenValid(String jwt) throws InvalidJwtException, MalformedClaimException {
 		Key key = new HmacKey(Constants.SECRET.getBytes(StandardCharsets.UTF_8));
 		JwtConsumer jwtConsumer = new JwtConsumerBuilder()
 		        .setRequireExpirationTime()
@@ -43,6 +44,7 @@ public class TokenSecurity {
 		        .setRelaxVerificationKeyValidation() // relaxes key length requirement 
 		        .build();
 
-		JwtClaims processedClaims = jwtConsumer.processToClaims(jwt.replace(Constants.TOKEN_PREFIX, ""));
+		JwtClaims claims = jwtConsumer.processToClaims(jwt.replace(Constants.TOKEN_PREFIX, ""));
+		return claims.getIssuer().equals(Constants.TOKEN_ISSUER);
 	}
 }

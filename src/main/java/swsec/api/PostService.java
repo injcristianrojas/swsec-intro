@@ -30,8 +30,10 @@ public class PostService {
 	public Response getPostJSON(@HeaderParam("Authorization") String authorization) {
 		List<Post> postList = new ArrayList<>();
 		try {
-			if (ApplicationProperties.INSTANCE.usesJWT())
-				TokenSecurity.validateJwtTokenSHA(authorization);
+			if (ApplicationProperties.INSTANCE.usesJWT()) {
+				if (!TokenSecurity.isTokenValid(authorization))
+					throw new Exception();
+			}
 			List<String> posts = Helpers.getPosts();
 			for (String post : posts)
 				postList.add(new Post(post));
@@ -47,8 +49,10 @@ public class PostService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addPost(String json, @HeaderParam("Authorization") String authorization) {
 		try {
-			if (ApplicationProperties.INSTANCE.usesJWT())
-				TokenSecurity.validateJwtTokenSHA(authorization);
+			if (ApplicationProperties.INSTANCE.usesJWT()) {
+				if (!TokenSecurity.isTokenValid(authorization))
+					throw new Exception();
+			}
 			ObjectMapper mapper = new ObjectMapper();
 			Post post = mapper.readValue(json, Post.class);
 			Helpers.insertPost(post.getMessage());
