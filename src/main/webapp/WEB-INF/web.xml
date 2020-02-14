@@ -56,6 +56,13 @@
         <servlet-class>swsec.Account</servlet-class>
     </servlet>
     <servlet>
+        <description>
+        </description>
+        <display-name>Admin</display-name>
+        <servlet-name>Admin</servlet-name>
+        <servlet-class>swsec.Admin</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>jersey-servlet</servlet-name>
         <servlet-class>
             com.sun.jersey.spi.container.servlet.ServletContainer
@@ -98,6 +105,10 @@
     <servlet-mapping>
         <servlet-name>Account</servlet-name>
         <url-pattern>/Account</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/Admin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>jersey-servlet</servlet-name>

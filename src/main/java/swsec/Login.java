@@ -22,6 +22,7 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		if (checkUserLogin(username, password)) {
 			session.setAttribute("username", username);
+			session.setAttribute("isAdmin", username.equals("admin") ? "true" : "false");
 			String landingPage = request.getParameter("landingPage");
 			response.sendRedirect(landingPage != null ? landingPage : "saludos.jsp");
 		} else {

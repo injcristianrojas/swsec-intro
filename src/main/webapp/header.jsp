@@ -24,6 +24,9 @@
 				<li><a title="Imagenes" id="images" href="pictures.jsp">Imagenes</a></li><li>|</li>
 				<li><a title="Usuarios" id="users" href="ListaUsuarios?type=2">Usuarios</a></li><li>|</li>
 				<li><a title="Cuenta" id="account" href="cuenta.jsp">Cuenta</a></li><li>|</li>
+				<% if (session.getAttribute("isAdmin").equals("true")) { %>
+				<li><a title="Administración" id="admin" href="Admin">Administraci&oacute;n</a></li><li>|</li>
+				<% } %>
 				<li><a title="Salir" id="exit" href="Exit">Salir</a></li>
 				<% } %>
 			</ul>
