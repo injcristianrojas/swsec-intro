@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import javax.ws.rs.core.Response;
 
@@ -41,8 +42,8 @@ public class RestApiITest {
 		HttpGet request = new HttpGet("http://127.0.0.1:8080/api/users/get/2");
 		if (jwtToken != null) request.addHeader("Authorization", jwtToken);
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
-		String responseString = EntityUtils.toString(response.getEntity(), "UTF-8");
-		assertTrue(responseString.contains("jperez"));
+		String responseString = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
+		assertTrue(responseString.contains(ApplicationProperties.INSTANCE.testUser()));
 	}
 	
 	@Test
@@ -61,7 +62,7 @@ public class RestApiITest {
 		HttpGet request = new HttpGet("http://127.0.0.1:8080/api/posts/get");
 		if (jwtToken != null) request.setHeader("Authorization", jwtToken);
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
-		String responseString = EntityUtils.toString(response.getEntity(), "UTF-8");
+		String responseString = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
 		assertTrue(responseString.contains(EXAMPLE_MESSAGE));
 	}
 
