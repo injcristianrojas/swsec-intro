@@ -37,16 +37,17 @@ public class ContextListener implements ServletContextListener {
             stmt.executeUpdate(messageTable);
             stmt.executeUpdate("DELETE FROM usuarios");
             stmt.executeUpdate("DELETE FROM mensajes");
-            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('jperez', '123', '1')");
-            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('basaber', '12345', '1')");
-            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('skramer', 'power', '1')");
-            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('aeinstein', 'simple', '1')");
-            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('tstark', 'ironman', '1')");
-            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('cpalma', 'lepego', '1')");
-            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('asavage', 'boom', '1')");
-            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('jhyneman', 'boom', '1')");
-            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('tanderson', 'matrix', '1')");
-            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('zcool', 'god', '1')");
+            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('admin', 'admin', '1')");
+            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('jperez', '123', '2')");
+            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('basaber', '12345', '2')");
+            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('skramer', 'power', '2')");
+            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('aeinstein', 'simple', '2')");
+            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('tstark', 'ironman', '2')");
+            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('cpalma', 'lepego', '2')");
+            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('asavage', 'boom', '2')");
+            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('jhyneman', 'boom', '2')");
+            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('tanderson', 'matrix', '2')");
+            stmt.executeUpdate("INSERT INTO usuarios(username, password, type) VALUES ('zcool', 'god', '2')");
             stmt.executeUpdate("INSERT into mensajes(mensaje) VALUES ('Bienvenidos al foro de Fans de las Aves Chilenas. Soy el Administrador.')");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

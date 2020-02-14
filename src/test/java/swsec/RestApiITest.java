@@ -39,7 +39,7 @@ public class RestApiITest {
 
 	@Test
 	public void checkUser() throws ClientProtocolException, IOException {
-		HttpGet request = new HttpGet("http://127.0.0.1:8080/api/users/get/1");
+		HttpGet request = new HttpGet("http://127.0.0.1:8080/api/users/get/2");
 		if (jwtToken != null) request.addHeader("Authorization", jwtToken);
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
 		String responseString = EntityUtils.toString(response.getEntity(), "UTF-8");
