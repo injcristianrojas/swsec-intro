@@ -1,4 +1,4 @@
-package swsec.api.mappings;
+package swsec.mappings;
 
 public class Post {
 	String message;

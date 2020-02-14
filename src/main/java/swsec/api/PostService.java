@@ -18,7 +18,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import swsec.Helpers;
 import swsec.api.helpers.ResponseBuilder;
 import swsec.api.helpers.TokenSecurity;
-import swsec.api.mappings.Post;
+import swsec.mappings.Post;
 import swsec.config.ApplicationProperties;
 
 @Path("/posts")

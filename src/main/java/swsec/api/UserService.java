@@ -3,7 +3,7 @@ package swsec.api;
 import swsec.Helpers;
 import swsec.api.helpers.ResponseBuilder;
 import swsec.api.helpers.TokenSecurity;
-import swsec.api.mappings.User;
+import swsec.mappings.User;
 import swsec.config.ApplicationProperties;
 
 import javax.ws.rs.*;
