@@ -1,4 +1,4 @@
-package swsec;
+package swsec.config;
 
 import java.io.IOException;
 import java.io.FileInputStream;

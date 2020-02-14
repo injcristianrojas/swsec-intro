@@ -1,10 +1,9 @@
-package swsec.http;
+package swsec.config;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import swsec.Helpers;
-import swsec.ApplicationProperties;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

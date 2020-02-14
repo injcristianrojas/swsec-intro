@@ -19,7 +19,7 @@ import swsec.Helpers;
 import swsec.api.helpers.ResponseBuilder;
 import swsec.api.helpers.TokenSecurity;
 import swsec.api.mappings.Post;
-import swsec.ApplicationProperties;
+import swsec.config.ApplicationProperties;
 
 @Path("/posts")
 public class PostService {

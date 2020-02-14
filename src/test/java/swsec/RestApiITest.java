@@ -15,6 +15,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.junit.Before;
 import org.junit.Test;
+import swsec.config.ApplicationProperties;
 
 public class RestApiITest {
 

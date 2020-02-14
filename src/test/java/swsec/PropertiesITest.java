@@ -2,6 +2,7 @@ package swsec;
 
 import org.junit.Test;
 import org.junit.Assert;
+import swsec.config.ApplicationProperties;
 
 public class PropertiesITest {
 

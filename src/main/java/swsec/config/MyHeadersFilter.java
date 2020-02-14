@@ -1,4 +1,4 @@
-package swsec.http;
+package swsec.config;
 
 import java.io.IOException;
 
