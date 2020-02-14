@@ -50,7 +50,6 @@ public class Admin extends HttpServlet {
 
 
 	private void renderHeader(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.addHeader("X-XSS-Protection", "0");
 		PrintWriter out = response.getWriter();
 		RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/header.jsp");
 		dispatcher.include(request, response);
