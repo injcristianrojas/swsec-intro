@@ -14,7 +14,7 @@ public class AttackITest {
 		tester.setBaseUrl("http://127.0.0.1:8080/");
 	}
 
-	public void sqlInjection(String hackcode) {
+	private void sqlInjection(String hackcode) {
 		tester.beginAt("login.jsp");
 		tester.setTextField("username", "hackerMalo");
 		tester.setTextField("password", hackcode);
