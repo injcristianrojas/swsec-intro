@@ -25,7 +25,7 @@ public class UserService {
         try {
             if (ApplicationProperties.INSTANCE.usesJWT()) {
                 if (!TokenSecurity.isTokenValid(authorization))
-                    throw new Exception();
+                    return ResponseBuilder.createResponse(Status.UNAUTHORIZED);
             }
         	Class.forName("org.sqlite.JDBC");
             Connection conexion = DriverManager.getConnection(Helpers.SQLITE_URL);
@@ -38,7 +38,7 @@ public class UserService {
             statement.close();
             conexion.close();
         } catch (Exception e) {
-            return ResponseBuilder.createResponse( Response.Status.UNAUTHORIZED );
+            return ResponseBuilder.createResponse( Status.INTERNAL_SERVER_ERROR );
         }
         return Response.status(Status.OK).entity(user).build();
     }
@@ -48,11 +48,13 @@ public class UserService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteUser(@PathParam("username") String username, @HeaderParam("Authorization") String authorization) {
         try {
-            if (ApplicationProperties.INSTANCE.usesJWT())
-                TokenSecurity.isTokenValid(authorization);
+            if (ApplicationProperties.INSTANCE.usesJWT()) {
+                if (!TokenSecurity.isTokenValid(authorization))
+                    return ResponseBuilder.createResponse(Status.UNAUTHORIZED);
+            }
             Helpers.deleteUser(username);
         } catch (Exception e) {
-            return ResponseBuilder.createResponse( Response.Status.UNAUTHORIZED );
+            return ResponseBuilder.createResponse( Status.INTERNAL_SERVER_ERROR );
         }
         return Response.status(Status.OK).build();
     }

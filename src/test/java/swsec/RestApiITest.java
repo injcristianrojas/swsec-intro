@@ -49,11 +49,10 @@ public class RestApiITest {
 	public void testPost() throws IOException {
 		HttpPost request = new HttpPost("http://127.0.0.1:8080/api/posts/add");
 		if (jwtToken != null) request.addHeader("Authorization", jwtToken);
-		StringEntity rawData = new StringEntity("{ \"message\": \"" + EXAMPLE_MESSAGE+ "\" }");
+		StringEntity rawData = new StringEntity("{ \"message\": \"" + EXAMPLE_MESSAGE + "\" }");
 		request.addHeader("Content-Type", "application/json");
 		request.setEntity(rawData);
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
-		System.out.print(response.getStatusLine().getStatusCode());
 		assertEquals(Response.Status.OK.getStatusCode(), response.getStatusLine().getStatusCode());
 	}
 	

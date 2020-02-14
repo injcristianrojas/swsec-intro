@@ -32,14 +32,14 @@ public class PostService {
 		try {
 			if (ApplicationProperties.INSTANCE.usesJWT()) {
 				if (!TokenSecurity.isTokenValid(authorization))
-					throw new Exception();
+					return ResponseBuilder.createResponse(Status.UNAUTHORIZED);
 			}
 			List<String> posts = Helpers.getPosts();
 			for (String post : posts)
 				postList.add(new Post(post));
 
 		} catch (Exception e) {
-			return ResponseBuilder.createResponse(Response.Status.UNAUTHORIZED);
+			return ResponseBuilder.createResponse(Status.INTERNAL_SERVER_ERROR);
 		}
 		return Response.status(Status.OK).entity(postList).build();
 	}
@@ -51,15 +51,14 @@ public class PostService {
 		try {
 			if (ApplicationProperties.INSTANCE.usesJWT()) {
 				if (!TokenSecurity.isTokenValid(authorization))
-					throw new Exception();
+					return ResponseBuilder.createResponse(Status.UNAUTHORIZED);
 			}
 			ObjectMapper mapper = new ObjectMapper();
 			Post post = mapper.readValue(json, Post.class);
 			Helpers.insertPost(post.getMessage());
 			return ResponseBuilder.createResponse(Response.Status.OK);
 		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseBuilder.createResponse(Response.Status.BAD_REQUEST);
+			return ResponseBuilder.createResponse(Status.INTERNAL_SERVER_ERROR);
 		}
 	}
 
