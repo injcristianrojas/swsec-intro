@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ContextListener implements ServletContextListener {
+public class DatabasePopulater implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         Logger.getLogger(getClass().getName()).log(Level.INFO, "JWT is " + (ApplicationProperties.INSTANCE.usesJWT() ? "enabled" : "disabled"));
