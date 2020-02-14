@@ -6,11 +6,7 @@ import swsec.api.helpers.TokenSecurity;
 import swsec.api.mappings.User;
 import swsec.config.ApplicationProperties;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -45,5 +41,18 @@ public class UserService {
         return Response.status(Status.OK).entity(user).build();
     }
 
+    @DELETE
+    @Path("/delete/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteUser(@PathParam("username") String username, @HeaderParam("Authorization") String authorization) {
+        try {
+            if (ApplicationProperties.INSTANCE.usesJWT())
+                TokenSecurity.validateJwtTokenSHA(authorization);
+            Helpers.deleteUser(username);
+        } catch (Exception e) {
+            return ResponseBuilder.createResponse( Response.Status.UNAUTHORIZED );
+        }
+        return Response.status(Status.OK).build();
+    }
 
 }
