@@ -4,6 +4,7 @@ import net.sourceforge.jwebunit.junit.WebTester;
 
 import org.junit.Before;
 import org.junit.Test;
+import swsec.config.ApplicationProperties;
 
 public class WebLoginITest {
 
@@ -31,7 +32,7 @@ public class WebLoginITest {
 
 	@Test
 	public void userTest1() {
-		loginTest(TestConfig.DEFAULT_USER, TestConfig.DEFAULT_PASSWORD);
+		loginTest(ApplicationProperties.INSTANCE.testUser(), ApplicationProperties.INSTANCE.testPassword());
 	}
 
 	@Test
@@ -82,8 +83,8 @@ public class WebLoginITest {
 	@Test
 	public void dirtyDatabaseTest() {
 		tester.beginAt("login.jsp");
-		tester.setTextField("username", TestConfig.DEFAULT_USER);
-		tester.setTextField("password", TestConfig.DEFAULT_PASSWORD);
+		tester.setTextField("username", ApplicationProperties.INSTANCE.testUser());
+		tester.setTextField("password", ApplicationProperties.INSTANCE.testPassword());
 		tester.submit();
 		try {
 			tester.clickLink("wall");

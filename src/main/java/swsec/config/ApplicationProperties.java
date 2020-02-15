@@ -1,4 +1,4 @@
-package swsec;
+package swsec.config;
 
 import java.io.IOException;
 import java.io.FileInputStream;
@@ -27,5 +27,13 @@ public enum ApplicationProperties {
 
     public boolean usesJWT() {
         return properties.getProperty("jwt.enabled").equals("true");
+    }
+
+    public String testUser() {
+        return properties.getProperty("test.default_user");
+    }
+
+    public String testPassword() {
+        return properties.getProperty("test.default_password");
     }
 }

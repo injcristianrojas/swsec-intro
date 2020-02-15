@@ -21,7 +21,7 @@ public class Wall extends HttpServlet {
 		super();
 	}
 
-	public void init(ServletConfig config) throws ServletException {
+	public void init(ServletConfig config) {
 		servletContext = config.getServletContext();
 	}
 
@@ -38,7 +38,7 @@ public class Wall extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		String mensaje = request.getParameter("mensaje");
 		try {
 			Helpers.insertPost(mensaje);
@@ -50,7 +50,6 @@ public class Wall extends HttpServlet {
 
 
 	private void renderHeader(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.addHeader("X-XSS-Protection", "0");
 		PrintWriter out = response.getWriter();
 		RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/header.jsp");
 		dispatcher.include(request, response);

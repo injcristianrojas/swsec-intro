@@ -1,6 +1,5 @@
 package swsec;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,12 +15,13 @@ public class Login extends HttpServlet {
 		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession(true);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		if (checkUserLogin(username, password)) {
 			session.setAttribute("username", username);
+			session.setAttribute("isAdmin", username.equals("admin") ? "true" : "false");
 			String landingPage = request.getParameter("landingPage");
 			response.sendRedirect(landingPage != null ? landingPage : "saludos.jsp");
 		} else {

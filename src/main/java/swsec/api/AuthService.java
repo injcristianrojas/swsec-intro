@@ -11,7 +11,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import swsec.api.helpers.ResponseBuilder;
 import swsec.api.helpers.TokenSecurity;
-import swsec.api.mappings.User;
+import swsec.mappings.User;
 
 @Path("/auth")
 public class AuthService {
