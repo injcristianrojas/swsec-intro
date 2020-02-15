@@ -99,6 +99,7 @@
                 <version>${jetty.version}</version>
                 <configuration>
                     <scanIntervalSeconds>3</scanIntervalSeconds>
+                    <reload>manual</reload>
                     <stopKey>stopKey</stopKey>
                     <stopPort>8081</stopPort>
                     <stopWait>10</stopWait>
