@@ -1,6 +1,8 @@
 package swsec;
 
 import net.sourceforge.jwebunit.junit.WebTester;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,7 +22,6 @@ public class AttackITest {
 		tester.setTextField("password", hackcode);
 		tester.submit();
 		tester.assertTextPresent("Usuario: " + "hackerMalo");
-		tester.clickLink("exit");
 	}
 
 	@Test
@@ -31,5 +32,10 @@ public class AttackITest {
 	@Test
 	public void sqlInjection2() {
 		sqlInjection("' or '1'='1");
+	}
+
+	@After
+	public void close() {
+		tester.clickLink("exit");
 	}
 }
