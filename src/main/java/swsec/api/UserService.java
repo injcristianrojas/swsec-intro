@@ -11,6 +11,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
 import java.sql.*;
 
 @Path("/users")
@@ -42,6 +44,24 @@ public class UserService {
         }
         return Response.status(Status.OK).entity(user).build();
     }
+
+    @POST
+    @Path("/add")
+    @Consumes(MediaType.APPLICATION_JSON)
+	public Response addUser(String json, @HeaderParam("Authorization") String authorization) {
+		try {
+			if (ApplicationProperties.INSTANCE.usesJWT()) {
+				if (!TokenSecurity.isTokenValid(authorization))
+					return ResponseBuilder.createResponse(Status.UNAUTHORIZED);
+			}
+            ObjectMapper mapper = new ObjectMapper();
+            User user = mapper.readValue(json, User.class);
+			Helpers.insertUser(user.getUsername(), user.getPassword());
+			return ResponseBuilder.createResponse(Response.Status.OK);
+		} catch (Exception e) {
+			return ResponseBuilder.createResponse(Status.INTERNAL_SERVER_ERROR);
+		}
+	}
 
     @DELETE
     @Path("/delete/{username}")

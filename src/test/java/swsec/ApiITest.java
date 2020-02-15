@@ -18,7 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 import swsec.config.ApplicationProperties;
 
-public class RestApiITest {
+public class ApiITest {
 
 	private static final String EXAMPLE_MESSAGE = "Bienvenidos a Fans de las Aves Chilenas. Soy el administrador.";
 	private String jwtToken;
