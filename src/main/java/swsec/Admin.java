@@ -36,7 +36,7 @@ public class Admin extends HttpServlet {
 			writer.println("<table border='1'>");
 			writer.println("<tr><td colspan='2'><b>Usuarios del sistema</b></td></tr>");
 			for (String usuario: usuarios)
-				writer.println("<tr><td>" + usuario + "</td><td><a href='Admin?delete=" + usuario + "'>&nbsp;Borrar&nbsp;</a></td></tr>");
+				writer.println("<tr><td>" + usuario + "</td><td><a id='delete_" + usuario +  "' href='Admin?delete=" + usuario + "'>&nbsp;Borrar&nbsp;</a></td></tr>");
 			writer.println("</table>");
 			renderFooter(request, response);
 		} catch (Exception e) {

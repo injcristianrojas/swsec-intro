@@ -28,7 +28,7 @@ public class RestApiITest {
 		jwtToken = ApplicationProperties.INSTANCE.usesJWT() ? getJWTToken() : null;
 	}
 	
-	private String getJWTToken() throws IOException {
+	public static String getJWTToken() throws IOException {
 		HttpPost request = new HttpPost("http://127.0.0.1:8080/api/auth/login");
 		StringEntity rawData = new StringEntity("{ \"username\": \"" + ApplicationProperties.INSTANCE.testUser() + "\", \"password\": \"" + ApplicationProperties.INSTANCE.testPassword() + "\"}");
 		request.addHeader("Content-Type", "application/json");
