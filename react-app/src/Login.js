@@ -30,8 +30,8 @@ class Login extends React.Component {
             }
         ).then(
             res => {
-                console.log(res.headers['authorization']);
                 alert('Successfully logged in.')
+                sessionStorage.setItem('jwttoken', res.headers['authorization']);
             }
         ).catch((error) => {
             if (error.response) {
