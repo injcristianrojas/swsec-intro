@@ -1,0 +1,7 @@
+<h1>Posts</h1>
+
+<ul *ngIf="posts">
+  <li *ngFor="let post of posts">
+    <p class="name">{{ post.message }}</p>
+  </li>
+</ul>
