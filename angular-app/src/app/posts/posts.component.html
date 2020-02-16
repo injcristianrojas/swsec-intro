@@ -1,7 +1,10 @@
-<h1>Posts</h1>
+<form>
+  <input type='text' name='mensaje' id='mensaje' size='70'>
+  <input type='submit' value='Postear'>
+</form>
 
-<ul *ngIf="posts">
-  <li *ngFor="let post of posts">
+<span *ngIf="posts">
+  <span *ngFor="let post of posts">
     <p class="name">{{ post.message }}</p>
-  </li>
-</ul>
+  </span>
+</span>
