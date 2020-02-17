@@ -24,7 +24,6 @@ export class PostsComponent implements OnInit {
     this.api.getPosts().subscribe(
       data => {
         this.posts = data;
-        console.log(this.posts);
       },
       error => {
         console.log(error);
@@ -35,7 +34,6 @@ export class PostsComponent implements OnInit {
   insertPost(message) {
     this.api.insertPost(message).subscribe(
       data => {
-        console.log(data);
         this.getPosts();
         this.postForm.reset();
       },
