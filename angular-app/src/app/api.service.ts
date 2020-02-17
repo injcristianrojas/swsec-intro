@@ -11,4 +11,11 @@ export class ApiService {
   getPosts() {
     return this.http.get('http://127.0.0.1:8080/api/posts/get');
   }
+
+  insertPost(message: string) {
+    return this.http.post(
+      'http://127.0.0.1:8080/api/posts/add',
+      {'message': message}
+    )
+  }
 }

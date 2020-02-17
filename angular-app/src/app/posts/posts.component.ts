@@ -17,14 +17,36 @@ export class PostsComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-    this.api.getPosts().subscribe(data => {
-      this.posts = data;
-      console.log(this.posts);
-    })
+    this.getPosts();
+  }
+
+  getPosts() {
+    this.api.getPosts().subscribe(
+      data => {
+        this.posts = data;
+        console.log(this.posts);
+      },
+      error => {
+        console.log(error);
+      }
+      );
+  }
+
+  insertPost(message) {
+    this.api.insertPost(message).subscribe(
+      data => {
+        console.log(data);
+        this.getPosts();
+        this.postForm.reset();
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   onSubmit() {
-    console.log(this.postForm.value.mensaje);
+    this.insertPost(this.postForm.value.mensaje);
   }
 
 }
