@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-posts',
@@ -9,6 +10,9 @@ import { ApiService } from '../api.service';
 export class PostsComponent implements OnInit {
 
   posts: Object;
+  postForm = new FormGroup({
+    mensaje: new FormControl('')
+  });
 
   constructor(private api: ApiService) { }
 
@@ -17,6 +21,10 @@ export class PostsComponent implements OnInit {
       this.posts = data;
       console.log(this.posts);
     })
+  }
+
+  onSubmit() {
+    console.log(this.postForm.value.mensaje);
   }
 
 }
