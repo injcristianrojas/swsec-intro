@@ -20,7 +20,7 @@ export class PostsComponent implements OnInit {
     this.getPosts();
   }
 
-  getPosts() {
+  getPosts(): void {
     this.api.getPosts().subscribe(
       data => {
         this.posts = data;
@@ -31,7 +31,7 @@ export class PostsComponent implements OnInit {
       );
   }
 
-  insertPost(message) {
+  insertPost(message): void {
     this.api.insertPost(message).subscribe(
       data => {
         this.getPosts();
@@ -43,7 +43,7 @@ export class PostsComponent implements OnInit {
     );
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.insertPost(this.postForm.value.mensaje);
   }
 
