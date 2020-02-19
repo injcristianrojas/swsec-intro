@@ -1,1 +1,11 @@
-<p> Bienvenidos a Fans de las Aves Chilenas! </p>
+<ng-template #loggedIn>
+<p>Bienvenidos a Fans de las Aves Chilenas!</p>
+</ng-template>
+
+<form *ngIf="!isSessionOpen() else loggedIn" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<p>
+Nombre: <input type="text" formControlName="username" /><br />
+Password: <input type="password" formControlName="password" /><br />
+<input type="submit" value="Ingresar" />
+</p>
+</form>
