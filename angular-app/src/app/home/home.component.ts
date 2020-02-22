@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ApiService } from '../api.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
     password: new FormControl('')
   })
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private auth: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
   login(username, password): void {
     this.api.login(username, password).subscribe(
       data => {
-        localStorage.setItem('jwtToken', data.headers.get('Authorization'));
+        this.auth.setToken(data.headers.get('Authorization'));
         this.loginForm.reset();
       },
       error => {
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
   }
 
   isSessionOpen(): boolean {
-    return localStorage.getItem('jwtToken') !== null;
+    return this.auth.isSessionOpen();
   }
 
   onSubmit(): void {
