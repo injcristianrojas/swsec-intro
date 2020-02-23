@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { MenuComponent } from './menu/menu.component';
 import { SanitizeHtmlPipe } from './sanitize-html.pipe';
+import { PasswordsComponent } from './passwords/passwords.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +18,13 @@ import { SanitizeHtmlPipe } from './sanitize-html.pipe';
     HomeComponent,
     PostsComponent,
     MenuComponent,
+    PasswordsComponent,
     SanitizeHtmlPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
