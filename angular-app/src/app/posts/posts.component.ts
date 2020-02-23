@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-posts',
@@ -13,6 +13,7 @@ export class PostsComponent implements OnInit {
   postForm = new FormGroup({
     mensaje: new FormControl('')
   });
+  invalid: boolean;
 
   constructor(private api: ApiService) { }
 
@@ -44,7 +45,9 @@ export class PostsComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.insertPost(this.postForm.value.mensaje);
+    this.invalid = this.postForm.status == 'INVALID';
+    if (!this.invalid)
+      this.insertPost(this.postForm.value.mensaje);
   }
 
 }
