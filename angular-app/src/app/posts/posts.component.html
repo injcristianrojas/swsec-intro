@@ -7,6 +7,6 @@
 
 <span *ngIf="posts">
   <span *ngFor="let post of posts">
-    <p class="name">{{ post.message }}</p>
+    <p class="name" [innerHTML]="post.message | sanitizeHtml"></p>
   </span>
 </span>

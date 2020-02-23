@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { MenuComponent } from './menu/menu.component';
+import { SanitizeHtmlPipe } from './sanitize-html.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PostsComponent,
-    MenuComponent
+    MenuComponent,
+    SanitizeHtmlPipe
   ],
   imports: [
     BrowserModule,
