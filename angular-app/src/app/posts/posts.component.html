@@ -3,10 +3,12 @@
   <input type="submit" value="Postear">
 </form>
 
-<p>&nbsp;</p>
-
-<span *ngIf="posts">
-  <span *ngFor="let post of posts">
-    <p class="name" [innerHTML]="post.message | sanitizeHtml"></p>
-  </span>
-</span>
+<table style="text-align: left;" *ngIf="posts">
+  <caption></caption>
+  <th id="msgs">Mensajes</th>
+  <tr>
+    <td *ngFor="let post of posts">
+      <p class="name" [innerHTML]="post.message | sanitizeHtml"></p>
+    </td>
+  </tr>
+</table>
