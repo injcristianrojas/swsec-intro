@@ -6,8 +6,8 @@
 <table style="text-align: left;" *ngIf="posts">
   <caption></caption>
   <th id="msgs">Mensajes</th>
-  <tr>
-    <td *ngFor="let post of posts">
+  <tr *ngFor="let post of posts">
+    <td>
       <p class="name" [innerHTML]="post.message | sanitizeHtml"></p>
     </td>
   </tr>
