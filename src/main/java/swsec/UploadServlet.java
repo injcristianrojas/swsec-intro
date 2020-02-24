@@ -3,7 +3,6 @@ package swsec;
 import java.io.File;
 import java.util.List;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-public class UploadServlet extends HttpServlet implements Servlet {
+public class UploadServlet extends HttpServlet {
 	static final long serialVersionUID = 1L;
 
 	private static final String DATA_DIRECTORY = "upload";
