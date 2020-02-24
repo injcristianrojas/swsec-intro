@@ -9,5 +9,5 @@ RUN ["npm", "install"]
 COPY angular-app/ ./
 
 EXPOSE 4200
-CMD ["npm", "serve"]
+CMD ["ng", "serve"]
 
