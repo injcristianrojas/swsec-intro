@@ -1,18 +1,18 @@
-version: '3'
+version: '3.7'
 
 services:
-  victim:
-    build: .
+  
+  # web:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile-java
+  #   ports:
+  #     - "8080:8080"
+  
+  spa:
+    build:
+      context: .
+      dockerfile: Dockerfile-spa
     ports:
-      - "8080:8080"
-    volumes:
-      - .:/app:rw
+      - "4200:4200"
 
-  # owasp-zap:
-  #   image: owasp/zap2docker-stable
-  #   command: zap-baseline.py -t http://victim:8080
-  #
-  # code-analysis:
-  #   image: owasp/dependency-check
-  #   volumes:
-  #     - .:/app:ro
