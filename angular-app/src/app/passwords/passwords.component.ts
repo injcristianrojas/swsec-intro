@@ -27,7 +27,7 @@ export class PasswordsComponent implements OnInit {
       return lengthMessage + 'Passwords of this length should have lowercase letters, uppercase letters and numbers.';
     }
     if ((passwordlength > 15 && passwordlength < 20) && (!this.containsLowercase() || !this.containsUppercase())) {
-      return lengthMessage + 'Passwords of this length should have lowercase letters and uppercase letters.';;
+      return lengthMessage + 'Passwords of this length should have lowercase letters and uppercase letters.';
     }
     return 'Password meets requirements ;)';
   }
