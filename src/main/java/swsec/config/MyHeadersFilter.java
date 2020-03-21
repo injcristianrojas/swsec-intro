@@ -14,7 +14,7 @@ public class MyHeadersFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) {
-
+		// No need
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class MyHeadersFilter implements Filter {
 
 	@Override
 	public void destroy() {
-
+		// No need
 	}
 
 }
