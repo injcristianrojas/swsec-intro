@@ -1,82 +1,52 @@
-# Aplicación de demostración de Seguridad de Software
+# Software Security Demo App
 
-La presente es una aplicación simple Java (JEE) que sirve para
-realizar una demostración de un programa básico de seguridad de software.
+## Web Application section
 
-Es una aplicación débil a propósito, la cual contiene las siguientes
-vulnerabilidades incluidas en el
-[OWASP Top 10 - 2017](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_2017_Project):
+### Requirements
 
-* __A1: Injection__: SQL Injection en este caso.
-* __A2: Broken Authentication and Session Management__: Falta de redundancia en
-la función de cambio de password, passwords mal almacenadas.
-* __A3: Sensitive Data Exposure__: Passwords mal almacenadas, no uso de HTTPS.
-* __A5: Broken Access Control__: Acceso por URL directa a archivos subidos.
-* __A6: Security Misconfiguration__: Exceso de información en errores (ej. 500).
-* __A7: Cross-Site Scripting (XSS)__.
-* __A9: Using Components with Known Vulnerabilities__: Uso de bibliotecas Java
-vulnerables (existen registros [CVE](https://cve.mitre.org/) asociados a
-tales versiones).
-* __A10: Insufficient Logging & Monitoring__.
+* Java (1.8 or higher)
+* Maven (2 or higher)
 
-## Uso mediante Docker (regular)
+### Install
 
-### Requisitos
+Install Java packages and database using:
 
-* Docker 1.3.2 o superior
-* Docker Compose 1.6.2 o superior
+```shell
+mvn install
+```
 
-### Modo de uso
+### Run
 
-Ya teniendo Docker Compose instalado, debe levantar el servidor. Para ello
-ejecute:
+Launch the server using:
 
-    docker-compose up
+```shell
+mvn jetty:run
+```
 
-El contenedor con el servidor se activará automáticamente y dejará la
-aplicación corriendo en <http://localhost:8080>, y tendrá como nombre algo como
-`swsecintro_victim_1`. Para acceder al shell del servidor, escriba en otro
-terminal:
+Go to http://localhost:8080 and have fun.
 
-    docker exec -it swsecintro_victim_1 /bin/bash
+## Single-Page Application (SPA)
 
-Para detener el contendor, sólo presione <kbd>Ctrl</kbd>+<kbd>C</kbd>.
+### Requirements
 
-## Funcionamiento directo con Maven
+* NodeJS v13.5.0 or higher. It's reccommended to use
+[NVM](https://github.com/nvm-sh/nvm) for environment isolation.
 
-La aplicación es prácticamente autocontenida. Para utilizarla se requiere
-el siguiente software:
+### Install
 
-* Java (1.7 o superior)
-* Maven (2 o superior)
+Go to the angular-app and install packages:
 
-### Modo de uso
+```shell
+cd angular-app/
+npm install
+```
 
-Todos los comandos descritos a continuación, requieren que Usted se sitúe
-en el directorio donde se encuentra el archivo `pom.xml`.
+### Run
 
-### Instalación
+Launch the web application (se the previous section), and then launch the SPA:
 
-Deberá instalar la aplicación. Ésto creará la base de datos
-sqlite para la aplicación web y realizará pruebas de integración para asegurar
-que ésta esté en orden. Eso se logra ejecutando:
+```shell
+ng serve
+```
 
-    mvn install
-
-Después de unos pocos segundos, Usted debería ver el siguiente mensaje:
-
-    [INFO] ------------------------------------------------------------------------
-    [INFO] BUILD SUCCESS
-    [INFO] ------------------------------------------------------------------------
-
-en ese caso, la base de datos estará creada, el servidor estará probado y podrá
-activarlo.
-
-### Activación del servidor
-
-Para echar a correr el servidor, escriba:
-
-    mvn jetty:run
-
-El servidor se activará automáticamente y dejará la aplicación corriendo en
-<http://localhost:8080>.
+Go to http://localhost:4200 and have fun.
