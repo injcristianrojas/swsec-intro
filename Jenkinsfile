@@ -7,17 +7,17 @@ pipeline {
                 git branch: 'jenkins', url: 'https://github.com/injcristianrojas/swsec-intro.git'
             }
         }
-        stage('Webapp compilation') {
+        stage('Webapp build') {
             steps {
                 sh 'mvn compile'
             }
         }
-        stage('Static Code Analysis (SAST)') {
+        stage('Spotbugs (SAST)') {
             steps {
                 sh 'mvn spotbugs:spotbugs'
             }
         }
-        stage('Dependency check') {
+        stage('OWASP Dependency Check (SCA)') {
             steps {
                 sh 'mvn -Dformat=XML org.owasp:dependency-check-maven:check'
             }
@@ -28,14 +28,14 @@ pipeline {
             }
         }
           
-        stage('ZAP service startup') {
+        stage('OWASP ZAP service start') {
             steps {
                 script {
                     startZap(host: "127.0.0.1", port: 9090, timeout:500, zapHome: "/opt/zaproxy")
                 }
             }
         }
-        stage('Webapp scan (DAST)') {
+        stage('OWASP ZAP (DAST)') {
             steps {
                 sh 'mvn -DzapPath=/opt/zaproxy de.martinreinhardt-online:zap-maven-plugin:analyze'
             }
