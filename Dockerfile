@@ -1,6 +1,6 @@
 # Build using docker build -t jenkins-zaproxy .
 
-FROM jenkins/jenkins:lts-alpine
+FROM jenkinsci/blueocean:1.23.2
 
 USER root
 
