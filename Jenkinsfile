@@ -43,6 +43,7 @@ pipeline {
             script {
                 dependencyCheckPublisher()
                 recordIssues enabledForFailure: true, tool: spotBugs(pattern: 'target/spotbugsXml.xml'), sourceCodeEncoding: 'UTF-8', referenceJobName: 'Plugins/warnings-ng-plugin/master'
+                publishHTML reportDir: 'zapreports', reportFiles: 'zapReport.html', reportName: 'OWASP ZAP Report', reportTitles: 'OWASP ZAP Report'
             }
         }
     }
