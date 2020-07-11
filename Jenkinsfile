@@ -30,7 +30,7 @@ pipeline {
 
         stage('OWASP ZAP (DAST)') {
             steps {
-                sh 'mvn -DzapPath=/opt/zaproxy -DzapPort=9090 de.martinreinhardt-online:zap-maven-plugin:analyze'
+                sh 'mvn de.martinreinhardt-online:zap-maven-plugin:analyze'
             }
         }
     }
@@ -42,7 +42,6 @@ pipeline {
         success {
             script {
                 dependencyCheckPublisher()
-                archiveZap()
                 recordIssues enabledForFailure: true, tool: spotBugs(pattern: 'target/spotbugsXml.xml'), sourceCodeEncoding: 'UTF-8', referenceJobName: 'Plugins/warnings-ng-plugin/master'
             }
         }
