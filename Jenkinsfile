@@ -27,14 +27,7 @@ pipeline {
                 sh 'mvn jetty:run-forked'
             }
         }
-          
-        stage('OWASP ZAP service start') {
-            steps {
-                script {
-                    startZap(host: "127.0.0.1", port: 9090, timeout:500, zapHome: "/opt/zaproxy")
-                }
-            }
-        }
+
         stage('OWASP ZAP (DAST)') {
             steps {
                 sh 'mvn -DzapPath=/opt/zaproxy de.martinreinhardt-online:zap-maven-plugin:analyze'
