@@ -203,6 +203,7 @@
                         <loginUrl>http://localhost:8090/Login</loginUrl>
                         <loggedInRegex><![CDATA[\Q<p>Usuario:\E]]></loggedInRegex>
                     <zapOptions>-daemon -config scanner.strength=HIGH -config api.disablekey=true -config api.incerrordetails=true -config proxy.ip=0.0.0.0</zapOptions>
+                    <reportPath>${project.build.directory}</reportPath>
                 </configuration>
             </plugin>
 
