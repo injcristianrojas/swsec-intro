@@ -30,7 +30,7 @@ pipeline {
 
         stage('OWASP ZAP (DAST)') {
             steps {
-                sh 'mvn -DzapPath=/opt/zaproxy de.martinreinhardt-online:zap-maven-plugin:analyze'
+                sh 'mvn -DzapPath=/opt/zaproxy -DzapPort=9090 de.martinreinhardt-online:zap-maven-plugin:analyze'
             }
         }
     }
