@@ -16,10 +16,10 @@ import javax.ws.rs.core.Response.Status;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import swsec.Helpers;
-import swsec.api.helpers.Constants;
 import swsec.api.helpers.ResponseBuilder;
 import swsec.api.helpers.TokenSecurity;
-import swsec.api.mappings.Post;
+import swsec.mappings.Post;
+import swsec.config.ApplicationProperties;
 
 @Path("/posts")
 public class PostService {
@@ -28,16 +28,18 @@ public class PostService {
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPostJSON(@HeaderParam("Authorization") String authorization) {
-		List<Post> postList = new ArrayList<Post>();
+		List<Post> postList = new ArrayList<>();
 		try {
-			if (Constants.USE_JWT_AUTH)
-				TokenSecurity.validateJwtTokenSHA(authorization);
+			if (ApplicationProperties.INSTANCE.usesJWT()) {
+				if (!TokenSecurity.isTokenValid(authorization))
+					return ResponseBuilder.createResponse(Status.UNAUTHORIZED);
+			}
 			List<String> posts = Helpers.getPosts();
 			for (String post : posts)
 				postList.add(new Post(post));
 
 		} catch (Exception e) {
-			return ResponseBuilder.createResponse(Response.Status.UNAUTHORIZED);
+			return ResponseBuilder.createResponse(Status.INTERNAL_SERVER_ERROR);
 		}
 		return Response.status(Status.OK).entity(postList).build();
 	}
@@ -47,15 +49,16 @@ public class PostService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addPost(String json, @HeaderParam("Authorization") String authorization) {
 		try {
-			if (Constants.USE_JWT_AUTH)
-				TokenSecurity.validateJwtTokenSHA(authorization);
+			if (ApplicationProperties.INSTANCE.usesJWT()) {
+				if (!TokenSecurity.isTokenValid(authorization))
+					return ResponseBuilder.createResponse(Status.UNAUTHORIZED);
+			}
 			ObjectMapper mapper = new ObjectMapper();
 			Post post = mapper.readValue(json, Post.class);
 			Helpers.insertPost(post.getMessage());
 			return ResponseBuilder.createResponse(Response.Status.OK);
 		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseBuilder.createResponse(Response.Status.BAD_REQUEST);
+			return ResponseBuilder.createResponse(Status.INTERNAL_SERVER_ERROR);
 		}
 	}
 

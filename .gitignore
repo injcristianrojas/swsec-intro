@@ -7,15 +7,13 @@
 .classpath
 .project
 .settings/
-.gradle/
-.victims/
 .idea/
+.vscode/
 bin/
 target/
 build/
 src/main/webapp/findbugs
 src/main/webapp/upload/*
-
 dependency_check/
 
 *.vscode*

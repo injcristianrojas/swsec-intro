@@ -19,7 +19,7 @@ public class Saludos extends HttpServlet {
 		super();
 	}
 
-	public void init(ServletConfig config) throws ServletException {
+	public void init(ServletConfig config) {
 		sc = config.getServletContext();
 	}
 

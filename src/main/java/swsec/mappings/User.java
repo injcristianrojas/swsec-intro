@@ -1,10 +1,10 @@
-package swsec.api.mappings;
+package swsec.mappings;
 
 public class User {
 
+    int type;
     String username;
     String password;
-    int type;
     
     public User() {
     }
@@ -13,25 +13,25 @@ public class User {
         return username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public int getType() {
-        return type;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setType(int type) {
         this.type = type;
     }
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public int getType() {
+        return type;
+    }
 
 	@Override
     public String toString() {

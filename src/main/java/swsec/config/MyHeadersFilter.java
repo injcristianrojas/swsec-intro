@@ -1,4 +1,4 @@
-package swsec.http;
+package swsec.config;
 
 import java.io.IOException;
 
@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 public class MyHeadersFilter implements Filter {
 
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-
+	public void init(FilterConfig filterConfig) {
+		// No need
 	}
 
 	@Override
@@ -23,14 +23,16 @@ public class MyHeadersFilter implements Filter {
 		final HttpServletResponse httpResponse = (HttpServletResponse) response;
         httpResponse.addHeader("Access-Control-Allow-Origin", "*");
         httpResponse.addHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Authorization");
-        httpResponse.addHeader("Access-Control-Expose-Headers", "Content-Type, Authorization");
+        httpResponse.addHeader("Access-Control-Allow-Methods", "*");
+		httpResponse.addHeader("Access-Control-Expose-Headers", "Content-Type, Authorization");
+		httpResponse.addHeader("X-XSS-Protection", "0");
         chain.doFilter(request, response);
 		
 	}
 
 	@Override
 	public void destroy() {
-
+		// No need
 	}
 
 }

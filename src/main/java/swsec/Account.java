@@ -2,9 +2,6 @@ package swsec;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -23,21 +20,17 @@ public class Account extends HttpServlet {
 		super();
 	}
 
-	public void init(ServletConfig config) throws ServletException {
+	public void init(ServletConfig config) {
 		servletContext = config.getServletContext();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		HttpSession session = request.getSession(true);
 		String password = request.getParameter("password");
-		renderHeader(request, response);
 		try {
-			Class.forName("org.sqlite.JDBC");
-			Connection conexion = DriverManager.getConnection(Helpers.getSqliteUrl());
-			Statement statement = conexion.createStatement();
+			renderHeader(request, response);
 			String username = (String) session.getAttribute("username");
-			String query = "UPDATE usuarios set password = '" + password + "' where username = '" + username + "'";
-			int updatedRows = statement.executeUpdate(query);
+			int updatedRows = Helpers.getUpdatedRows(username, password);
 			PrintWriter writer = response.getWriter();
 			writer.println(updatedRows > 0 ? "Password cambiada exitosamente."
 					: "Error al intentar cambiar la password<br /><a href='cuenta.jsp'>Volver</a>");
