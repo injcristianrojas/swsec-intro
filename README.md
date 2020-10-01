@@ -62,4 +62,4 @@ ng build --prod
 node serve.js
 ```
 
-Go to http://localhost:1337 and have fun.
+Go to http://localhost:1337 and have fun. No auto-reload, though.
