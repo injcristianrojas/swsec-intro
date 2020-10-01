@@ -16,3 +16,4 @@ src/main/webapp/findbugs
 src/main/webapp/upload/*
 dependency_check/
 logs/
+node_modules/
