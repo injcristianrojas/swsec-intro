@@ -43,6 +43,8 @@ npm install
 
 ### Run
 
+#### App development mode
+
 Launch the web application (se the previous section), and then launch the SPA:
 
 ```shell
@@ -50,3 +52,14 @@ ng serve
 ```
 
 Go to http://localhost:4200 and have fun.
+
+#### Production (compiled) mode
+
+If you want to test the compiled app (i.e. for CORS, CSP demos):
+
+```shell
+ng build --prod
+node serve.js
+```
+
+Go to http://localhost:1337 and have fun.
