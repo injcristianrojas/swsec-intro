@@ -5,7 +5,9 @@ var express = require("express");
 var app = express();
 var dir = __dirname + '/dist/angular-app'
 app.use((req, res, next) => {
-    res.append('Advice', 'Put your response headers here');
+    res.append('Cache-Control', "no-cache, no-store, must-revalidate");
+    res.append('Pragma', "no-cache");
+    res.append('Expires', "0");
     next();
 });
 app.use('/', express.static(dir));
