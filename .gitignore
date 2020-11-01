@@ -17,3 +17,4 @@ src/main/webapp/upload/*
 dependency_check/
 
 *.vscode*
+logs/*
