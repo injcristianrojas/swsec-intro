@@ -49,18 +49,19 @@ Launch the web application (se the previous section), and then launch the SPA:
 ng serve
 ```
 
-### ESPECIAL: Sonarqube
+### SPECIAL: Sonarqube
 
-Para esto se requiere Docker y Docker Compose.
+You will require Docker and Docker Compose for this.
 
-En un terminal, lanzar SonarQube:
+In a terminal, launch SonarQube:
 
 ```shell
 cd sonarqube
 docker-compose up
 ```
 
-En otro terminal, envíe el análisis a SonarQube:
+In another terminar, send the automated security analysis to the SonarQube
+container you just launched:
 
 ```shell
 mvn compile findbugs:findbugs dependency-check:check sonar:sonar
