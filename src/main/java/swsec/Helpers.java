@@ -27,11 +27,11 @@ public class Helpers {
         return numFilas > 0;
     }
 
-	public static List<String> getUsers(int userType) throws ClassNotFoundException, SQLException {
+	public static List<String> getUsers(String userType) throws ClassNotFoundException, SQLException {
 		Class.forName("org.sqlite.JDBC");
 		Connection conexion = DriverManager.getConnection(SQLITE_URL);
 		Statement statement = conexion.createStatement();
-		String query = "select username from usuarios" + (userType != 0 ? " where type = " + userType : "");
+		String query = "select username from usuarios" + (userType != null ? " where type = " + userType : "");
 		ResultSet resultado = statement.executeQuery(query);
 		List<String> usernames = new ArrayList<>();
 		while (resultado.next())

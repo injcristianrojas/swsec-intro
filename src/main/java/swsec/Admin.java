@@ -31,7 +31,7 @@ public class Admin extends HttpServlet {
 			if (request.getParameter("delete") != null) {
 				Helpers.deleteUser(request.getParameter("delete"));
 			}
-			List<String> usuarios = Helpers.getUsers(2);
+			List<String> usuarios = Helpers.getUsers("2");
 			PrintWriter writer = response.getWriter();
 			writer.println("<table border='1'>");
 			writer.println("<tr><td colspan='2'><b>Usuarios del sistema</b></td></tr>");

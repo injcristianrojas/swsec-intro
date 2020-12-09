@@ -23,7 +23,7 @@ public class ListaUsuarios extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		try {
 			renderHeader(request, response);
-			List<String> usuarios = Helpers.getUsers(Integer.parseInt(request.getParameter("type")));
+			List<String> usuarios = Helpers.getUsers(request.getParameter("type"));
 			PrintWriter writer = response.getWriter();
 			writer.println("<table border='1'>");
 			writer.println("<tr><td><b>Usuarios del sistema</b></td></tr>");
