@@ -10,6 +10,10 @@
     <properties>
         <jetty.version>9.4.20.v20190813</jetty.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
+        <sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
+        <sonar.dependencyCheck.jsonReportPath>target/dependency-check-report.json</sonar.dependencyCheck.jsonReportPath>
+        <sonar.zaproxy.reportPath>target/zap-reports/zapReport.xml</sonar.zaproxy.reportPath>
     </properties>
 
     <dependencies>
@@ -182,7 +186,7 @@
                 <version>4.1.4</version>
                 <configuration>
                     <effort>Max</effort>
-                    <threshold>Low</threshold>
+                    <threshold>Medium</threshold>
                     <failOnError>false</failOnError>
                     <plugins>
                         <plugin>
@@ -199,7 +203,10 @@
                 <artifactId>dependency-check-maven</artifactId>
                 <version>5.3.2</version>
                 <configuration>
-                    <formats>HTML,XML</formats>
+                    <formats>HTML,XML,JSON</formats>
+                    <nodeAuditAnalyzerEnabled>false</nodeAuditAnalyzerEnabled>
+                    <retireJsAnalyzerEnabled>false</retireJsAnalyzerEnabled>
+                    <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
                 </configuration>
             </plugin>
 
