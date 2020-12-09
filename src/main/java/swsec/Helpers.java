@@ -31,11 +31,11 @@ public class Helpers {
 		Class.forName("org.sqlite.JDBC");
 		Connection conexion = DriverManager.getConnection(SQLITE_URL);
 		Statement statement = conexion.createStatement();
-		String query = "select username from usuarios" + (userType != null ? " where type = " + userType : "");
+		String query = "select * from usuarios" + (userType != null ? " where type = " + userType : "");
 		ResultSet resultado = statement.executeQuery(query);
 		List<String> usernames = new ArrayList<>();
 		while (resultado.next())
-			usernames.add(resultado.getString(1));
+			usernames.add(resultado.getString(2));
 		statement.close();
 		conexion.close();
 		return usernames;
