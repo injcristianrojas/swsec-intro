@@ -1,6 +1,6 @@
 # Build using docker build -t jenkins-zaproxy .
 
-FROM jenkinsci/blueocean:1.23.2
+FROM jenkinsci/blueocean:1.24.3
 
 USER root
 
