@@ -1,0 +1,34 @@
+{
+	"info": {
+		"_postman_id": "8fe9a8b5-c2b5-400e-90e1-c2af8a843b30",
+		"name": "Aves",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post something",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/users/get/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"get",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

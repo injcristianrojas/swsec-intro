@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "ced03831-b3bb-4026-a3df-5593bfbef878",
+		"name": "Aves JWT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get JWT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post something",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE1Nzg1MDkxMTksImlhdCI6MTU3ODUwNzMxOSwiaWQiOiJjcGFsbWEiLCJpc3MiOiJpbmpjcmlzdGlhbnJvamFzIn0._uhvsUYL-HLIuRgn4q1D7PA03z6vdDBRBEKPPhmRIQWgwYu86DnEayLaQov4HoMQEAmosSn1FTdPB-k_wdpR3A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"message\": \"Holi andai soli\"}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/posts/add",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
