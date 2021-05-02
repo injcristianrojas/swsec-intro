@@ -194,7 +194,7 @@
                 <artifactId>zap-maven-plugin</artifactId>
                 <version>0.1.0</version>
                 <configuration>
-                    <zapHost>zap</zapHost>
+                    <zapHost>localhost</zapHost>
                     <zapPort>8989</zapPort>
                     <targetUrl>http://localhost:8090/</targetUrl>
                     <authenticationType>form</authenticationType>
