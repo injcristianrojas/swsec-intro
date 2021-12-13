@@ -202,7 +202,7 @@
       <plugin>
         <groupId>org.owasp</groupId>
         <artifactId>dependency-check-maven</artifactId>
-        <version>6.1.6</version>
+        <version>6.5.0</version>
         <configuration>
           <formats>HTML,XML,JSON</formats>
           <nodeAnalyzerEnabled>false</nodeAnalyzerEnabled>
