@@ -5,11 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static swsec.Helpers.checkUserLogin;
 
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = LogManager.getLogger(Login.class);
 
 	public Login() {
 		super();
@@ -19,6 +22,7 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		LOGGER.error("Attempted login user: " + username);
 		if (checkUserLogin(username, password)) {
 			session.setAttribute("username", username);
 			session.setAttribute("isAdmin", username.equals("admin") ? "true" : "false");
