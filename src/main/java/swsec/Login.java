@@ -22,7 +22,7 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		LOGGER.error("Attempted login user: " + username);
+		LOGGER.info("Attempted login user: " + username);
 		if (checkUserLogin(username, password)) {
 			session.setAttribute("username", username);
 			session.setAttribute("isAdmin", username.equals("admin") ? "true" : "false");
