@@ -9,7 +9,7 @@
 
   <properties>
     <java.version>1.8</java.version>
-    <jetty.version>9.4.20.v20190813</jetty.version>
+    <jetty.version>10.0.10</jetty.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
     <sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
