@@ -3,7 +3,7 @@
 <%
 String error = request.getParameter("notFoundError");
 if (error != null) {
-	out.println("<p>ERROR: Usuario no encontrado</p>");
+	out.println("<p>ERROR: Usuario " + request.getParameter("username") + " no encontrado</p>");
 }
 %>
 <form action="Login?landingPage=saludos.jsp" method="post" name="mainForm" id="mainForm">
