@@ -2,17 +2,27 @@
 <!-- Extra logging related to initialization of Log4j. 
  Set to debug or trace if log4j initialization is failing. -->
 <Configuration status="warn">
+
     <Appenders>
-    	<!-- Console appender configuration -->
+        <!-- Console appender configuration -->
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout
                 pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
         </Console>
+
+        <!-- File appender configuration -->
+        <File name="file" fileName="log.log">
+            <PatternLayout
+                pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+        </File>
     </Appenders>
+
     <Loggers>
-    	<!-- Root logger referring to console appender -->
-        <Root level="info" additivity="false">
+        <!-- Root logger referring to console appender -->
+        <Root level="INFO">
             <AppenderRef ref="console" />
+            <AppenderRef ref="file" />
         </Root>
     </Loggers>
+
 </Configuration>
