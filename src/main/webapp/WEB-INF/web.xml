@@ -64,6 +64,13 @@
         <servlet-class>swsec.Admin</servlet-class>
     </servlet>
     <servlet>
+        <description>
+        </description>
+        <display-name>Status</display-name>
+        <servlet-name>Status</servlet-name>
+        <servlet-class>swsec.Status</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>jersey-servlet</servlet-name>
         <servlet-class>
             com.sun.jersey.spi.container.servlet.ServletContainer
@@ -110,6 +117,10 @@
     <servlet-mapping>
         <servlet-name>Admin</servlet-name>
         <url-pattern>/Admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Status</servlet-name>
+        <url-pattern>/status</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>jersey-servlet</servlet-name>
