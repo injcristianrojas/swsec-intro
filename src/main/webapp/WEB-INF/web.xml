@@ -138,7 +138,7 @@
 	  </filter-mapping>
 
     <listener>
-        <listener-class>swsec.config.DatabasePopulater</listener-class>
+        <listener-class>swsec.config.ApplicationStarter</listener-class>
     </listener>
 
     <welcome-file-list>

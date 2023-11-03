@@ -5,6 +5,9 @@ import javax.servlet.ServletContextListener;
 
 import swsec.Helpers;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -12,12 +15,27 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DatabasePopulater implements ServletContextListener {
+public class ApplicationStarter implements ServletContextListener {
+
+  final String filePath = "log.log";
+
   @Override
   public void contextInitialized(ServletContextEvent sce) {
     Logger.getLogger(getClass().getName()).log(Level.INFO,
         "JWT is " + (ApplicationProperties.INSTANCE.usesJWT() ? "enabled" : "disabled"));
     populateDatabase();
+    cleanLogs();
+  }
+
+  private void cleanLogs() {
+    try {
+      BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+      writer.write("Starting status data.\n");
+      writer.close();
+      System.out.println("File cleaned successfully.");
+    } catch (IOException e) {
+      Logger.getLogger(getClass().getName()).log(Level.WARNING, "Can't clean file " + filePath);
+    }
   }
 
   @Override
