@@ -46,14 +46,13 @@ a:hover
 {
 	margin: 0 auto;
 	border: 1px solid #4D7100;
-	width: 760px;
+	width: 80%;
 	padding: 20px;
 	background: #FFF;
 }
 
 #container
 {
-	width: 760px;
 	background: #f5f5f5;
 	border: 1px solid #669900;
 }
@@ -63,7 +62,6 @@ a:hover
 
 #menu
 {
-	width: 720px;
 	padding: 0 20px;
 	height: 40px;
 	border-bottom: 1px solid #669900;
@@ -100,7 +98,6 @@ a:hover
 
 #header
 {
-	width: 760px;
 	height: 125px;
 	border-bottom: 1px solid #669900; 
 	background-image:url('../images/header.jpg');
@@ -122,7 +119,6 @@ a:hover
 
 #content
 {
-	width: 720px;
 	padding: 20px;
 	background: #FCFFF4;
 	border-right: 1px solid #669900;
@@ -178,7 +174,6 @@ a:hover
 
 #footer
 {
-	width: 720px;
 	height: 36px;
 	padding: 0 20px;
 	text-align: right;
