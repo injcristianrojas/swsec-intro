@@ -11,7 +11,7 @@
         </Console>
 
         <!-- File appender configuration -->
-        <File name="file" fileName="log.log">
+        <File name="file" fileName="log.log" immediateFlush="true" append="true">
             <PatternLayout
                 pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
         </File>
