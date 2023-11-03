@@ -1,11 +1,9 @@
-*
-{
+* {
 	margin: 0;
 	padding: 0;
 }
 
-body
-{
+body {
 	font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	color: #385300;
@@ -14,36 +12,28 @@ body
 	margin: 30px 0;
 }
 
-img
-{
+img {
 	border: 0;
 }
 
-img.imgright
-{
+img.imgright {
 	float: right;
 	margin: 0 0 15px 15px;
 	padding: 5px;
 	border: 1px solid #D7D9D0;
 }
 
-a
-{
+a {
 	color: #659500;
 	text-decoration: none;
 }
 
-a:hover
-{
+a:hover {
 	color: #385300;
 	text-decoration: none;
 }
 
-
-
-
-#border
-{
+#border {
 	margin: 0 auto;
 	border: 1px solid #4D7100;
 	width: 80%;
@@ -51,60 +41,46 @@ a:hover
 	background: #FFF;
 }
 
-#container
-{
+#container {
 	background: #f5f5f5;
 	border: 1px solid #669900;
 }
 
-
-
-
-#menu
-{
+#menu {
 	padding: 0 20px;
 	height: 40px;
 	border-bottom: 1px solid #669900;
 	background: #FCFFF4;
 }
 
-#menu ul
-{
+#menu ul {
 	float: right;
 	list-style-type: none;
 }
 
-#menu ul li
-{
+#menu ul li {
 	display: inline;
 	line-height: 40px;
 	margin: 0 0 0 5px;
 }
 
-#menu ul li a
-{
+#menu ul li a {
 	color: #385300;
 	text-decoration: none;
 }
 
-#menu ul li a:hover
-{
+#menu ul li a:hover {
 	color: #659500;
 	text-decoration: none;
 }
 
-
-
-
-#header
-{
+#header {
 	height: 125px;
-	border-bottom: 1px solid #669900; 
-	background-image:url('../images/header.jpg');
+	border-bottom: 1px solid #669900;
+	background-image: url('../images/header.jpg');
 }
 
-#header p
-{
+#header p {
 	font-size: 32px;
 	margin: 0 20px;
 	line-height: 125px;
@@ -114,23 +90,21 @@ a:hover
 	color: #385300;
 }
 
-
-
-
-#content
-{
+#content {
 	padding: 20px;
 	background: #FCFFF4;
 	border-right: 1px solid #669900;
 }
 
-#content p
-{
+#content p {
 	margin: 0 0 15px 0;
 }
 
-#content h1, h2, h3, h4, h5
-{
+#content h1,
+h2,
+h3,
+h4,
+h5 {
 	margin: 0 0 15px 0;
 	font-size: 24px;
 	color: #659500;
@@ -138,42 +112,32 @@ a:hover
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-#content ul
-{
+#content ul {
 	margin: 0 0 15px 30px;
 	list-style-type: square;
 	color: #659500;
 }
 
-#content ul li span
-{
+#content ul li span {
 	color: #385300;
 }
 
-#content ol
-{
+#content ol {
 	margin: 0 0 15px 30px;
 	color: #659500;
 }
 
-#content ol li span
-{
+#content ol li span {
 	color: #385300;
 }
 
-#content p.blockquote
-{
+#content p.blockquote {
 	margin: 0 0 15px 20px;
 	padding: 0 0 0 15px;
 	border-left: 3px solid #659500;
 }
 
-
-
-
-
-#footer
-{
+#footer {
 	height: 36px;
 	padding: 0 20px;
 	text-align: right;
@@ -181,8 +145,7 @@ a:hover
 	border-top: 1px solid #669900;
 }
 
-#footer p
-{
+#footer p {
 	margin: 0;
 	padding: 0;
 	font-size: 11px;
