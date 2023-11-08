@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>injcristianrojas</groupId>
@@ -248,8 +250,37 @@
           <loggedInRegex>
             <![CDATA[\Q<p>Usuario:\E]]>
           </loggedInRegex>
-          <zapOptions>-daemon -config scanner.strength=HIGH -config api.disablekey=true -config api.incerrordetails=true -config proxy.ip=0.0.0.0</zapOptions>
+          <zapOptions>-daemon -config scanner.strength=HIGH -config api.disablekey=true -config
+            api.incerrordetails=true -config proxy.ip=0.0.0.0</zapOptions>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.cyclonedx</groupId>
+        <artifactId>cyclonedx-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>makeAggregateBom</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.spdx</groupId>
+        <artifactId>spdx-maven-plugin</artifactId>
+        <version>0.6.1</version>
+        <executions>
+          <execution>
+            <id>build-spdx</id>
+            <phase>package</phase>
+            <goals>
+              <goal>createSPDX</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
     </plugins>
